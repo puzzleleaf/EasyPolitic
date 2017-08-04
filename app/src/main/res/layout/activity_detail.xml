@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="400dp"
     android:layout_height="600dp"
@@ -19,10 +21,14 @@
             android:textColor="#ffffffff"
             android:textSize="20sp" />
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/chart" />
+        <az.plainpie.PieView
+            android:id="@+id/pieView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            plainpie:inner_pie_padding="30"
+            plainpie:inner_text_visibility="true"
+            plainpie:percentage="75"
+            plainpie:percentage_size="70" />
 
         <View
             android:layout_width="1dp"
@@ -35,14 +41,38 @@
             android:textColor="#ffffffff"
             android:textSize="20sp" />
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/chart" />
+        <az.plainpie.PieView
+            android:id="@+id/pieView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            plainpie:inner_pie_padding="30"
+            plainpie:percentage="75"
+            plainpie:percentage_size="70"
+            plainpie:inner_text_visibility="true"/>
 
         <View
             android:layout_width="1dp"
             android:layout_height="30dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="청렴지수"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="300dp"></View>
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,20 +104,6 @@
             android:layout_height="wrap_content"
             android:text="세무 - 20%"
             android:textColor="#ffffffff" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="청렴지수"
-            android:textSize="20sp"
-            android:textColor="#ffffffff"/>
 
     </LinearLayout>
 
