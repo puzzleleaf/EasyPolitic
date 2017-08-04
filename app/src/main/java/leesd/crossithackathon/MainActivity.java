@@ -82,6 +82,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
          @Override
          public boolean onMarkerClick(Marker marker) {
              Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+             intent.putExtra("markerData",marker.getTitle());
              startActivity(intent);
              return false;
          }

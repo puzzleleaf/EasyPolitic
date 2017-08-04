@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CrossItHackathon.iml" filepath="$PROJECT_DIR$/CrossItHackathon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EasyPolitic-master-5df32eb78ec6e0ca83920affdf7a8d8ecb9cbff3.iml" filepath="$PROJECT_DIR$/EasyPolitic-master-5df32eb78ec6e0ca83920affdf7a8d8ecb9cbff3.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/libs/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/app/libs/MPChartLib/MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/libs/plain-pie-master/plain-pie/plain-pie.iml" filepath="$PROJECT_DIR$/app/libs/plain-pie-master/plain-pie/plain-pie.iml" />
     </modules>
