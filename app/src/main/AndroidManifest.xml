@@ -16,8 +16,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDm9nCuOvIdXg3YVeqvNuMydzF6j87UiQE"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".Info.DetailActivity"
-            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".Info.DetailActivity" android:theme="@style/Theme.AppCompat.Translucent" />
         <activity android:name=".SplashActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

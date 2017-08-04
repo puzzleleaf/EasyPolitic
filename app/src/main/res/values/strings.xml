@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">CrossItHackathon</string>
 
+
+    <string name="국방부">http://postfiles2.naver.net/MjAxNzAzMTRfMjI2/MDAxNDg5NDY4NjE5Nzk5.gJG_5HG2kWBzS5-A9dB6A02rDPa_2QKUG7gDIWSmPksg.rolRelIWEQo_8RWQQ9HlllCFbFiJdq5be3Iuky1aBMwg.GIF.passtheway/mnd_mark.gif?type=w3</string>
+    <string name="관세청">http://postfiles2.naver.net/MjAxNzAzMTRfMjI2/MDAxNDg5NDY4NjE5Nzk5.gJG_5HG2kWBzS5-A9dB6A02rDPa_2QKUG7gDIWSmPksg.rolRelIWEQo_8RWQQ9HlllCFbFiJdq5be3Iuky1aBMwg.GIF.passtheway/mnd_mark.gif?type=w3</string>
+
     <!--    Permissions    -->
     <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
     <string name="location_permission_denied">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'Google Maps API Demos\'.</string>
