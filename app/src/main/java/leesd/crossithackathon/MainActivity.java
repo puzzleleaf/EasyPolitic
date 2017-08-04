@@ -11,20 +11,32 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import az.plainpie.PieView;
+import az.plainpie.animation.PieAngleAnimation;
 import leesd.crossithackathon.Info.DetailActivity;
 
 public class MainActivity  extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback {
-    /**
+/**
      * Request code for location permission request.
      *
      * @see #onRequestPermissionsResult(int, String[], int[])
@@ -59,13 +71,12 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         LatLng customs = new LatLng(37.518292, 127.034441);
         LatLng education = new LatLng(37.574864, 126.975062);
         LatLng army = new LatLng(37.533553, 126.977663);
-        mMap.addMarker(new MarkerOptions().position(police).title("경찰청"));
-        mMap.addMarker(new MarkerOptions().position(customs).title("관세청"));
-        mMap.addMarker(new MarkerOptions().position(education).title("교육부"));
-        mMap.addMarker(new MarkerOptions().position(army).title("국방부"));
+        mMap.addMarker(new MarkerOptions().position(police).title("경찰청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(customs).title("관세청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(education).title("교육부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(army).title("국방부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 10));
 
-        mMap.setOnMyLocationButtonClickListener(this);
 
      mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
          @Override
@@ -75,6 +86,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
              return false;
          }
      });
+
 
         enableMyLocation();
 

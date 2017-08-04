@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.Window;
 
+import az.plainpie.PieView;
+import az.plainpie.animation.PieAngleAnimation;
 import leesd.crossithackathon.R;
 
 /**
@@ -21,6 +23,26 @@ public class DetailActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_detail);
 
+
+        // 임시 그래프
+        PieView pieView = (PieView) findViewById(R.id.pieView);
+        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView.setInnerText("A");
+        PieView animatedPie = (PieView) findViewById(R.id.pieView);
+
+        PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
+        animation.setDuration(5000); //This is the duration of the animation in millis
+        animatedPie.startAnimation(animation);
+
+
+        PieView pieView2 = (PieView) findViewById(R.id.pieView2);
+        pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView2.setInnerText("A");
+        PieView animatedPie2 = (PieView) findViewById(R.id.pieView2);
+
+        PieAngleAnimation animation2 = new PieAngleAnimation(animatedPie2);
+        animation2.setDuration(5000); //This is the duration of the animation in millis
+        animatedPie2.startAnimation(animation2);
     }
     public boolean onTouchEvent(MotionEvent event) {
         //바깥레이어 클릭시 안닫히게
