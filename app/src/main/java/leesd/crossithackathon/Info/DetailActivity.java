@@ -1,18 +1,14 @@
 package leesd.crossithackathon.Info;
 
-import android.app.Activity;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
@@ -21,6 +17,7 @@ import com.bumptech.glide.Glide;
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
 import leesd.crossithackathon.R;
+import leesd.crossithackathon.data.MapList;
 
 /**
  * Created by leesd on 2017-08-01.
@@ -38,11 +35,13 @@ public class DetailActivity extends AppCompatActivity {
     String markerData;
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         markerData = getIntent().getStringExtra("markerData");
+
 
         ratingBarInit();
         imageInit();
@@ -57,15 +56,6 @@ public class DetailActivity extends AppCompatActivity {
         animation.setDuration(3000); //This is the duration of the animation in millis
         animatedPie.startAnimation(animation);
 
-
-        PieView pieView2 = (PieView) findViewById(R.id.pieView2);
-        pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
-        pieView2.setInnerText("A");
-        PieView animatedPie2 = (PieView) findViewById(R.id.pieView2);
-
-        PieAngleAnimation animation2 = new PieAngleAnimation(animatedPie2);
-        animation2.setDuration(3000); //This is the duration of the animation in millis
-        animatedPie2.startAnimation(animation2);
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -78,18 +68,16 @@ public class DetailActivity extends AppCompatActivity {
 
     //Image
     private void imageInit(){
-
-        String temp = "R.string." + markerData;
-
         logoImage = (ImageView)findViewById(R.id.detail_image);
-        Log.d("qwe",markerData);
-        int imageUri =  this.getResources().getIdentifier("관세청", "string", this.getPackageName());
-        Log.d("qwe",String.valueOf(imageUri));
+        String resUri = null;
+        try{
+            resUri = getString(MapList.mapList.get(markerData));
+        }catch (NullPointerException e){
 
-
-        Log.d("qwe",String.valueOf(R.string.국방부));
-
-        Glide.with(this).load(R.string.국방부).into(logoImage);
+        }
+        if(resUri!=null) {
+            Glide.with(this).load(resUri).into(logoImage);
+        }
 
     }
 
@@ -117,6 +105,10 @@ public class DetailActivity extends AppCompatActivity {
         stars.getDrawable(2).setColorFilter(ContextCompat.getColor(this,R.color.colorStar), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+    }
+
+    private void mapList(){
+
     }
 
 }

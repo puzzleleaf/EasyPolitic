@@ -90,6 +90,13 @@
                             android:layout_marginLeft="10dp"
                             style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:text="우수"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -112,6 +119,13 @@
                             android:layout_marginLeft="10dp"
                             style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:text="우수"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,6 +148,13 @@
                             android:layout_marginLeft="10dp"
                             style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:text="우수"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -143,40 +164,60 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 android:text="청렴지수 : " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:text="100%"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <az.plainpie.PieView
                 android:id="@+id/pieView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+
                 plainpie:inner_pie_padding="30"
                 plainpie:inner_text_visibility="true"
                 plainpie:percentage="75"
                 plainpie:percentage_size="40" />
 
 
-            <az.plainpie.PieView
-                android:id="@+id/pieView2"
-                android:layout_width="0dp"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                plainpie:inner_pie_padding="30"
-                plainpie:inner_text_visibility="true"
-                plainpie:percentage="75"
-                plainpie:percentage_size="40" />
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="간단한 설명 및 관련 링크 " />
+
 
         </LinearLayout>
     </LinearLayout>

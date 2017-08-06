@@ -8,6 +8,8 @@ import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
+import leesd.crossithackathon.data.MapList;
+
 
 /**
  * Created by leesd on 2017-07-31.
@@ -20,6 +22,7 @@ public class SplashActivity extends AwesomeSplash {
 
     @Override
     public void initSplash(ConfigSplash configSplash) {
+        mapInit();
         configSplash.setBackgroundColor(R.color.colorSplash);
         configSplash.setAnimCircularRevealDuration(duration);
         configSplash.setRevealFlagX(Flags.REVEAL_LEFT);
@@ -47,4 +50,7 @@ public class SplashActivity extends AwesomeSplash {
         }, DELAY);
     }
 
+    private void mapInit(){
+        MapList.mapInit();
+    }
 }
