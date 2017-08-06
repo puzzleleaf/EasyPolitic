@@ -8,14 +8,15 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -33,7 +34,7 @@ import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
 import leesd.crossithackathon.Info.DetailActivity;
 
-public class MainActivity  extends FragmentActivity implements OnMapReadyCallback,
+public class MainActivity  extends FragmentActivity implements OnMapReadyCallback ,
         GoogleMap.OnMyLocationButtonClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback {
 /**
@@ -49,17 +50,57 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
+    private ImageView drawerMenu;
 
     Button nowButton;
+    private DrawerLayout drawer;
+    private View drawerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+    }
+
+    private void drawerInit(){
+        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
+        drawerView = (View)findViewById(R.id.drawer_view);
+
+
+        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+        drawerMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(drawerView);
+            }
+        });
     }
 
     @Override
@@ -84,6 +125,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
              Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
              intent.putExtra("markerData",marker.getTitle());
              startActivity(intent);
+             drawerMenu.setVisibility(View.INVISIBLE);
              return false;
          }
      });
@@ -149,5 +191,11 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        drawerMenu.setVisibility(View.VISIBLE);
     }
 }
