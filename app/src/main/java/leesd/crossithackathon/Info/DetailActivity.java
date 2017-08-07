@@ -1,14 +1,18 @@
 package leesd.crossithackathon.Info;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -39,6 +43,8 @@ public class DetailActivity extends AppCompatActivity {
 
     //이미지
     private ImageView logoImage;
+    private Button linkButton;
+
     String markerData;
 
 
@@ -48,8 +54,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         markerData = getIntent().getStringExtra("markerData");
+        linkButton = (Button)findViewById(R.id.link);
 
-
+        titleInit();
         ratingBarInit();
         imageInit();
 
@@ -62,6 +69,17 @@ public class DetailActivity extends AppCompatActivity {
         PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
         animation.setDuration(3000); //This is the duration of the animation in millis
         animatedPie.startAnimation(animation);
+
+        linkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                String uri = getString(MapList.urlList.get(markerData));
+                Uri u = Uri.parse(uri);
+                intent.setData(u);
+                startActivity(intent);
+            }
+        });
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -70,6 +88,16 @@ public class DetailActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    //Title
+    private void titleInit(){
+        //Excel에서 Data 가져오기
+        SatisfactionExcelFile sf = new SatisfactionExcelFile(getBaseContext());
+        HashMap<String, String> hashMap = sf.selectByName(markerData);
+
+        TextView title = (TextView)findViewById(R.id.institutionName);
+        title.setText(hashMap.get("SF_AGENCY"));
     }
 
     //Image
@@ -89,13 +117,13 @@ public class DetailActivity extends AppCompatActivity {
 
     //RatingBar
     private void ratingBar(){
-
+        //Excel에서 Data 가져오기
+        SatisfactionExcelFile sf = new SatisfactionExcelFile(getBaseContext());
         TextView text1 = (TextView)findViewById(R.id.gradeText1);
         TextView text2 = (TextView)findViewById(R.id.gradeText2);
         TextView text3 = (TextView)findViewById(R.id.gradeText3);
 
         if(markerData != null) {
-            SatisfactionExcelFile sf = new SatisfactionExcelFile(getBaseContext());
             HashMap<String, String> hashMap = sf.selectByName(markerData);
             ratingBarFir.setRating(sf.number(hashMap.get("SF_2014")));
             ratingBarSec.setRating(sf.number(hashMap.get("SF_2015")));

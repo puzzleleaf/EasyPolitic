@@ -19,13 +19,129 @@
             android:adjustViewBounds="true"
             android:src="@drawable/ic_drawer1"/>
         <TextView
+            android:id="@+id/complaintState"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="고충민원 현황"
             android:layout_marginLeft="5dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/years"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="right">
+        <TextView
+            android:id="@+id/year_2008"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2008년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2009"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2009년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2010"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2010년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2011"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2011년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2012"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2012년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2013"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2013년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2014"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2014년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:id="@+id/year_2015"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2015년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="onClick"/>
+        <TextView
+            android:id="@+id/year_2016"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016년"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:onClick="onClick"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -46,7 +162,7 @@
             android:layout_marginLeft="5dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="25sp"
             />
     </LinearLayout>
 </LinearLayout>

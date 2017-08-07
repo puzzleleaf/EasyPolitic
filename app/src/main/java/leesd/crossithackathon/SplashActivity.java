@@ -52,5 +52,6 @@ public class SplashActivity extends AwesomeSplash {
 
     private void mapInit(){
         MapList.mapInit();
+        MapList.urlInit();
     }
 }

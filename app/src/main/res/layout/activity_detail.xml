@@ -34,6 +34,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/institutionName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="국방부"
@@ -211,7 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -219,7 +220,17 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:text="간단한 설명 및 관련 링크 " />
+                android:text="기관 소개" />
+
+            <Button
+                android:id="@+id/link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBlue"
+                android:text="민원창구 가기"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>

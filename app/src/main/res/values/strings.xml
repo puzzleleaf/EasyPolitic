@@ -1,7 +1,164 @@
 <resources>
     <string name="app_name">CrossItHackathon</string>
-    <string name="국방부">http://postfiles2.naver.net/MjAxNzAzMTRfMjI2/MDAxNDg5NDY4NjE5Nzk5.gJG_5HG2kWBzS5-A9dB6A02rDPa_2QKUG7gDIWSmPksg.rolRelIWEQo_8RWQQ9HlllCFbFiJdq5be3Iuky1aBMwg.GIF.passtheway/mnd_mark.gif?type=w3</string>
+    <string name="경찰청" formatted="false">https://mblogthumb-phinf.pstatic.net/20140203_25/lonnie79_1391397549596S4kYP_PNG/%B0%E6%C2%FB%C3%BB%B7%CE%B0%ED.PNG?type=w2</string>
     <string name="관세청">https://search.pstatic.net/common?type=o&amp;size=152x114&amp;quality=75&amp;direct=true&amp;src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Foutside%2Fgovernment%2F20160525171903119832.jpg</string>
+    <string name="교육부">http://www.veritas-a.com/news/photo/201604/57690_41690_5140.jpg</string>
+    <string name="국방부">http://postfiles2.naver.net/MjAxNzAzMTRfMjI2/MDAxNDg5NDY4NjE5Nzk5.gJG_5HG2kWBzS5-A9dB6A02rDPa_2QKUG7gDIWSmPksg.rolRelIWEQo_8RWQQ9HlllCFbFiJdq5be3Iuky1aBMwg.GIF.passtheway/mnd_mark.gif?type=w3</string>
+    <string name="국세청">http://imgnews.naver.net/image/005/2016/09/02/201609021009_61140010902835_1_99_20160902101004.jpg?type=w540</string>
+    <string name="기상청">http://img.etnews.com/photonews/1610/872574_20161024143908_531_0002.jpg</string>
+    <string name="법무부" formatted="false">http://postfiles12.naver.net/20160515_139/passtheway_1463298357297rtVnE_JPEG/%B9%FD%B9%AB%BA%CE_%B1%B9_%BB%F3%C7%CF.jpg?type=w3</string>
+    <string name="법제처" formatted="false">https://cafeptthumb-phinf.pstatic.net/MjAxNzA3MjlfMTI0/MDAxNTAxMjk1OTA3OTQ3.fa1Na5eACAMz5N7dCoWclJqm8sYXx1n5cgWd4vCDpkAg.KUeNn0BK4hIJnAtho-SnTCMXaTdnFt7vy91EgvVClAIg.JPEG.gsyjjk/%EB%B2%95%EC%A0%9C%EC%B2%98-%ED%95%9C%EA%B8%80_%EC%84%B8%EB%A1%9C%28945X945%29.jpg?type=w740</string>
+    <string name="병무청" formatted="false">http://postfiles8.naver.net/20160714_55/2mstudio_1468484306813PVY6o_JPEG/%BA%B4%B9%AB%C3%BB_%B1%B9_%C1%C2%BF%EC.jpg?type=w2</string>
+    <string name="산림청">http://imgnews.naver.net/image/469/2016/04/27/2164bb7d5bc24431bc52e99e1c7c5811_99_20160427183503.jpg?type=w540</string>
+    <string name="외교부">http://postfiles3.naver.net/20160611_162/passtheway_1465615063425jXXMq_PNG/944987_1127222297338493_7182412751347457741_n.png?type=w3</string>
+    <string name="조달청" formatted="false">https://3.bp.blogspot.com/-X0FcZ0_FGTk/VznGMnlH4PI/AAAAAAAAEVo/AqubNTZz1jEYBCrk4mf43V4SHDF8Zw-GgCLcB/s320/%25EC%25A1%25B0%25EB%258B%25AC%25EC%25B2%25AD%2B%25EB%25A1%259C%25EA%25B3%25A0.png</string>
+    <string name="통계청">http://www.pedien.com/news/photo/201608/29632_24206_5005.png</string>
+    <string name="통일부">http://photo.hankooki.com/newsphoto/v001/2016/09/07/jhlee20160907092538_X_02_C_1.jpg</string>
+    <string name="특허청" formatted="false">https://mblogthumb-phinf.pstatic.net/MjAxNjExMTZfMjQ5/MDAxNDc5Mjg3MDMzNTA3.MMQn2tU7JsTPeUdF86NBHVt6inJGXchCyl8ZPL_JaWkg.Ji51Qi31LN7CZwIQlzt0z4_qcCrrLHbIgQbdbnq8KJIg.JPEG.ujwlaw/%ED%8A%B9%EC%B2%98%EC%B2%AD%EB%A1%9C%EA%B3%A02.jpg?type=w800</string>
+    <string name="환경부">//cdn.mirror.wiki/http://www.me.go.kr/images/web/contens/mi_img01.gif</string>
+    <string name="대검찰청">http://postfiles14.naver.net/20090718_269/curtwild_1247885523612L11q3_jpg/대검찰청_curtwild.jpg?type=w2</string>
+    <string name="문화재청">https://cafeptthumb-phinf.pstatic.net/MjAxNzA0MTJfODQg/MDAxNDkxOTg3NzU4NzE3.yZbxrOhabkTYEfG2tCIZMrtyTgsMRM8tYyqi8aUJj3Qg.O1SNiqdOQ4Mu0ly5B_1yx-W7lZO3mFyOAR8_YwwpsfIg.JPEG.bysun2/1.jpg?type=w740</string>
+    <string name="고용노동부">http://nas.ccushisoft.com/wordpress/wp-content/cache/thumbnails/2017/04/usrsharetomcatwebappsBlogPostingServerdownload20170428163738578NBBBR20170428163740141APIVS.png-720x340-c.jpg</string>
+    <string name="국가보훈처">http://postfiles10.naver.net/20160521_89/passtheway_1463790490683lkP3x_JPEG/5E6BB28D2A80656692066C5298C33368F48A2A2E3B702FA82F685Epimgpsh_fullsize_distr.jpg?type=w3</string>
+    <string name="국민안전처">http://postfiles8.naver.net/20160701_183/gmcityhall_14673492522824jT7Y_JPEG/2.jpg?type=w966</string>
+    <string name="국토교통부">http://cfile22.uf.tistory.com/image/26245250581AC0D102DC50</string>
+    <string name="금융위원회">http://file2.nocutnews.co.kr/newsroom/image/2017/01/12/20170112181855919197.jpg</string>
+    <string name="기획재정부">http://www.sisunnews.co.kr/news/photo/201607/39711_58863_854.jpg</string>
+    <string name="농촌진흥청"></string>
+    <string name="방위사업청"></string>
+    <string name="보건복지부"></string>
+    <string name="여성가족부"></string>
+    <string name="인사혁신처"></string>
+    <string name="중소기업청"></string>
+    <string name="해양수산부"></string>
+    <string name="행정자치부"></string>
+    <string name="새만금개발청"></string>
+    <string name="공정거래위원회"></string>
+    <string name="국민권익위원회"></string>
+    <string name="농림축산식품부"></string>
+    <string name="문화체육관광부"></string>
+    <string name="미래창조과학부"></string>
+    <string name="방송통신위원회"></string>
+    <string name="산업통상자원부"></string>
+    <string name="식품의약품안전처"></string>
+    <string name="원자력안전위원회"></string>
+    <string name="행정중심복합도시건설청"></string>
+    <string name="강원도교육청"></string>
+    <string name="경기도교육청"></string>
+    <string name="경상남도교육청"></string>
+    <string name="경상북도교육청"></string>
+    <string name="전라남도교육청"></string>
+    <string name="전라북도교육청"></string>
+    <string name="충청남도교육청"></string>
+    <string name="충청북도교육청"></string>
+    <string name="광주광역시교육청"></string>
+    <string name="대구광역시교육청"></string>
+    <string name="대전광역시교육청"></string>
+    <string name="부산광역시교육청"></string>
+    <string name="서울특별시교육청"></string>
+    <string name="울산광역시교육청"></string>
+    <string name="인천광역시교육청"></string>
+    <string name="세종특별자치시교육청"></string>
+    <string name="제주특별자치도교육청"></string>
+    <string name="강원도"></string>
+    <string name="경기도"></string>
+    <string name="경상남도"></string>
+    <string name="경상북도"></string>
+    <string name="전라남도"></string>
+    <string name="전라북도"></string>
+    <string name="충청남도"></string>
+    <string name="충청북도"></string>
+    <string name="광주광역시"></string>
+    <string name="대구광역시"></string>
+    <string name="대전광역시"></string>
+    <string name="부산광역시"></string>
+    <string name="서울특별시"></string>
+    <string name="울산광역시"></string>
+    <string name="인천광역시"></string>
+    <string name="세종특별자치시"></string>
+    <string name="제주특별자치도"></string>
+
+
+<!-- & 는 &amp;로 고쳐줘야 쓸 수 있다.-->
+    <!--민원창구 URL-->
+    <string name="경찰청URL">https://minwon.police.go.kr/#requestMinwon/info</string>
+    <string name="관세청URL" >http://www.customs.go.kr/kcshome/main/content/ContentView.do?contentId=CONTENT_000000000383&amp;layoutMenuNo=323</string>
+    <string name="교육부URL">http://www.moe.go.kr/sub/info.do?m=0101&amp;s=moe</string>
+    <string name="국방부URL">http://www.mnd.go.kr/mbshome/mbs/mnd/subview.jsp?id=mnd_030101010000</string>
+    <string name="국세청URL">https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml</string>
+    <string name="기상청URL">http://minwon.kma.go.kr/main/main.do</string>
+    <string name="법무부URL" >http://www.moj.go.kr/ca/contents/CACNT0160.jsp</string>
+    <string name="법제처URL" >http://www.moleg.go.kr/civilComplaint/civilAppeal/civilAppealReport</string>
+    <string name="병무청URL" >https://mwpt.mma.go.kr/caisBMHS/</string>
+    <string name="산림청URL">http://www.forest.go.kr/newkfsweb/kfs/idx/SubMain.do?mn=KFS_04</string>
+    <string name="외교부URL">http://www.mofa.go.kr/national/opinion/questionanswer/index.jsp?mofat=001&amp;menu=m_50_30_01</string>
+    <string name="조달청URL">http://www.pps.go.kr/kor/jsp/civil/total_civil/contract_law.pps</string>
+    <string name="통계청URL">http://kostat.go.kr/portal/korea/kor_cc/index.action</string>
+    <string name="통일부URL">http://www.unikorea.go.kr/content.do?cmsid=1454</string>
+    <string name="특허청URL">http://www.kipo.go.kr/kpo/user.tdf?a=user.member.board.BoardApp&amp;c=1002&amp;board_id=broker&amp;catmenu=m02_04_01</string>
+    <string name="환경부URL">http://minwon.me.go.kr/nation/index.jsp</string>
+    <string name="대검찰청URL">http://www.spo.go.kr/minwon/index.jsp</string>
+    <string name="문화재청URL">https://www.e-minwon.go.kr/webs/main.jsp</string>
+    <string name="고용노동부URL">http://minwon.moel.go.kr/minwon2008/lc_minwon/lc_form_apply.jsp</string>
+    <string name="국가보훈처URL">http://www.mpva.go.kr/people/people100.asp</string>
+    <string name="국민안전처URL">http://www.mois.go.kr/frt/a03/civilComplaintHome.do</string>
+    <string name="국토교통부URL">http://eminwon.molit.go.kr/main.do</string>
+    <string name="금융위원회URL">http://www.fcsc.kr/D/fu_d_04.jsp</string>
+    <string name="기획재정부URL">http://www.mosf.go.kr/cv/cvMain.do;jsessionid=GQ55MQJyC5xcwaELdnUuvJP4.node30?menuNo=8000000</string>
+    <string name="농촌진흥청URL">https://www.rda.go.kr:2360/minwon/index.html</string>
+    <string name="방위사업청URL">http://www.dapa.go.kr/mbshome/mbs/dapa_kr/subview.jsp?id=dapa_kr_010100000000</string>
+    <string name="보건복지부URL">https://www.mohw.go.kr/front_new/mw/smw0101mn.jsp?PAR_MENU_ID=01&amp;MENU_ID=0102</string>
+    <string name="여성가족부URL">http://www.mogef.go.kr/oc/cap/oc_cap_f005.do?mid=ifrm11</string>
+    <string name="인사혁신처URL">http://www.mpm.go.kr/mpm/minwon/minwonHome/</string>
+    <string name="중소기업청URL">http://www.mss.go.kr/site/smba/submain/submain02.do</string>
+    <string name="해양수산부URL">http://www.mof.go.kr/bridge/frameView.do?menuKey=701</string>
+    <string name="행정자치부URL">http://www.mois.go.kr/frt/a03/civilComplaintHome.do</string>
+    <string name="새만금개발청URL">http://www.saemangeum.go.kr/sda/sub/customer/SMG10001.do</string>
+    <string name="공정거래위원회URL">http://www.ftc.go.kr/minwon/counsel/counselIntro.jsp</string>
+    <string name="국민권익위원회URL">http://www.acrc.go.kr/acrc/board.do?command=searchDetail&amp;menuId=0501</string>
+    <string name="농림축산식품부URL">http://www.mafra.go.kr/list.jsp?group_id=1&amp;menu_id=1&amp;link_menu_id=7&amp;division=H&amp;board_kind=&amp;board_skin_id=&amp;parent_code=&amp;depth=0&amp;tab_yn=</string>
+    <string name="문화체육관광부URL">http://www.mcst.go.kr/usr/minwon/index.jsp</string>
+    <string name="미래창조과학부URL">http://www.msit.go.kr/web/msipContents/contents.do?mId=Njc=</string>
+    <string name="방송통신위원회URL">http://www.kcc.go.kr/user.do?page=A09020000</string>
+    <string name="산업통상자원부URL">http://www.motie.go.kr/motie/pn/ee/civil/civil.jsp</string>
+    <string name="식품의약품안전처URL">https://ezdrug.mfds.go.kr/</string>
+    <string name="원자력안전위원회URL">http://www.nssc.go.kr/nssc/index.jsp</string>
+    <string name="행정중심복합도시건설청URL">http://www.naacc.go.kr/sub.do</string>
+    <string name="강원도교육청URL">http://www.gwe.go.kr/mbshome/mbs/kr/subview.do?id=kr_020104000000</string>
+    <string name="경기도교육청URL">http://www.goe.go.kr/edu/content_new.do?menuId=310151215114111&amp;contentId=20151219202854</string>
+    <string name="경상남도교육청URL">http://www.gne.go.kr/index.gne?menuCd=DOM_000000103001001001</string>
+    <string name="경상북도교육청URL">http://www.gbe.kr/content/contents.do?cid=2016020219301200230&amp;menuId=30</string>
+    <string name="전라남도교육청URL">https://www.jne.go.kr/board/list.jne;jsessionid=89qjDvn6u81vxqKqSZTzmpC4p8WCbn7auyK1HBukqy6fTSzp9iVHghSuD18tkABL.jne-homewas2_servlet_engine1?boardId=BBS_0000001&amp;menuCd=DOM_000000101001000000&amp;contentsSid=29&amp;cpath=</string>
+    <string name="전라북도교육청URL">http://www.jbe.go.kr/main/content.jbe?cmsid=101020000001</string>
+    <string name="충청남도교육청URL">http://www.cne.go.kr/cne/elec/01010101.do?m=010101&amp;s=cne</string>
+    <string name="충청북도교육청URL">http://www.cbe.go.kr/home/sub.php?menukey=672</string>
+    <string name="광주광역시교육청URL">http://www.gen.go.kr/sub/page.php?page_code=civil_01_01_01</string>
+    <string name="대구광역시교육청URL">http://www.dge.go.kr/main/html.do?menu_idx=337</string>
+    <string name="대전광역시교육청URL">http://www.dje.go.kr/sub/info.do?m=020401&amp;page=0204&amp;s=dje</string>
+    <string name="부산광역시교육청URL">http://www.pen.go.kr/index.pen?menuCd=DOM_000000102000000000</string>
+    <string name="서울특별시교육청URL">http://www.sen.go.kr/web/services/page/viewPage.action?page=kor/min/min_01.html</string>
+    <string name="울산광역시교육청URL">http://www.use.go.kr/jsp/eca/eca01_01.jsp</string>
+    <string name="인천광역시교육청URL">http://www.ice.go.kr/sub/info.do?m=010101&amp;s=ice</string>
+    <string name="세종특별자치시교육청URL">http://www.sje.go.kr/sub/info.do?m=0201&amp;s=sje</string>
+    <string name="제주특별자치도교육청URL">http://www.jje.go.kr/index.jje?menuCd=DOM_000000201001000000</string>
+    <string name="강원도URL">http://www.provin.gangwon.kr/gw/portal/sub01</string>
+    <string name="경기도URL">http://www.gg.go.kr/minwon</string>
+    <string name="경상남도URL">http://www.gyeongnam.go.kr/jsp/sub01/01_01.jsp</string>
+    <string name="경상북도URL">http://www.gb.go.kr/open_content/civil_information/index.jsp</string>
+    <string name="전라남도URL">http://www.jeonnam.go.kr/contentsView.do?menuId=jeonnam0400000000</string>
+    <string name="전라북도URL">http://www.jeonbuk.go.kr/index.jeonbuk?menuCd=DOM_000000101010001000</string>
+    <string name="충청남도URL">http://www.chungnam.go.kr/cnnet/main.do?mnu_cd=CNNMENU00051</string>
+    <string name="충청북도URL">http://www.cb21.net/www/mwhjList.do?key=1343&amp;bbsCategoryCode=1</string>
+    <string name="광주광역시URL">http://www.gwangju.go.kr/contentsView.do?menuId=gwangju0201010000</string>
+    <string name="대구광역시URL">http://www.daegu.go.kr/index.do?menu_id=00000208</string>
+    <string name="대전광역시URL">http://www.daejeon.go.kr/drh/civil_apeal/index.do?menuSeq=1440</string>
+    <string name="부산광역시URL">http://www.busan.go.kr/minwon/index</string>
+    <string name="서울특별시URL">http://www.seoul.go.kr/v2012/citizen/</string>
+    <string name="울산광역시URL">http://www.ulsan.go.kr/rep/bminwonguide</string>
+    <string name="인천광역시URL">http://www.incheon.go.kr/articles/23</string>
+    <string name="세종특별자치시URL">http://www.sejong.go.kr/citizen/sub01_02_01.do</string>
+    <string name="제주특별자치도URL">http://www.jeju.go.kr/join/request/epeople1.htm</string>
+
 
     <!--    Permissions    -->
     <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
