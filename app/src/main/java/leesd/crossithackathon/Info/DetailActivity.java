@@ -11,11 +11,18 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.HashMap;
+
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
+import leesd.crossithackathon.DataManager.GrievanceFieldExcelFile;
+import leesd.crossithackathon.DataManager.GrievanceTotalExcelFile;
+import leesd.crossithackathon.DataManager.SatisfactionExcelFile;
 import leesd.crossithackathon.R;
 import leesd.crossithackathon.data.MapList;
 
@@ -55,7 +62,6 @@ public class DetailActivity extends AppCompatActivity {
         PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
         animation.setDuration(3000); //This is the duration of the animation in millis
         animatedPie.startAnimation(animation);
-
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -82,10 +88,31 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     //RatingBar
-    private void ratingBarTemp(){
-        ratingBarFir.setRating(3);
-        ratingBarSec.setRating(4);
-        ratingBarThr.setRating(2);
+    private void ratingBar(){
+
+        TextView text1 = (TextView)findViewById(R.id.gradeText1);
+        TextView text2 = (TextView)findViewById(R.id.gradeText2);
+        TextView text3 = (TextView)findViewById(R.id.gradeText3);
+
+        if(markerData != null) {
+            SatisfactionExcelFile sf = new SatisfactionExcelFile(getBaseContext());
+            HashMap<String, String> hashMap = sf.selectByName(markerData);
+            ratingBarFir.setRating(sf.number(hashMap.get("SF_2014")));
+            ratingBarSec.setRating(sf.number(hashMap.get("SF_2015")));
+            ratingBarThr.setRating(sf.number(hashMap.get("SF_2016")));
+
+            text1.setText(hashMap.get("SF_2014"));
+            text2.setText(hashMap.get("SF_2015"));
+            text3.setText(hashMap.get("SF_2016"));
+        }
+        else{
+            ratingBarFir.setRating(0);
+            ratingBarSec.setRating(0);
+            ratingBarThr.setRating(0);
+            text1.setText("-");
+            text2.setText("-");
+            text3.setText("-");
+        }
     }
 
     private void ratingBarInit(){
@@ -97,7 +124,7 @@ public class DetailActivity extends AppCompatActivity {
         ratingBarColorInit(ratingBarSec);
         ratingBarColorInit(ratingBarThr);
 
-        ratingBarTemp();
+        ratingBar();
     }
 
     private void ratingBarColorInit(RatingBar ratingBar){
