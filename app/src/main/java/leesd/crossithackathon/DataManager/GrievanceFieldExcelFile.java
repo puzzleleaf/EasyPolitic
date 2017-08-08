@@ -9,6 +9,7 @@ import java.util.Set;
 
 /* < GrievanceField     분야별고충민원 >
      GF_ID              (식별번호)
+     GF_CONTENT1~26     (내    용)
      GF_YEAR            (년    도)
      GF_FIELD1          (건    축)    GF_FIELD2           (경    찰)
      GF_FIELD3          (교    육)    GF_FIELD4           (교    통)
@@ -30,10 +31,13 @@ public class GrievanceFieldExcelFile extends Activity {
     LoadExcelFiles load = null;
     int fieldTotal = 26;                                    //분야 개수
     String[] strArr = new String[fieldTotal-1];             //분야 (기타제외)
+    String[] contentStrArr = new String[fieldTotal-1];      //분야 처리내용 (기타제외)
     int[] intArr = new int[fieldTotal-1];                   //분야별 건수 (기타제외)
+    int[] pastIntArr = new int[fieldTotal-1];               //전년도 분야별 건수 (기타제외)
+    int[] diffIntArr = new int[fieldTotal-1];               //분야별 건수의 증감 (기타제외)
 
-    int nRowTotal = 0;                  //전체 ROW 갯수
-    int nColTotal = 0;                  //전체 COLUMN 갯수
+    int nRowTotal = 0;                                      //전체 ROW 갯수
+    int nColTotal = 0;                                      //전체 COLUMN 갯수
 
     public GrievanceFieldExcelFile(Context context){
 
@@ -47,7 +51,7 @@ public class GrievanceFieldExcelFile extends Activity {
 
         HashMap<String, String> hashMap = new HashMap<>();
 
-        for(int i=1 ; i<load.nRowTotal ; i++){
+        for(int i=2 ; i<load.nRowTotal ; i++){
             if(year == Integer.parseInt(load.getCell(1, i))){
                 hashMap.put("GF_ID", load.getCell(0, i));
                 hashMap.put("GF_YEAR", load.getCell(1, i));
@@ -59,6 +63,11 @@ public class GrievanceFieldExcelFile extends Activity {
                 break;
             }
         }
+
+        for(int i=2, n=1 ; i<load.nColTotal-1 ; i++, n++) {
+            hashMap.put("GF_CONTENT" + n, load.getCell(i, 1));
+        }
+
         return hashMap;
     }
 
@@ -67,15 +76,29 @@ public class GrievanceFieldExcelFile extends Activity {
 
         HashMap<String, String> hashMap = selectByYear(year);   //해당 년도의 고충민원 정보
         HashMap<String, Object> resultHMap = new HashMap<>();   //10대분야 정보 (분야,분야별건수)
+        HashMap<String, String> pastHMap;                       //전년도의 고충민원 정보
+        if(year != 2008) {
+            pastHMap = selectByYear(year-1);
+        }
+        else{
+            pastHMap = selectByYear(year);
+        }
+
 
         strArr = new String[fieldTotal-1];                      //분야 (기타제외)
+        contentStrArr = new String[fieldTotal-1];               //분야 처리 내용 (기타제외)
         intArr = new int[fieldTotal-1];                         //분야별 건수 (기타제외)
+        pastIntArr = new int[fieldTotal-1];                     //전년도 분야별 건수 (기타제외)
 
         for(int i=0, n=1 ; i<fieldTotal-1 ; i++, n++){          //값 넣기
             intArr[i] = Integer.parseInt(hashMap.get("GF_FIELD"+ n));
             strArr[i] = load.getCell(i+2, 0);
+            contentStrArr[i] = load.getCell(i+2, 1);
+
+            pastIntArr[i] = Integer.parseInt(pastHMap.get("GF_FIELD"+ n));
+            diffIntArr[i] = intArr[i] - pastIntArr[i];
         }
-        swapDesc(intArr, strArr);                               //내림차순 정렬
+        swapDesc(intArr, strArr, diffIntArr, contentStrArr);     //내림차순 정렬
 
         //10대 분야
         for(int i=1 ; i<=10 ; i++){                             //정렬한 값 넣기
@@ -84,32 +107,51 @@ public class GrievanceFieldExcelFile extends Activity {
         }
 
         //건수별 순위, 비율
-        for(int i=1 ; i<=intArr.length ; i++){                   //정렬한 값 넣기
-            resultHMap.put("RANK_SEQ" + i, i);
-            resultHMap.put("RANK_FIELD" + i, strArr[i-1]);
-            resultHMap.put("RANK_NUMBER" + i, intArr[i-1]);
-            resultHMap.put("RANK_PERCENT" + i, (float) (Math.round((float)(intArr[i-1]) / Float.parseFloat(hashMap.get("GF_TOTAL")) * 1000)/10.0));
+        for(int i=1 ; i<=intArr.length ; i++){                      //정렬한 값 넣기
+            resultHMap.put("RANK_SEQ" + i, i);                      //번호
+            resultHMap.put("RANK_FIELD" + i, strArr[i-1]);          //분야
+            resultHMap.put("RANK_NUMBER" + i, intArr[i-1]);         //건수
+            resultHMap.put("RANK_PERCENT" + i, (float) (Math.round((float)(intArr[i-1]) / Float.parseFloat(hashMap.get("GF_TOTAL")) * 1000)/10.0)); //비율
+            resultHMap.put("RANK_CONTENT" + i, contentStrArr[i-1]);
+
+            if(diffIntArr[i-1] > 0){
+                resultHMap.put("RANK_DIFF" + i, "(△" + diffIntArr[i-1] + ")");      //증감
+            }
+            else if(diffIntArr[i-1] < 0){
+                resultHMap.put("RANK_DIFF" + i, "(▽" + Math.abs(diffIntArr[i-1]) + ")");
+            }
+            else{
+                resultHMap.put("RANK_DIFF" + i, "(-)");
+            }
         }
 
         return resultHMap;
     }
 
     //내림차순 정렬
-    public void swapDesc(int[] intArr, String[] strArr){
+    public void swapDesc(int[] intArr, String[] strArr, int[] diffIntArr, String[] contentStrArr){
 
-        int temp;
-        String tmp;
+        int temp1, temp2;
+        String tmp1, tmp2;
 
         for(int i=0 ; i<intArr.length ; i++){
             for(int j=i+1 ; j<intArr.length ; j++){
                 if(intArr[i] < intArr[j]){
-                    temp = intArr[i];
+                    temp1 = intArr[i];
                     intArr[i] = intArr[j];
-                    intArr[j] = temp;
+                    intArr[j] = temp1;
 
-                    tmp = strArr[i];
+                    tmp1 = strArr[i];
                     strArr[i] = strArr[j];
-                    strArr[j] = tmp;
+                    strArr[j] = tmp1;
+
+                    temp2 = diffIntArr[i];
+                    diffIntArr[i] = diffIntArr[j];
+                    diffIntArr[j] = temp2;
+
+                    tmp2 = contentStrArr[i];
+                    contentStrArr[i] = contentStrArr[j];
+                    contentStrArr[j] = tmp2;
                 }
             }
         }
