@@ -3,6 +3,7 @@ package leesd.crossithackathon.Grievance;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +21,15 @@ import leesd.crossithackathon.R;
  */
 
 public class GrievanceTotalFragment extends Fragment {
-    TextView year, info1, info2, info3, info4, info5, info6, info7;
+    TextView info1, info2, info3, info4, info5, info6, info7;
     float processRate, quoteRate; //처리율, 인용률
+    private int year;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_grievance_total,container,false);
+        year = getArguments().getInt("year");
 
-        year = (TextView)view.findViewById(R.id.year);
         info1 = (TextView)view.findViewById(R.id.infoText1);
         info2 = (TextView)view.findViewById(R.id.infoText2);
         info3 = (TextView)view.findViewById(R.id.infoText3);
@@ -39,7 +41,7 @@ public class GrievanceTotalFragment extends Fragment {
         infoInit();
 
         PieView pieView = (PieView)view.findViewById(R.id.pieView);
-        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView.setPercentageBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorGraph));
         pieView.setPercentage(processRate);
         pieView.setInnerText(String.valueOf((int)processRate));
         PieView animatedPie = (PieView)view.findViewById(R.id.pieView);
@@ -50,7 +52,7 @@ public class GrievanceTotalFragment extends Fragment {
 
 
         PieView pieView2 = (PieView)view.findViewById(R.id.pieView2);
-        pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView2.setPercentageBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorGraph));
         pieView2.setPercentage(quoteRate);
         pieView2.setInnerText(String.valueOf(quoteRate));
         PieView animatedPie2 = (PieView)view.findViewById(R.id.pieView2);
@@ -68,9 +70,9 @@ public class GrievanceTotalFragment extends Fragment {
         GrievanceTotalExcelFile gt = new GrievanceTotalExcelFile(getContext());
 
 
-        HashMap<String, String> hashMap =  gt.selectByYear(getActivity().getIntent().getExtras().getInt("year"));
+        HashMap<String, String> hashMap =  gt.selectByYear(year);
 
-        year.setText(String.valueOf(getActivity().getIntent().getExtras().getInt("year"))+ "년");
+
         info1.setText(hashMap.get("GT_RECEIVE"));
         info2.setText(hashMap.get("GT_PROCESS"));
         info3.setText(hashMap.get("GT_GRIEVANCE"));
