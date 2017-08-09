@@ -31,6 +31,8 @@ public class GrievanceFieldFragment extends Fragment {
     GrievanceFieldExcelFile gf;
     HashMap<String, Object> hashMap;
 
+
+    private int year;
     public final static String[] fields = new String[10];
     public final static Object[] fieldNumbers = new Object[10];
 
@@ -42,6 +44,21 @@ public class GrievanceFieldFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_grievance_field,container,false);
+        year = getArguments().getInt("year");
+        gf = new GrievanceFieldExcelFile(getContext());
+        hashMap = gf.rank(year);
+
+        for(int i = 0, j=1 ; i < 10 ; i++, j++){ //Field 데이터 세팅
+            String temp1 = "TOP10_FIELD" + j;
+            String temp2 = "TOP10_NUMBER" + j;
+
+            fields[i] = (String)hashMap.get(temp1);
+            fieldNumbers[i] = hashMap.get(temp2);
+        }
+
+
+        chartBottom = (ColumnChartView) view.findViewById(R.id.chart_bottom);
+        generateColumnData();
 
         gf = new GrievanceFieldExcelFile(getContext());
         hashMap = gf.rank(getActivity().getIntent().getExtras().getInt("year"));

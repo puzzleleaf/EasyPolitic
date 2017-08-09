@@ -58,7 +58,6 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private ImageView drawerMenu;
 
-    Button nowButton;
     private DrawerLayout drawer;
     private View drawerView;
 
@@ -109,49 +108,14 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(findViewById(R.id.years).getVisibility()==View.GONE)
-                    findViewById(R.id.years).setVisibility(View.VISIBLE);
-                else if(findViewById(R.id.years).getVisibility() == View.VISIBLE)
-                    findViewById(R.id.years).setVisibility(View.GONE);
+                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
+                startActivity(intent);
             }
         });
 
 
     }
 
-    public void onClick(View view){ //DrawerLayout의 고충민원 하위버튼들 클릭 시
-        Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
-        switch (view.getId()){
-            case R.id.year_2008 :
-                intent.putExtra("year",2008);
-                break;
-            case R.id.year_2009 :
-                intent.putExtra("year",2009);
-                break;
-            case R.id.year_2010 :
-                intent.putExtra("year",2010);
-                break;
-            case R.id.year_2011 :
-                intent.putExtra("year",2011);
-                break;
-            case R.id.year_2012:
-                intent.putExtra("year",2012);
-                break;
-            case R.id.year_2013 :
-                intent.putExtra("year",2013);
-                break;
-            case R.id.year_2014 :
-                intent.putExtra("year",2014);
-                break;
-            case R.id.year_2015 :
-                intent.putExtra("year",2015);
-                break;
-            case R.id.year_2016 :
-                intent.putExtra("year",2016);
-                break;
-        }
-        startActivity(intent);
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
