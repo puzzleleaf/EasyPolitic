@@ -1,11 +1,13 @@
 package leesd.crossithackathon.Info;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.util.HashMap;
 
@@ -47,14 +51,18 @@ public class DetailActivity extends AppCompatActivity {
 
     String markerData;
 
+    //민원만족도 설명 다이얼로그
+    LovelyInfoDialog info;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         markerData = getIntent().getStringExtra("markerData");
         linkButton = (Button)findViewById(R.id.link);
+
+        info = new LovelyInfoDialog(this);
 
         titleInit();
         ratingBarInit();
@@ -79,6 +87,19 @@ public class DetailActivity extends AppCompatActivity {
                 intent.setData(u);
                 startActivity(intent);
             }
+        });
+
+        //민원만족도 설명
+        findViewById(R.id.detail_satisfaction).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               info.setTopColorRes(R.color.colorBlue)
+                       .setIcon(R.drawable.info2)
+                       .setTitle("Satisfaction Level\nof Civil Petitions")
+                       .setMessage("It is an indicator (S, A, B, C, D)\nthat calculates\nthe satisfaction of the complainant\nand the effort of the agency.")
+                       .setConfirmButtonText("OK")
+                       .show();
+           }
         });
     }
 
@@ -129,17 +150,18 @@ public class DetailActivity extends AppCompatActivity {
             ratingBarSec.setRating(sf.number(hashMap.get("SF_2015")));
             ratingBarThr.setRating(sf.number(hashMap.get("SF_2016")));
 
-            text1.setText(hashMap.get("SF_2014"));
-            text2.setText(hashMap.get("SF_2015"));
-            text3.setText(hashMap.get("SF_2016"));
+            //번역
+            text1.setText(sf.translate(hashMap.get("SF_2014")));
+            text2.setText(sf.translate(hashMap.get("SF_2015")));
+            text3.setText(sf.translate(hashMap.get("SF_2016")));
         }
         else{
             ratingBarFir.setRating(0);
             ratingBarSec.setRating(0);
             ratingBarThr.setRating(0);
-            text1.setText("-");
-            text2.setText("-");
-            text3.setText("-");
+            text1.setText(" -");
+            text2.setText(" -");
+            text3.setText(" -");
         }
     }
 
@@ -165,5 +187,4 @@ public class DetailActivity extends AppCompatActivity {
     private void mapList(){
 
     }
-
 }

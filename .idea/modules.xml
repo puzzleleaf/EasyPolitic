@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/123.iml" filepath="$PROJECT_DIR$/123.iml" />
       <module fileurl="file://$PROJECT_DIR$/EasyPolitic.iml" filepath="$PROJECT_DIR$/EasyPolitic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hack.iml" filepath="$PROJECT_DIR$/hack.iml" />
     </modules>
   </component>
 </project>

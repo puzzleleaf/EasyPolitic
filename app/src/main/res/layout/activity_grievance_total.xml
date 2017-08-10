@@ -189,12 +189,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/info_dialog5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quotation : "
+                    android:text="  Quotation : "
                     android:textColor="#ffffff"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:drawableLeft="@drawable/info"/>
 
                 <TextView
                     android:id="@+id/infoText5"
@@ -245,12 +247,14 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
+                android:id="@+id/info_dialog6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Average processing date : "
+                android:text="  Average processing date : "
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/info"/>
             <TextView
                 android:id="@+id/infoText6"
                 android:layout_width="wrap_content"
