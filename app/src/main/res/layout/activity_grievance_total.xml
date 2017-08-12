@@ -168,16 +168,21 @@
                 android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             android:gravity="center">
 
             <LinearLayout
@@ -192,9 +197,9 @@
                     android:id="@+id/info_dialog5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Quotation : "
+                    android:text=" Quotation : "
                     android:textColor="#ffffff"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     android:drawableLeft="@drawable/info"/>
 
@@ -202,9 +207,9 @@
                     android:id="@+id/infoText5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="123"
+                    android:text="12345"
                     android:textColor="@color/colorNum"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -234,7 +239,10 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -245,6 +253,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
             android:gravity="center">
             <TextView
                 android:id="@+id/info_dialog6"
@@ -277,14 +286,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:gravity="center">
+
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Satisfaction rate : "
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/infoText7"
                 android:layout_width="wrap_content"
@@ -293,6 +306,7 @@
                 android:textColor="@color/colorNum"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

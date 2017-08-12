@@ -47,7 +47,7 @@ public class DetailActivity extends AppCompatActivity {
 
     //이미지
     private ImageView logoImage;
-    private Button linkButton;
+    private TextView linkButton;
 
     String markerData;
 
@@ -60,7 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         markerData = getIntent().getStringExtra("markerData");
-        linkButton = (Button)findViewById(R.id.link);
+        linkButton = (TextView)findViewById(R.id.link);
 
         info = new LovelyInfoDialog(this);
 
