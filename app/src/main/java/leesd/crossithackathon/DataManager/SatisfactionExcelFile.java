@@ -153,6 +153,36 @@ public class SatisfactionExcelFile extends Activity {
         return num;
     }
 
+    //등급에 대한 번역
+    public String translate(String value){
+
+        String text = "-";
+
+        switch (value){
+            case "매우우수":
+                text = "S-grade";
+                break;
+            case "우수":
+                text = "A-grade";
+                break;
+            case "보통":
+                text = "B-grade";
+                break;
+            case "미흡":
+                text = "C-grade";
+                break;
+            case "매우미흡":
+                text = "D-grade";
+                break;
+            case "NULL":
+                text = "-";
+                break;
+            default:
+                break;
+        }
+        return text;
+    }
+
     //해당 기관의 민원만족도 결과 출력 (나중에 그래프 등으로 교체)
     public String setText(HashMap target){
 

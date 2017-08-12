@@ -18,10 +18,9 @@
             android:id="@+id/chart_bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#334E71"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1" >
         </lecho.lib.hellocharts.view.ColumnChartView>
 
@@ -33,6 +32,17 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/field_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Civil Petition for Grievance by Field   "
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="2dp"
+            android:drawableRight="@drawable/info"/>
     </LinearLayout>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -52,7 +62,10 @@
                 android:background="#D0DAE5"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:swipe_titleTextAppearance="@color/colorNum"
+                app:swipe_descriptionTextAppearance="@color/colorAccent"
+                />
 
             <View
                 android:layout_width="match_parent"

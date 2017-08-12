@@ -7,20 +7,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_prev"
-            android:tint="#ffffff" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBlue"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,10 +33,10 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/detail_image"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/detail_image"
                     android:adjustViewBounds="true"
                     android:src="@drawable/splash_logo" />
             </LinearLayout>
@@ -55,15 +45,16 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/detail_satisfaction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="민원 만족도"
+                    android:drawableRight="@drawable/info"
+                    android:text="Satisfaction Level   "
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -83,22 +74,25 @@
                             android:text="2014 )"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <RatingBar
+                            android:id="@+id/detail_rating_bar_fir"
+                            style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/detail_rating_bar_fir"
                             android:layout_marginLeft="10dp"
-                            style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+
                         <TextView
                             android:id="@+id/gradeText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:text="-"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -113,22 +107,25 @@
                             android:text="2015 )"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <RatingBar
+                            android:id="@+id/detail_rating_bar_sec"
+                            style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/detail_rating_bar_sec"
                             android:layout_marginLeft="10dp"
-                            style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+
                         <TextView
                             android:id="@+id/gradeText2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:text="-"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -143,56 +140,38 @@
                             android:text="2016 )"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <RatingBar
+                            android:id="@+id/detail_rating_bar_thr"
+                            style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/detail_rating_bar_thr"
                             android:layout_marginLeft="10dp"
-                            style="?android:attr/ratingBarStyleSmall"
                             android:isIndicator="true" />
+
                         <TextView
                             android:id="@+id/gradeText3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
                             android:textColor="#ffffff"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:text="-"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:text="청렴지수 : " />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="40sp"
-                android:text="100%"/>
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <az.plainpie.PieView
@@ -208,31 +187,45 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="기관 소개"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
                 android:textSize="20sp"
-                android:text="기관 소개" />
+                android:textStyle="bold" />
 
-            <Button
+            <TextView
                 android:id="@+id/link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorBlue"
+                android:layout_marginTop="10dp"
                 android:text="민원창구 가기"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_prev"
+            android:tint="#ffffff" />
     </LinearLayout>
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import java.util.HashMap;
 
 import az.plainpie.PieView;
@@ -22,6 +24,7 @@ import leesd.crossithackathon.R;
 
 public class GrievanceTotalFragment extends Fragment {
     TextView info1, info2, info3, info4, info5, info6, info7;
+    LovelyInfoDialog infoDialog5, infoDialog6;         //설명 다이얼로그
     float processRate, quoteRate; //처리율, 인용률
     private int year;
     @Nullable
@@ -61,6 +64,35 @@ public class GrievanceTotalFragment extends Fragment {
         animation2.setDuration(3000); //This is the duration of the animation in millis
         animatedPie2.startAnimation(animation2);
 
+
+        infoDialog5 = new LovelyInfoDialog(getContext());
+        infoDialog6 = new LovelyInfoDialog(getContext());
+
+        //인용 설명
+        view.findViewById(R.id.info_dialog5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoDialog5.setTopColorRes(R.color.colorBlue)
+                           .setIcon(R.drawable.info2)
+                           .setTitle("Quotation")
+                           .setMessage("The number of complaints\nprocessed by recommendation,\nstatement of opinion,\n" +
+                                   "resolution of mutual agreement or adjustment")
+                           .setConfirmButtonText("OK")
+                           .show();
+            }
+        });
+        //평균처리일 설명
+        view.findViewById(R.id.info_dialog6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoDialog5.setTopColorRes(R.color.colorBlue)
+                        .setIcon(R.drawable.info2)
+                        .setTitle("Average Processing Date")
+                        .setMessage("The number of days\nrequired for handling complaints\ndivided by the number of complaints")
+                        .setConfirmButtonText("OK")
+                        .show();
+            }
+        });
 
         return view;
     }
