@@ -28,6 +28,8 @@ import java.util.HashMap;
 
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
+import leesd.crossithackathon.DataManager.CivilComplaintRate;
+import leesd.crossithackathon.DataManager.CivilComplaintRateVO;
 import leesd.crossithackathon.DataManager.GrievanceFieldExcelFile;
 import leesd.crossithackathon.DataManager.GrievanceTotalExcelFile;
 import leesd.crossithackathon.DataManager.SatisfactionExcelFile;
@@ -49,34 +51,61 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView logoImage;
     private TextView linkButton;
 
+    //마커 클릭시, 기관 이름 가져옴
     String markerData;
 
     //민원만족도 설명 다이얼로그
     LovelyInfoDialog info;
 
+    //처리율
+    private double complaintRatio;
+    private ImageView complaintYearNext;
+    private ImageView complaintYearPrev;
+    private TextView complaintYearSemester;
+    private TextView txt1, txt2, txt3, txt4;
+    private int complaintYear, complaintSemester;
+    private String yearSemester;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         markerData = getIntent().getStringExtra("markerData");
+
         linkButton = (TextView)findViewById(R.id.link);
 
+        complaintYear = 2017;
+        complaintSemester = 2;
+        yearSemester = complaintYear + "_" + complaintSemester;
+        complaintYearNext = (ImageView)findViewById(R.id.complaint_year_semester_next);
+        complaintYearPrev = (ImageView)findViewById(R.id.complaint_year_semester_prev);
+        complaintYearSemester = (TextView)findViewById(R.id.complaint_year_semester);
+        complaintYearSemester.setText(yearSemester);
+
+        complaintYearNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataYearNextCheck();
+                pageRefresh();
+            }
+        });
+
+        complaintYearPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataYearPrevCheck();
+                pageRefresh();
+            }
+        });
+
         info = new LovelyInfoDialog(this);
+
 
         titleInit();
         ratingBarInit();
         imageInit();
-
-        // 임시 그래프
-        PieView pieView = (PieView) findViewById(R.id.pieView);
-        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
-        pieView.setInnerText("A");
-        PieView animatedPie = (PieView) findViewById(R.id.pieView);
-
-        PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
-        animation.setDuration(3000); //This is the duration of the animation in millis
-        animatedPie.startAnimation(animation);
+        complaintRatio = complaintRatioInit(markerData,yearSemester);
+        setPieView(complaintRatio);
 
         linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +130,38 @@ public class DetailActivity extends AppCompatActivity {
                        .show();
            }
         });
+    }
+
+    public void setPieView(double complaintRatio){
+        PieView pieView = (PieView) findViewById(R.id.pieView);
+        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView.setInnerText(String.valueOf(complaintRatio));
+        pieView.setPercentage((float)complaintRatio);
+        PieView animatedPie = (PieView) findViewById(R.id.pieView);
+
+        PieAngleAnimation animation = new PieAngleAnimation(animatedPie);
+        animation.setDuration(3000); //This is the duration of the animation in millis
+        animatedPie.startAnimation(animation);
+
+    }
+
+    public double complaintRatioInit(String institutionName, String yearSemester){
+
+        txt1 = (TextView)findViewById(R.id.total_receipt);
+        txt2 = (TextView)findViewById(R.id.in_period_processing);
+        txt3 = (TextView)findViewById(R.id.overdue_processing);
+        txt4 = (TextView)findViewById(R.id.overdue_unprocessing);
+
+        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
+        CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
+
+        txt1.setText(String.valueOf(ccrv.getTotal_register()));
+        txt2.setText(String.valueOf(ccrv.getIn_date_handling()));
+        txt3.setText(String.valueOf(ccrv.getOut_date_handling()));
+        txt4.setText(String.valueOf(ccrv.getOut_date_failure()));
+
+
+        return ccrv.getHandling_rate();
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -184,7 +245,40 @@ public class DetailActivity extends AppCompatActivity {
         stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
     }
 
-    private void mapList(){
-
+    private void pageRefresh(){
+        yearSemester = complaintYear + "_"+complaintSemester;
+        yearSemesterTextSet();
+        complaintRatio = complaintRatioInit(markerData,yearSemester);
+        setPieView(complaintRatio);
+    }
+    private void yearSemesterTextSet(){
+        complaintYearSemester.setText(yearSemester);
+    }
+    private void dataYearPrevCheck(){
+        if(complaintYear==2016){
+            if(complaintSemester>1)
+                complaintSemester--;
+        }
+        else if(complaintYear==2017) {
+            if (complaintSemester == 1) {
+                complaintYear--;
+                complaintSemester = 4;
+            } else
+                complaintSemester--;
+        }
+    }
+    private void dataYearNextCheck(){
+        if(complaintYear==2016){
+            if(complaintSemester<4)
+                complaintSemester++;
+            else {
+                complaintYear++;
+                complaintSemester = 1;
+            }
+        }
+        else if(complaintYear==2017){
+            if(complaintSemester<2)
+                complaintSemester++;
+        }
     }
 }
