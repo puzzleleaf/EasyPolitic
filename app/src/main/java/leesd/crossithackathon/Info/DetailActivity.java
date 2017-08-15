@@ -57,6 +57,9 @@ public class DetailActivity extends AppCompatActivity {
     //민원만족도 설명 다이얼로그
     LovelyInfoDialog info;
 
+    //소개
+    private TextView introduce;
+
     //처리율
     private double complaintRatio;
     private ImageView complaintYearNext;
@@ -65,6 +68,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView txt1, txt2, txt3, txt4;
     private int complaintYear, complaintSemester;
     private String yearSemester;
+
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -81,6 +85,15 @@ public class DetailActivity extends AppCompatActivity {
         complaintYearPrev = (ImageView)findViewById(R.id.complaint_year_semester_prev);
         complaintYearSemester = (TextView)findViewById(R.id.complaint_year_semester);
         complaintYearSemester.setText(yearSemester);
+        introduce = (TextView)findViewById(R.id.introduce);
+        introduceInit();
+
+        findViewById(R.id.detail_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         complaintYearNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +145,16 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
+    private void introduceInit() {
+        if(markerData.equals("국방부")){
+            introduce.setText("\n" +
+                    "The Ministry of National Defense is the central administrative agency that oversees the defense related affairs. On November 13, 1945, it was established under the name of the National Defense Command to oversee the affairs of military affairs, command and military affairs related to defense. With the establishment of the government on August 15, 1948, it was expanded to the Ministry of National Defense according to the government establishment and government organizing law. It aims to protect the country from external military threats and invasions, support peaceful reunification, contribute to regional stability and world peace.");
+        }else if(markerData.equals("경찰청")){
+            introduce.setText("The Ministry of Public Security and Security (IRS) and the Security Bureau are in charge of maintaining the social order, and the spokesperson, the planning coordinator, the personnel affairs planner, the inspectors, We are in charge of administrative support.");
+        }else if(markerData.equals("병무청")){
+            introduce.setText("The MMA is an administrative agency under the Ministry of National Defense that oversees the military service. It manages and manages military service resources, imposes duties such as conscription and mobilization of soldiers, mobilization of exhibition forces, and organization and management of local reserve forces, support of industrial manpower, and permission to travel abroad.");
+        }
+    }
     public void setPieView(double complaintRatio){
         PieView pieView = (PieView) findViewById(R.id.pieView);
         pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));

@@ -4,22 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorSplash"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/detail_back"
+            android:src="@drawable/ic_prev"
+            android:tint="#ffffff"/>
 
+        <ImageView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/detail"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBlue"
+        android:background="#445567"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -28,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="국방부"
+
                     android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -35,16 +68,18 @@
                 <ImageView
                     android:id="@+id/detail_image"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/splash_logo" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -58,13 +93,13 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
@@ -96,7 +131,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
@@ -129,7 +164,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
@@ -169,193 +204,236 @@
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#ffffff"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:tint="#ffffff"
-                android:layout_marginRight="4dp"
-                android:id="@+id/complaint_year_semester_prev"
-                android:src="@drawable/ic_prev"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:id="@+id/complaint_year_semester"
-                android:textStyle="bold"
-                android:textSize="30sp"
-                android:text="Year"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/complaint_year_semester_next"
-                android:layout_marginLeft="4dp"
-                android:tint="#ffffff"
-                android:src="@drawable/ic_next"/>
-        </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Receipt"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/total_receipt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12345"
-            android:textColor="@color/colorNum"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="In-Period Processing"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/in_period_processing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12345"
-            android:textColor="@color/colorNum"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Overdue Processing"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/overdue_processing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12345"
-            android:textColor="@color/colorNum"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Overdue Unprocessing"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/overdue_unprocessing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12345"
-            android:textColor="@color/colorNum"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <az.plainpie.PieView
-                android:id="@+id/pieView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-
-                plainpie:inner_pie_padding="30"
-                plainpie:inner_text_visibility="true"
-                plainpie:percentage="75"
-                plainpie:percentage_size="40" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="processing ratio"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:gravity="center"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/complaint_year_semester_prev"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_prev"
+                    android:tint="#ffffff" />
+
+                <TextView
+                    android:id="@+id/complaint_year_semester"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2017"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/complaint_year_semester_next"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/ic_next"
+                    android:tint="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Receipt"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/total_receipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12345"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In-Period Processing"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/in_period_processing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="12345"
+                        android:textColor="@color/colorNum"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Overdue Processing"
+                        android:layout_gravity="right"
+                        android:textColor="#bec8d2"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/overdue_processing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Overdue Unprocessing"
+                        android:textColor="#bec8d2"
+                        android:textSize="15sp"
+                        android:layout_gravity="right"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/overdue_unprocessing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <az.plainpie.PieView
+                        android:id="@+id/pieView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+
+                        plainpie:inner_pie_padding="30"
+                        plainpie:inner_text_visibility="true"
+                        plainpie:percentage="75"
+                        plainpie:percentage_size="40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Processing Ratio"
+                        android:textColor="#ffffff"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
-</LinearLayout>
+
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
             android:background="#ffffff"/>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="기관 소개"
+                android:layout_gravity="center"
+                android:text="Institution Introduction"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/introduce"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Institution Introduction"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+            </ScrollView>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="#ffffff"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_web"/>
             <TextView
                 android:id="@+id/link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorBlue"
-                android:layout_marginTop="10dp"
-                android:text="민원창구 가기"
+                android:text="Submit a complaint"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_prev"
-            android:tint="#ffffff" />
-    </LinearLayout>
+
 
 </LinearLayout>

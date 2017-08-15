@@ -61,6 +61,12 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private DrawerLayout drawer;
     private View drawerView;
 
+    private TextView taiwan;
+    private TextView thailand;
+    private TextView japan;
+    private TextView korea;
+    private LinearLayout asia;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +76,46 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        nationalInit();
 
+    }
+
+    private void nationalInit(){
+        asia = (LinearLayout)findViewById(R.id.asia);
+        asia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                asia.setVisibility(View.GONE);
+            }
+        });
+        taiwan = (TextView)findViewById(R.id.taiwan);
+        taiwan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(25.0306207,121.458186), 10));
+            }
+        });
+        thailand = (TextView)findViewById(R.id.thailand);
+        thailand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7561478,100.4972599), 10));
+            }
+        });
+        japan = (TextView)findViewById(R.id.japan);
+        japan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.6984881,139.6904952), 10));
+            }
+        });
+        korea = (TextView)findViewById(R.id.korea);
+        korea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.533553, 126.977663), 10));
+            }
+        });
     }
 
     private void drawerInit(){
@@ -113,6 +158,14 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
             }
         });
 
+        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -123,16 +176,24 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 
         markerInit(mMap);
 
-     mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-         @Override
-         public boolean onMarkerClick(Marker marker) {
-             Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-             intent.putExtra("markerData",marker.getTitle());
-             startActivity(intent);
-             drawerMenu.setVisibility(View.INVISIBLE);
-             return false;
-         }
-     });
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String temp = marker.getSnippet();
+
+                if(temp!= null && temp.equals("Hackathon")) {
+                    return false;
+                }
+
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra("markerData",marker.getTitle());
+                startActivity(intent);
+
+                drawerMenu.setVisibility(View.INVISIBLE);
+
+                return false;
+            }
+        });
 
 
         enableMyLocation();
@@ -302,6 +363,8 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 //        mMap.addMarker(new MarkerOptions().position(temp44).title("제주특별자치도").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 10));
 
+        addMarker();
+
     }
     /**
      * Enables the My Location layer if the fine location permission has been granted.
@@ -366,5 +429,25 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     protected void onResume() {
         super.onResume();
         drawerMenu.setVisibility(View.VISIBLE);
+    }
+
+    private void addMarker(){
+        //대만
+        mMap.addMarker(new MarkerOptions().position(new LatLng(25.032506, 121.567257)).title("臺北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(25.0162669,121.4576166)).title("新北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(24.8551722,120.951979)).title("桃園市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+
+        //태국
+        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7561478,100.4972599)).title("กรุงเทพมหานคร").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(13.8557611,100.4783304)).title("เทศบาลนครนนทบุรี").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7389991,100.5336676)).title("เขต ปทุมวัน").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+
+        //일본
+        mMap.addMarker(new MarkerOptions().position(new LatLng(35.709081, 139.731982)).title("東京").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(35.6984881,139.6904952)).title("新宿区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(35.666127, 139.697042)).title("渋谷区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+
+
+
     }
 }
