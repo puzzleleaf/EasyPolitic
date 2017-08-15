@@ -25,7 +25,7 @@ import leesd.crossithackathon.R;
 public class GrievanceTotalFragment extends Fragment {
     TextView info1, info2, info3, info4, info5, info6, info7;
     LovelyInfoDialog infoDialog5, infoDialog6;         //설명 다이얼로그
-    float processRate, quoteRate; //처리율, 인용률
+    float processRate, quoteRate, satisfactionRate; //처리율, 인용률, 만족도
     private int year;
     @Nullable
     @Override
@@ -39,7 +39,7 @@ public class GrievanceTotalFragment extends Fragment {
         info4 = (TextView)view.findViewById(R.id.infoText4);
         info5 = (TextView)view.findViewById(R.id.infoText5);
         info6 = (TextView)view.findViewById(R.id.infoText6);
-        info7 = (TextView)view.findViewById(R.id.infoText7);
+        //info7 = (TextView)view.findViewById(R.id.infoText7);
 
         infoInit();
 
@@ -64,6 +64,16 @@ public class GrievanceTotalFragment extends Fragment {
         animation2.setDuration(3000); //This is the duration of the animation in millis
         animatedPie2.startAnimation(animation2);
 
+        PieView pieView3 = (PieView)view.findViewById(R.id.pieView3);
+        pieView3.setPercentageBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorGraph));
+        pieView3.setPercentage(satisfactionRate);
+        pieView3.setInnerText(String.valueOf(satisfactionRate));
+        PieView animatedPie3 = (PieView)view.findViewById(R.id.pieView3);
+
+        PieAngleAnimation animation3 = new PieAngleAnimation(animatedPie3);
+        animation3.setDuration(3000); //This is the duration of the animation in millis
+        animatedPie3.startAnimation(animation3);
+
 
         infoDialog5 = new LovelyInfoDialog(getContext());
         infoDialog6 = new LovelyInfoDialog(getContext());
@@ -73,16 +83,16 @@ public class GrievanceTotalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 infoDialog5.setTopColorRes(R.color.colorBlue)
-                           .setIcon(R.drawable.info2)
-                           .setTitle("Quotation")
-                           .setMessage("The number of complaints\nprocessed by recommendation,\nstatement of opinion,\n" +
-                                   "resolution of mutual agreement or adjustment")
-                           .setConfirmButtonText("OK")
-                           .show();
+                        .setIcon(R.drawable.info2)
+                        .setTitle("Quotation")
+                        .setMessage("The number of complaints\nprocessed by recommendation,\nstatement of opinion,\n" +
+                                "resolution of mutual agreement or adjustment")
+                        .setConfirmButtonText("OK")
+                        .show();
             }
         });
         //평균처리일 설명
-        view.findViewById(R.id.info_dialog6).setOnClickListener(new View.OnClickListener() {
+        /*view.findViewById(R.id.info_dialog6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 infoDialog5.setTopColorRes(R.color.colorBlue)
@@ -92,7 +102,7 @@ public class GrievanceTotalFragment extends Fragment {
                         .setConfirmButtonText("OK")
                         .show();
             }
-        });
+        });*/
 
         return view;
     }
@@ -111,10 +121,10 @@ public class GrievanceTotalFragment extends Fragment {
         info4.setText(hashMap.get("GT_NOT_GRIEVANCE"));
         info5.setText(hashMap.get("GT_QUOTE"));
         info6.setText(hashMap.get("GT_DATE"));
-        info7.setText(hashMap.get("GT_SATISFACTION"));
+        //  info7.setText(hashMap.get("GT_SATISFACTION"));
 
         processRate = (Float.parseFloat(hashMap.get("GT_PROCESS").replace(",","").trim())/Float.parseFloat(hashMap.get("GT_RECEIVE").replace(",","").trim()))*100;//','문자열 지우고 온전한 정수형으로 받아온다.
         quoteRate = Float.parseFloat(hashMap.get("GT_QUOTE_PERCENT").replace("%","").trim());
-
+        satisfactionRate = Float.parseFloat(hashMap.get("GT_SATISFACTION").replace("%","").trim());
     }
 }

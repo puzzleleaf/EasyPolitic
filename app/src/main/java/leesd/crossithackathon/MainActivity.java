@@ -37,6 +37,7 @@ import java.util.List;
 
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
+import leesd.crossithackathon.Cpi.CpiView;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
 
@@ -162,6 +163,14 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CpiView.class);
                 startActivity(intent);
             }
         });

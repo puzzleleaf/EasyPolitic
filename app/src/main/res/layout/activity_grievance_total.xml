@@ -4,11 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlue">
+    android:background="#465568">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingBottom="10dp"
         android:orientation="horizontal"
         android:gravity="center">
@@ -17,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
 
@@ -29,9 +32,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="All Complaints Received"
+                    android:text="Received Complaints"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -41,7 +44,7 @@
                     android:textColor="@color/colorNum"
                     android:layout_marginRight="-3dp"
                     android:gravity="end"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -55,9 +58,9 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Complaint Processing"
+                    android:text="Processed Complaints"
                     android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -67,26 +70,26 @@
                     android:gravity="end"
                     android:text=" "
                     android:textColor="@color/colorNum"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal">
+                    android:gravity="end"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="[Civil Petition For Grievance :"
-                        android:textColor="#ffffff"
+                        android:text="Complaints For Grievance"
+                        android:textColor="#D2D2D2"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -95,14 +98,7 @@
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="]"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/colorNum"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -110,14 +106,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal">
+                    android:gravity="end"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="[General complaint :"
-                        android:textColor="#ffffff"
+                        android:text="Complaints For Non-Grievance"
+                        android:textColor="#D2D2D2"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -127,14 +123,7 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:gravity="center"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="]"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/colorNum"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -146,6 +135,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:orientation="vertical">
 
             <az.plainpie.PieView
@@ -153,6 +143,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="3dp"
                 plainpie:inner_pie_padding="30"
                 plainpie:inner_text_visibility="true"
                 plainpie:percentage="75"
@@ -168,55 +159,45 @@
                 android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="#ffffff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#D2D2D2"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="0dp"
+            android:layout_margin="10dp">
+            <ImageView
+                android:id="@+id/info_dialog5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:gravity="center|right"
-                android:orientation="horizontal">
+                android:src="@drawable/info"
+                android:layout_gravity="left" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/info_dialog5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Quotation : "
-                    android:textColor="#ffffff"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/info"/>
-
-                <TextView
-                    android:id="@+id/infoText5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12345"
-                    android:textColor="@color/colorNum"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
                 <az.plainpie.PieView
@@ -224,6 +205,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     plainpie:inner_pie_padding="30"
+                    android:layout_marginBottom="3dp"
                     plainpie:inner_text_visibility="true"
                     plainpie:percentage="75"
                     plainpie:percentage_size="20" />
@@ -236,88 +218,103 @@
                     android:textColor="#ffffff"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infoText5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="12345"
+                        android:textColor="@color/colorNum"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quotation"
+                        android:textColor="#D2D2D2"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <az.plainpie.PieView
+                    android:id="@+id/pieView3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    plainpie:inner_pie_padding="30"
+                    android:layout_marginBottom="3dp"
+                    plainpie:inner_text_visibility="true"
+                    plainpie:percentage="75"
+                    plainpie:percentage_size="20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Satisfaction Rate"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ffffff"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#D2D2D2"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|right"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
-        <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/info_dialog6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  Average processing date : "
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/info"/>
-            <TextView
-                android:id="@+id/infoText6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "
-                android:textColor="@color/colorNum"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="day"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            android:layout_marginRight="5dp"
+            android:text="Average Processing "
+            android:textColor="#D2D2D2"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/infoText6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:layout_marginRight="5dp"
+            android:text="12345"
+            android:textColor="@color/colorNum"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Satisfaction rate : "
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/infoText7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "
-                android:textColor="@color/colorNum"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="%"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="Days"
+            android:textColor="#D2D2D2"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-
 </LinearLayout>

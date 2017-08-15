@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CrossItHackathon</string>
+    <string name="app_name">EasyPolitic</string>
     <string name="경찰청" formatted="false">https://mblogthumb-phinf.pstatic.net/20140203_25/lonnie79_1391397549596S4kYP_PNG/%B0%E6%C2%FB%C3%BB%B7%CE%B0%ED.PNG?type=w2</string>
     <string name="관세청">https://search.pstatic.net/common?type=o&amp;size=152x114&amp;quality=75&amp;direct=true&amp;src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Foutside%2Fgovernment%2F20160525171903119832.jpg</string>
     <string name="교육부">http://www.veritas-a.com/news/photo/201604/57690_41690_5140.jpg</string>
