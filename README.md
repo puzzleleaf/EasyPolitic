@@ -1,28 +1,36 @@
 # 2017 Asia Open Data Hackathon(Prototype)
-**(주최 : 행정자치부, NIA 한국정보화진흥원)**
 
 
 [![EasyPolitic](https://github.com/PuzzleLeaf/Hackathon/blob/master/img/youtube.PNG)](https://www.youtube.com/watch?v=MgGlH5tvWJY)
 
 
-## 0. 소개
- **팀** - CrossIt(김성재, 신윤희, 유태양, 이현빈)<br>
- **프로젝트** - EasyPolitic 
-(한국 대표 4개팀 선발)
+## 0. Team
+>  **Team :** CrossIt<br>
+> **Project :** EasyPolitic<br>
+> **Member :** Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
 
-## 1. 개요
-정부 투명성을 위해 공공데이터를 어떻게 활용 할 수 있는지에 대한 아이디어
+## 1. Introduce
 
- 
-## 2. 아이디어 제안 내용
+>**Subject :**  How can public data be used for policy transparency?<br>
+>
+>**Problem & Solution :**  The government has many affiliated organization. And without interesting, it is difficult to know whether these institution manage their’s work transparently. We agonized how to use open datas for the ‘government transparency’. So we use open datas related to ‘civil complaints’ which is a kind of government processing, and put the results into prototype application.<br>
 
-  정부란 넓은 의미로는 입법·사법·행정 등 한 나라의 통치기구 전체를 가리키며, 좁은 의미로 는 내각 또는 행정부 및 그에 부속된 행정기구를 의미한다.
 
-정부에 속한 수많은 기관들이 있고 지방의 기초 자치단체를 포함하면 굉장히 많은 단체들 이 있다. 현실적으로 이러한 단체들이 모두 투명하게 일을 처리하고 있는지 관심을 가지지 않으면 알기가 힘들다.  
+## 2. Function
 
-정부에서 처리하는 일의 한 종류인 **민원 처리 현황 정보**를 가공하여 지도와 GPS를 이용해 사용자들이 쉽게 접할 수 있게 만들고 어떤 기관의 준수율이 가장 높고, 낮은지에 대한 정보를 제공하여 준수율이 높은 기관에는 격려를 낮은 기관에는 관심을 가짐으로써 정부의 업무가 투명하게 수행되도록 기대할 수 있다. 
+## 3. Open Data List
 
-또한, 주로 어떤 민원이 접수되고 처리되는지 볼 수 있게 각 기관을 클릭하면 그 기관이 처리하고 있는 민원 현황과 고충 민원의 통계 현황을 보여 줄 수 있도록 한다.
-
-정부 민원신청 처리 기간 준수현황(국민권익위원회)의 데이터를 이용하여 분기별 국가 기관과 기초 자치단체의 민원처리 준수율을 파악할 수가 있다. 이러한 정보들을 이용하여 어떤 기관에서 국가의 기반이 되는 국민의 불편함을 가장 잘 처리하고 있는지, 해결하지 못하고 있는지에 대해서 정보를 제공한다. 5개 만점 별 평가 점수 제도를 실시하여 기관별 민원처리 준수율을 파악해 소비자가 한눈에 알아볼 수 있도록 UI를 구성한다.
-
+> 1. Compliance Rate of Processing Period for Complaints<br>
+https://www.data.go.kr/dataset/3070147/fileData.do<br>
+>
+>2. Status of Civil Petition for Grievance by Year and Field<br>
+https://www.data.go.kr/dataset/3070243/fileData.do<br>
+>
+>3. Satisfaction Evaluation of Complaints <br>
+http://www.acrc.go.kr/<br>
+>
+>4. Corruption Perceptions Index by Country<br>
+https://www.transparency.org/news/feature/corruption_perceptions_index_2016<br>
+>
+>5. Survey for Integrity evaluation of public institution<br>
+http://www.acrc.go.kr/acrc/board.do?command=searchDetail&menuId=05020703<br>
