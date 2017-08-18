@@ -4,14 +4,19 @@
 [![EasyPolitic](https://github.com/PuzzleLeaf/Hackathon/blob/master/img/youtube.PNG)](https://www.youtube.com/watch?v=MgGlH5tvWJY)
 
 
-## 0. Team
->  **Team :** CrossIt<br>
-> **Project :** EasyPolitic<br>
-> **Member :** Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
+## 0. Team<br>
+>**Team**<br> 
+> - CrossIt<br>
+
+>**Project** <br>
+> - EasyPolitic<br>
+
+>**Member**<br>
+> - Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
 
 ## 1. Introduce
 
->**Subject :**  How can public data be used for policy transparency?<br>
+>**Subject :**  How can public data be used for government transparency?<br>
 >
 >**Problem & Solution :**  The government has many affiliated organization. And without interesting, it is difficult to know whether these institution manage their’s work transparently. We agonized how to use open datas for the ‘government transparency’. So we use open datas related to ‘civil complaints’ which is a kind of government processing, and put the results into prototype application.<br>
 
