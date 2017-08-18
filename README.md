@@ -1,12 +1,10 @@
 # 2017 Asia Open Data Hackathon(Prototype)
-
 <br>
 <p align="center">
   <a href="https://www.youtube.com/watch?v=MgGlH5tvWJY">
   <img src="img/youtube.PNG">
  </a>
 </p>
-<br>
 
 ## 0. Team<br>
 >**Team**<br> 
