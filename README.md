@@ -21,6 +21,17 @@
 
 ## 2. Function
 
+
+<br>
+<p align="center">
+  <img src="img/main1.png">
+  <img src="img/main2.png">
+  <br>
+  <b>[Main]</b>
+</p>
+<br>
+
+
 >We can easily find information about public institutions in Taiwan, Thailand, Japan and Korea.<br>
 >Based on Open Data, we can check the satisfaction rate of public institutions, quarterly civil service transactions, and public institutions information<br>
 ><br>
@@ -33,9 +44,24 @@
 
 
 
--
+<br>
+<p align="center">
+  <img src="img/menu.png">
+  <br>
+  <b>[Menu]</b>
+</p>
+<br>
 
- The menu provides a variety of information about complaints<br>
+> The menu provides a variety of information about complaints<br>
+
+<br>
+<p align="center">
+  <img src="img/menu1.png">
+  <img src="img/menu2.png">
+  <br>
+ <b>[Complaint Statistics]</b>
+</p>
+<br>
 
 > Provides statistics for all complaints processing.<br>
 > <br>
@@ -47,14 +73,30 @@
 >**4.** Provide information on the average complaint processing date<br>
 >**5.** Provide statistics on complaints received by sector<br>
 
---
+
+<br>
+<p align="center">
+  <img src="img/menu3.png">
+  <img src="img/menu4.png">
+  <br>
+   <b>[Corruption Perceptions Index]</b>
+</p>
+<br>
+
+
 
 > Provide statistical information on CPI(Corruption Perceptions Index)<br>
 > <br>
 > **Summary**<br>
 > **1.** Provides ranking and score statistics for CPI by country<br>
 
--
+<br>
+<p align="center">
+  <img src="img/menu5.png">
+  <br>
+   <b>[Servey]</b>
+</p>
+<br>
 
 >Provide surveys to easily accept citizens' opinions<br>
 
