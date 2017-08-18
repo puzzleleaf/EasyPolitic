@@ -143,7 +143,7 @@ http://www.acrc.go.kr/acrc/board.do?command=searchDetail&menuId=05020703<br>
 <br>
 <p align="center">
   <a href="https://github.com/PuzzleLeaf/EasyPolitic/raw/master/install/EasyPolitic.apk">
-  <img src="img/apk.PNG">
+  <img src="img/apkInstall.png">
  </a><br>
   <b>[DownLoad EasyPolitic]</b>
 </p>
