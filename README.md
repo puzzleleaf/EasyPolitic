@@ -21,6 +21,43 @@
 
 ## 2. Function
 
+>We can easily find information about public institutions in Taiwan, Thailand, Japan and Korea.<br>
+>Based on Open Data, we can check the satisfaction rate of public institutions, quarterly civil service transactions, and public institutions information<br>
+><br>
+>**Summary**<br>
+><br>
+>**1.** Providing information about the satisfaction level of civil petitions in the year of public institutions<br>
+>**2.** Provide information on quarterly civil petitions processing rate of public institutions<br>
+>**3.** Providing Information on Public Institutes<br>
+>**4.** Providing a method to easily submit civil petitions to public institutions<br>
+
+
+
+-
+
+ The menu provides a variety of information about complaints<br>
+
+> Provides statistics for all complaints processing.<br>
+> <br>
+>**Summary**<br>
+><br>
+>**1.** Provide statistics on complaint handling by year.<br>
+>**2.** Provide quotations of public institutions<br>
+>**3.** Provide satisfaction of processing complaints of public institutions<br>
+>**4.** Provide information on the average complaint processing date<br>
+>**5.** Provide statistics on complaints received by sector<br>
+
+--
+
+> Provide statistical information on CPI(Corruption Perceptions Index)<br>
+> <br>
+> **Summary**<br>
+> **1.** Provides ranking and score statistics for CPI by country<br>
+
+-
+
+>Provide surveys to easily accept citizens' opinions<br>
+
 ## 3. Open Data List
 
 > 1. Compliance Rate of Processing Period for Complaints<br>
