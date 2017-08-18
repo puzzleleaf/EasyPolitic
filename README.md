@@ -1,5 +1,5 @@
 # 2017 Asia Open Data Hackathon(Prototype)
-<br>
+
 <p align="center">
   <a href="https://www.youtube.com/watch?v=MgGlH5tvWJY">
   <img src="img/youtube.PNG">
@@ -128,3 +128,12 @@ https://www.transparency.org/news/feature/corruption_perceptions_index_2016<br>
 >
 >5. Survey for Integrity evaluation of public institution<br>
 http://www.acrc.go.kr/acrc/board.do?command=searchDetail&menuId=05020703<br>
+
+
+<br>
+<p align="center">
+  <a href="https://github.com/PuzzleLeaf/EasyPolitic/raw/master/ppt/EasyPolitic.pptx">
+  <img src="img/ppt.PNG">
+ </a><br>
+  <b>DownLoad PPT</b>
+</p>
