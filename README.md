@@ -77,7 +77,6 @@
 <br>
 <p align="center">
   <img src="img/menu3.png">
-  <img src="img/menu4.png">
   <br>
    <b>[Corruption Perceptions Index]</b>
 </p>
@@ -92,7 +91,7 @@
 
 <br>
 <p align="center">
-  <img src="img/menu5.png">
+  <img src="img/menu4.png">
   <br>
    <b>[Servey]</b>
 </p>
@@ -100,7 +99,18 @@
 
 >Provide surveys to easily accept citizens' opinions<br>
 
-## 3. Open Data List
+## 3. Objective
+
+<br>
+<p align="center">
+  <img src="img/objective.png">
+  <br>
+</p>
+<br>
+
+>Using open data, data related to transparency of various organizations is shown more intuitively using the application. So users can get access to government transparency easily. and you can expect immediate feedback using content such as survey.
+
+## 4. Open Data List
 
 > 1. Compliance Rate of Processing Period for Complaints<br>
 https://www.data.go.kr/dataset/3070147/fileData.do<br>
