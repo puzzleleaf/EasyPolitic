@@ -6,13 +6,11 @@
 
 ## 0. Team<br>
 >**Team**<br> 
-> - CrossIt<br>
-
+> -CrossIt<br>
 >**Project** <br>
-> - EasyPolitic<br>
-
+> -EasyPolitic<br>
 >**Member**<br>
-> - Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
+> -Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
 
 ## 1. Introduce
 
