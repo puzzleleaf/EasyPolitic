@@ -129,11 +129,21 @@ https://www.transparency.org/news/feature/corruption_perceptions_index_2016<br>
 >5. Survey for Integrity evaluation of public institution<br>
 http://www.acrc.go.kr/acrc/board.do?command=searchDetail&menuId=05020703<br>
 
-
+<br>
 <br>
 <p align="center">
   <a href="https://github.com/PuzzleLeaf/EasyPolitic/raw/master/ppt/EasyPolitic.pptx">
   <img src="img/ppt.PNG">
  </a><br>
   <b>DownLoad PPT</b>
+</p>
+<br>
+
+
+<br>
+<p align="center">
+  <a href="https://github.com/PuzzleLeaf/EasyPolitic/raw/master/install/EasyPolitic.apk">
+  <img src="img/apk.PNG">
+ </a><br>
+  <b>[DownLoad EasyPolitic]</b>
 </p>
