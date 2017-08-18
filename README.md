@@ -103,7 +103,7 @@
 
 <br>
 <p align="center">
-  <img src="img/objective.png">
+  <img src="img/objective.PNG">
   <br>
 </p>
 <br>
