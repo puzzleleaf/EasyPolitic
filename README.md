@@ -27,9 +27,9 @@
 
 ## 1. Introduce
 
->**Subject :**  How can public data be used for government transparency?<br>
+> **Subject** :  How can public data be used for government transparency?<br>
 >
->**Problem & Solution :**  The government has many affiliated organization. And without interesting, it is difficult to know whether these institution manage their’s work transparently. We agonized how to use open datas for the ‘government transparency’. So we use open datas related to ‘civil complaints’ which is a kind of government processing, and put the results into prototype application.<br>
+> **Problem & Solution** :  The government has many affiliated organization. And without interesting, it is difficult to know whether these institution manage their’s work transparently. We agonized how to use open datas for the ‘government transparency’. So we use open datas related to ‘civil complaints’ which is a kind of government processing, and put the results into prototype application.<br>
 
 
 ## 2. Function
