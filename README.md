@@ -14,6 +14,17 @@
 >**Member**<br>
 > ● Kim SungJae, Shin YunHee, Yoo TaeYang, Lee HyunBeen<br>
 
+
+
+<br>
+<p align="center">
+  <img src="img/result.jpg">
+  <br>
+  <b>[Result]</b>
+</p>
+<br>
+
+
 ## 1. Introduce
 
 >**Subject :**  How can public data be used for government transparency?<br>
