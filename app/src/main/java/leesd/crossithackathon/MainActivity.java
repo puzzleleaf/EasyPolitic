@@ -62,10 +62,6 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private DrawerLayout drawer;
     private View drawerView;
 
-    private TextView taiwan;
-    private TextView thailand;
-    private TextView japan;
-    private TextView korea;
     private LinearLayout asia;
 
 
@@ -81,40 +77,13 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 
     }
 
-    private void nationalInit(){
-        asia = (LinearLayout)findViewById(R.id.asia);
+    private void nationalInit() {
+        asia = (LinearLayout) findViewById(R.id.asia);
         asia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                asia.setVisibility(View.GONE);
-            }
-        });
-        taiwan = (TextView)findViewById(R.id.taiwan);
-        taiwan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(25.0306207,121.458186), 10));
-            }
-        });
-        thailand = (TextView)findViewById(R.id.thailand);
-        thailand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7561478,100.4972599), 10));
-            }
-        });
-        japan = (TextView)findViewById(R.id.japan);
-        japan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.6984881,139.6904952), 10));
-            }
-        });
-        korea = (TextView)findViewById(R.id.korea);
-        korea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.533553, 126.977663), 10));
+                asia.setVisibility(View.GONE);
             }
         });
     }

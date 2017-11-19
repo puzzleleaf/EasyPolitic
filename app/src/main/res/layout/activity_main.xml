@@ -74,66 +74,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorBlue"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/taiwan"
-                android:textStyle="bold"
-                android:text="Taiwan"
-                android:textColor="#ffffff"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="#ffffff"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:id="@+id/thailand"
-                android:text="Thailand"
-                android:textColor="#ffffff"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="#ffffff"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/japan"
-                android:textStyle="bold"
-                android:text="Japan"
-                android:textColor="#ffffff"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="#ffffff"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/korea"
-                android:textStyle="bold"
-                android:text="South Korea"
-                android:textColor="#ffffff"/>
-        </LinearLayout>
+
 
     </LinearLayout>
 
