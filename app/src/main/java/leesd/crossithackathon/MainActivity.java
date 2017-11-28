@@ -37,6 +37,8 @@ import java.util.List;
 
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import leesd.crossithackathon.Cpi.CpiView;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
@@ -64,7 +66,6 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 
     private LinearLayout asia;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,14 +79,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void nationalInit() {
-        asia = (LinearLayout) findViewById(R.id.asia);
-        asia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.533553, 126.977663), 10));
-                asia.setVisibility(View.GONE);
-            }
-        });
+
     }
 
     private void drawerInit(){

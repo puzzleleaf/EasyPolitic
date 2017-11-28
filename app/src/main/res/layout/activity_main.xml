@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -39,43 +39,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <android.support.constraint.ConstraintLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:gravity="center"
-                    android:id="@+id/asia"
-                    android:background="@color/colorBlue"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/asia"/>
-                </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
-
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5">
+                
+            </LinearLayout>
         </LinearLayout>
-
-
-
     </LinearLayout>
 
     <include
