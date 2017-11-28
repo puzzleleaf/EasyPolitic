@@ -26,15 +26,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private List<String> res;
 
     public MainAdapter(Context context, List<String> res){
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.res = res;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       // View view = mInflater.inflate(R.layout.item_recycler_rank,parent,false);
-      //  ViewHolder viewHolder = new ViewHolder(view);
-        return null;
+        View view = mInflater.inflate(R.layout.main_item,parent,false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
 
@@ -54,11 +55,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.main_image)
-        ImageView mainImage;
+
         private ViewHolder(View view){
             super(view);
-            ButterKnife.bind(this,view);
+
 
         }
     }
