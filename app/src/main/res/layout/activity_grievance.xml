@@ -7,34 +7,34 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:tint="#ffffff"
+        android:layout_marginRight="4dp"
+        android:id="@+id/grievance_year_prev"
+        android:src="@drawable/ic_prev"/>
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
         android:gravity="center"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:tint="#ffffff"
-            android:layout_marginRight="4dp"
-            android:id="@+id/grievance_year_prev"
-            android:src="@drawable/ic_prev"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:id="@+id/grievance_year"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:text="Year"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/grievance_year_next"
-            android:layout_marginLeft="4dp"
-            android:tint="#ffffff"
-            android:src="@drawable/ic_next"/>
-    </LinearLayout>
+        android:id="@+id/grievance_year"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="Year"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/grievance_year_next"
+        android:layout_marginLeft="4dp"
+        android:tint="#ffffff"
+        android:src="@drawable/ic_next"/>
+</LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

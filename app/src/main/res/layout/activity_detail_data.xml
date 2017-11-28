@@ -416,6 +416,13 @@
                 android:background="#ffffff"/>
 
 
+            <Button
+                android:id="@+id/detail_junsu_btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="민원준수율 현황"
+                android:textAlignment="center"
+                />
         </LinearLayout>
     </LinearLayout>
 
