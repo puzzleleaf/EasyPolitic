@@ -1,3 +1,1 @@
-include ':app', ':plain-pie', ':MPChartLib'
-project(':plain-pie').projectDir = new File('app/libs/plain-pie-master/plain-pie')
-project(':MPChartLib').projectDir = new File('app/libs/MPChartLib')
+include ':app'

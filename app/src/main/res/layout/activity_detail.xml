@@ -1,110 +1,439 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:plainpie="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="400dp"
-    android:layout_height="600dp"
-    android:background="#80000000">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="20dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorSplash"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/detail_back"
+            android:src="@drawable/ic_prev"
+            android:tint="#ffffff"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="19dp"
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/detail"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#445567"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="일반민원 처리율"
-            android:textColor="#ffffffff"
-            android:textSize="20sp" />
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <az.plainpie.PieView
-            android:id="@+id/pieView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            plainpie:inner_pie_padding="30"
-            plainpie:inner_text_visibility="true"
-            plainpie:percentage="75"
-            plainpie:percentage_size="70" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/institutionName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="국방부"
+
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/splash_logo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detail_satisfaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/info"
+                    android:text="Satisfaction Level   "
+                    android:textColor="#ffffff"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2014 )"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <RatingBar
+                            android:id="@+id/detail_rating_bar_fir"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:isIndicator="true" />
+
+                        <TextView
+                            android:id="@+id/gradeText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2015 )"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <RatingBar
+                            android:id="@+id/detail_rating_bar_sec"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:isIndicator="true" />
+
+                        <TextView
+                            android:id="@+id/gradeText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2016 )"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <RatingBar
+                            android:id="@+id/detail_rating_bar_thr"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:isIndicator="true" />
+
+                        <TextView
+                            android:id="@+id/gradeText3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/complaint_year_semester_prev"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_prev"
+                    android:tint="#ffffff" />
+
+                <TextView
+                    android:id="@+id/complaint_year_semester"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2017"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/complaint_year_semester_next"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/ic_next"
+                    android:tint="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Receipt"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/total_receipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12345"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In-Period Processing"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/in_period_processing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="12345"
+                        android:textColor="@color/colorNum"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Overdue Processing"
+                        android:layout_gravity="right"
+                        android:textColor="#bec8d2"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/overdue_processing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Overdue Unprocessing"
+                        android:textColor="#bec8d2"
+                        android:textSize="15sp"
+                        android:layout_gravity="right"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/overdue_unprocessing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorNum"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <az.plainpie.PieView
+                        android:id="@+id/pieView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+
+                        plainpie:inner_pie_padding="30"
+                        plainpie:inner_text_visibility="true"
+                        plainpie:percentage="75"
+                        plainpie:percentage_size="40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Processing Ratio"
+                        android:textColor="#ffffff"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
 
         <View
-            android:layout_width="1dp"
-            android:layout_height="30dp" />
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Institution Introduction"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/introduce"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Institution Introduction"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+            </ScrollView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="고충민원 처리율"
-            android:textColor="#ffffffff"
-            android:textSize="20sp" />
-
-        <az.plainpie.PieView
-            android:id="@+id/pieView2"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            plainpie:inner_pie_padding="30"
-            plainpie:percentage="75"
-            plainpie:percentage_size="70"
-            plainpie:inner_text_visibility="true"/>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="30dp" />
-
-
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="#ffffff"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_web"/>
+            <TextView
+                android:id="@+id/link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit a complaint"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="청렴지수"
-            android:textSize="20sp"
-            android:textColor="#ffffffff"/>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="300dp"></View>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="분야별 건수"
-            android:textColor="#ffffffff"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="도시 - 20%"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="경찰 - 10%"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="보건복지 - 30%"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="세무 - 20%"
-            android:textColor="#ffffffff" />
-
-    </LinearLayout>
 
 </LinearLayout>

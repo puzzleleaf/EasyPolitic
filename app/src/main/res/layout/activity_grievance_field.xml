@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlue"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="0.55">
+
+        <lecho.lib.hellocharts.view.ColumnChartView
+            android:id="@+id/chart_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1" >
+        </lecho.lib.hellocharts.view.ColumnChartView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/field_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Civil Petition for Grievance by Field   "
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="2dp"
+            android:drawableRight="@drawable/info"/>
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.45">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context="com.example.swipeselector.MainActivity">
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe1"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:swipe_titleTextAppearance="@color/colorNum"
+                app:swipe_descriptionTextAppearance="@color/colorAccent"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe2"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe3"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe4"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe5"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe6"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe7"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe8"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe9"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe10"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe11"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe12"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe13"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe14"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe15"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe16"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe17"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe18"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe19"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe20"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe21"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe22"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe23"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe24"
+                android:background="#A2B4CB"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#DDDDDD" />
+
+            <com.roughike.swipeselector.SwipeSelector
+                android:id="@+id/swipe25"
+                android:background="#D0DAE5"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        </ScrollView>
+</LinearLayout>

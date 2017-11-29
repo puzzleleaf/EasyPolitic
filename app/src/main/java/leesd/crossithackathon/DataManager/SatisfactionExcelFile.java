@@ -35,6 +35,25 @@ public class SatisfactionExcelFile extends Activity {
         nColTotal = load.nColTotal;
     }
 
+    //SF_AGENCY(기관명)으로 해당 기관 정보 가져오기
+    public HashMap<String, String> selectByName(String name){
+
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        for(int i=0 ; i<load.nRowTotal ; i++){
+            if(name.equals(load.getCell(agencyColumnIndex, i))){
+                hashMap.put("SF_ID", load.getCell(idColumnIndex, i));
+                hashMap.put("SF_AGENCY", load.getCell(agencyColumnIndex, i));
+                hashMap.put("SF_TYPE", load.getCell(typeColumnIndex, i));
+                hashMap.put("SF_2016", load.getCell(year1ColumnIndex, i));
+                hashMap.put("SF_2015", load.getCell(year2ColumnIndex, i));
+                hashMap.put("SF_2014", load.getCell(year3ColumnIndex, i));
+                break;
+            }
+        }
+        return hashMap;
+    }
+
     //SF_ID로 해당 기관 정보 가져오기
     public HashMap<String, String> selectById(int id){
 
@@ -102,6 +121,66 @@ public class SatisfactionExcelFile extends Activity {
             }
         }
         return hashMap;
+    }
+
+    //등급에 대한 별 갯수 환산
+    public int number(String value){
+
+        int num = 0;
+
+        switch (value){
+            case "매우우수":
+                num = 5;
+                break;
+            case "우수":
+                num = 4;
+                break;
+            case "보통":
+                num = 3;
+                break;
+            case "미흡":
+                num = 2;
+                break;
+            case "매우미흡":
+                num = 1;
+                break;
+            case "NULL":
+                num = 0;
+                break;
+            default:
+                break;
+        }
+        return num;
+    }
+
+    //등급에 대한 번역
+    public String translate(String value){
+
+        String text = "-";
+
+        switch (value){
+            case "매우우수":
+                text = "S-grade";
+                break;
+            case "우수":
+                text = "A-grade";
+                break;
+            case "보통":
+                text = "B-grade";
+                break;
+            case "미흡":
+                text = "C-grade";
+                break;
+            case "매우미흡":
+                text = "D-grade";
+                break;
+            case "NULL":
+                text = "-";
+                break;
+            default:
+                break;
+        }
+        return text;
     }
 
     //해당 기관의 민원만족도 결과 출력 (나중에 그래프 등으로 교체)

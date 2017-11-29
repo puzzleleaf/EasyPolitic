@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#444C5A">
+
+    <TextView
+        android:id="@+id/cpi_list_country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:text="Country"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_weight="2" />
+
+    <TextView
+        android:id="@+id/cpi_list_rank1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#33B5E5"
+        android:textSize="15sp"
+        android:text="Regional Rank"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/cpi_list_rank2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#AA66CC"
+        android:textSize="15sp"
+        android:text="Country Rank"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/cpi_list_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#99CC00"
+        android:textSize="15sp"
+        android:text="Score"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_weight="1" />
+</LinearLayout>

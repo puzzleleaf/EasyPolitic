@@ -1,32 +1,57 @@
 package leesd.crossithackathon;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+
+import com.viksaa.sssplash.lib.activity.AwesomeSplash;
+import com.viksaa.sssplash.lib.cnst.Flags;
+import com.viksaa.sssplash.lib.model.ConfigSplash;
+
+import leesd.crossithackathon.data.MapList;
+
 
 /**
  * Created by leesd on 2017-07-31.
  */
 
-public class SplashActivity extends Activity {
-    private final int SPLASH_DISPLAY_LENGTH = 1000;
+public class SplashActivity extends AwesomeSplash {
+
+    private final int duration = 2000;
+    private final int DELAY = 2000;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+    public void initSplash(ConfigSplash configSplash) {
+        mapInit();
+        configSplash.setBackgroundColor(R.color.colorSplash);
+        configSplash.setAnimCircularRevealDuration(duration);
+        configSplash.setRevealFlagX(Flags.REVEAL_LEFT);
+        configSplash.setRevealFlagY(Flags.REVEAL_BOTTOM);
 
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                /* 메뉴액티비티를 실행하고 로딩화면을 죽인다.*/
-                Intent mainIntent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(mainIntent);
-                finish();
-            }
-        }, SPLASH_DISPLAY_LENGTH);
+        configSplash.setLogoSplash(R.drawable.splash_logo);
+        configSplash.setAnimLogoSplashDuration(duration);
+
+        configSplash.setTitleSplash("CROSS IT");
+        configSplash.setTitleTextSize(25);
+        configSplash.setAnimTitleDuration(1000);
+        configSplash.setTitleFont("fonts/To The Point.ttf");
     }
 
+    @Override
+    public void animationsFinished() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, DELAY);
+    }
+
+    private void mapInit(){
+        MapList.mapInit();
+        MapList.urlInit();
+    }
 }

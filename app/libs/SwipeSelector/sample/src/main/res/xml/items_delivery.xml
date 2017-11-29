@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swipeitems>
+    <item
+        value="delivery_none"
+        title="No delivery"
+        description="Come to our lovely restaurant and pick up the pizza yourself." />
+    <item
+        value="delivery_yes"
+        title="Delivery"
+        description="Our minimum-wage delivery boy will bring you the pizza by his own scooter using his own gas money." />
+</swipeitems>
