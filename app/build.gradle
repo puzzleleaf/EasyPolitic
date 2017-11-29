@@ -37,4 +37,5 @@ dependencies {
     compile 'com.roughike:swipe-selector:1.0.6'
     compile 'com.yarolegovich:lovely-dialog:1.0.7'
     testCompile 'junit:junit:4.12'
+    implementation files('libs/jsoup-1.11.2.jar')
 }
