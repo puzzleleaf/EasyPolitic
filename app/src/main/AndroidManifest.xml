@@ -26,6 +26,7 @@
         <activity android:name=".SurveyActivity"/>
         <activity android:name=".Grievance.GrievanceView"/>
         <activity android:name=".Cpi.CpiView"/>
+        <activity android:name=".junsu.JunsuActivity"/>
     </application>
 
 </manifest>

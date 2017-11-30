@@ -10,89 +10,105 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:background="@color/colorSplash"
         android:orientation="horizontal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/linearLayout">
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
-            android:id="@+id/detail_junsu_back"
+            android:id="@+id/junsu_top_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_prev"
             android:tint="#ffffff"/>
-       <TextView
-           android:id="@+id/junsu_title_agency_text"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="국방부"
-           android:textSize="20dp"
-           android:textStyle="bold"
-           android:textColor="#FFF"
-           />
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="민원처리율"
-            android:textColor="#FFF"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingRight="40dp"
+            >
+            <TextView
+                android:id="@+id/junsu_top_agency_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="국방부"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="민원준수율"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="#EAEAEA"
         android:orientation="horizontal"
+        android:weightSum="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="50dp"
-        android:weightSum="1">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp">
 
         <LinearLayout
-            android:id="@+id/junsu_subtitle_view_term"
+            android:id="@+id/junsu_tab_term"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:orientation="vertical"
             android:gravity="center"
-            >
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/junsu_icon1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="분기별"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/junsu_subtitle_view_year"
+            android:id="@+id/junsu_tab_year"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:orientation="vertical"
             android:gravity="center"
-            >
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/junsu_icon2" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="년도별"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -100,14 +116,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/junsu_term_prev"
+            android:id="@+id/junsu_prev"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="4dp"
             android:src="@drawable/ic_prev"
             android:tint="#000" />
         <TextView
-            android:id="@+id/grievance_term"
+            android:id="@+id/junsu_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -116,12 +132,13 @@
             android:textSize="18sp"
             android:textStyle="bold" />
         <ImageView
-            android:id="@+id/grievance_term_next"
+            android:id="@+id/junsu_next"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="4dp"
             android:src="@drawable/ic_next"
             android:tint="#000" />
     </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

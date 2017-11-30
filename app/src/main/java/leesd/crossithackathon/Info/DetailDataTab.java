@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import leesd.crossithackathon.DataManager.SatisfactionExcelFile;
 import leesd.crossithackathon.R;
 import leesd.crossithackathon.SurveyActivity;
 import leesd.crossithackathon.data.MapList;
+import leesd.crossithackathon.junsu.JunsuActivity;
 
 /**
  * Created by user on 2017-11-19.
@@ -67,6 +69,7 @@ public class DetailDataTab extends Fragment {
     private TextView survey;
 
     private View view_public;
+
 
     @Nullable
     @Override
@@ -146,6 +149,14 @@ public class DetailDataTab extends Fragment {
                         .setMessage("It is an indicator (S, A, B, C, D)\nthat calculates\nthe satisfaction of the complainant\nand the effort of the agency.")
                         .setConfirmButtonText("OK")
                         .show();
+            }
+        });
+
+        //임시 민원준수율 버튼
+        view.findViewById(R.id.go_junsu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), JunsuActivity.class));
             }
         });
 
