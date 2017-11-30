@@ -9,10 +9,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 
-import android.view.MenuItem;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,38 +23,25 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
+
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import az.plainpie.PieView;
-import az.plainpie.animation.PieAngleAnimation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import leesd.crossithackathon.Cpi.CpiView;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
+import leesd.crossithackathon.adapter.MainAdapter;
 
-public class MainActivity  extends FragmentActivity implements OnMapReadyCallback ,
-        GoogleMap.OnMyLocationButtonClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback {
-/**
-     * Request code for location permission request.
-     *
-     * @see #onRequestPermissionsResult(int, String[], int[])
-     */
+public class MainActivity  extends FragmentActivity implements OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    /**
-     * Flag indicating whether a requested permission has been denied after returning in
-     * {@link #onRequestPermissionsResult(int, String[], int[])}.
-     */
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
@@ -64,22 +50,36 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private DrawerLayout drawer;
     private View drawerView;
 
-    private LinearLayout asia;
+    @BindView(R.id.main_recycler_view) RecyclerView mainRecyclerView;
+
+    private LinearLayoutManager linearLayoutManager;
+    private MainAdapter mainAdapter;
+    private List<String> res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(MainActivity.this);
+        recyclerInit();
         drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        nationalInit();
+
 
     }
 
-    private void nationalInit() {
+    public void recyclerInit() {
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
+        res = new ArrayList<>();
+        res.add("");res.add("");
+
+        mainAdapter = new MainAdapter(this,res);
+        mainRecyclerView.setAdapter(mainAdapter);
+        mainRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
     private void drawerInit(){
