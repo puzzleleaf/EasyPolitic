@@ -75,7 +75,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         res = new ArrayList<>();
-        res.add("");res.add("");
+        recyclerData();
 
         mainAdapter = new MainAdapter(this,res);
         mainRecyclerView.setAdapter(mainAdapter);
@@ -401,6 +401,73 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     protected void onResume() {
         super.onResume();
         drawerMenu.setVisibility(View.VISIBLE);
+    }
+
+    private void recyclerData() {
+        String [] data = {"경찰청"
+                ,"관세청"
+                ,"교육부"
+                ,"국방부"
+                ,"국세청"
+                ,"기상청"
+                ,"법무부"
+                ,"법제처"
+                ,"병무청"
+                ,"산림청"
+                ,"외교부"
+                ,"조달청"
+                ,"통계청"
+                ,"통일부"
+                ,"특허청"
+                ,"환경부"
+                ,"대검찰청"
+                ,"문화재청"
+                ,"고용노동부"
+                ,"국가보훈처"
+                ,"국민안전처"
+                ,"국토교통부"
+                ,"금융위원회"
+                ,"기획재정부"
+                ,"농촌진흥청"
+                ,"방위사업청"
+                ,"보건복지부"
+                ,"여성가족부"
+                ,"인사혁신처"
+                ,"중소기업청"
+                ,"해양수산부"
+                ,"새만금개발청"
+                ,"공정거래위원회"
+                ,"국민권익위원회"
+                ,"농림축산식품부"
+                ,"문화체육관광부"
+                ,"미래창조과학부"
+                ,"방송통신위원회"
+                ,"산업통상자원부"
+                ,"식품의약품안전처"
+                ,"원자력안전위원회"
+                ,"행정중심복합도시건설청"
+                ,"강원도교육청"
+                ,"경기도교육청"
+                ,"경상남도교육청"
+                ,"경상북도교육청"
+                ,"전라남도교육청"
+                ,"전라북도교육청"
+                ,"충청남도교육청"
+                ,"충청북도교육청"
+                ,"광주광역시교육청"
+                ,"대구광역시교육청"
+                ,"대전광역시교육청"
+                ,"부산광역시교육청"
+                ,"서울특별시교육청"
+                ,"울산광역시교육청"
+                ,"인천광역시교육청"
+                ,"세종특별자치시교육청"
+                ,"제주특별자치도교육청"
+                ,"제주특별자치도교육청"};
+
+        for(String d : data){
+            res.add(d);
+        }
     }
 
     private void addMarker(){
