@@ -85,6 +85,13 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#757575"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
         <LinearLayout
             android:id="@+id/junsu_tab_year"
             android:layout_width="50dp"
@@ -247,17 +254,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:gravity="center"
+                            android:paddingBottom="5dp"
                             >
                             <TextView
                                 android:id="@+id/junsu_text_total"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:text="총 13,421건"
-                                android:textSize="18sp"
+                                android:textSize="20sp"
                                 android:textColor="#FFF"
-                                android:gravity="center"
+                                android:gravity="center|bottom"
+                                />
+                            <TextView
+                                android:id="@+id/junsu_text_total2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="(△ 13,088)"
+                                android:textSize="15sp"
+                                android:textColor="#FFF"
+                                android:gravity="center|bottom"
+                                android:paddingLeft="10dp"
                                 />
 
                         </LinearLayout>
@@ -283,7 +301,7 @@
                                     plainpie:inner_pie_padding="20"
                                     plainpie:inner_text_visibility="true"
                                     plainpie:percentage="75"
-                                    plainpie:percentage_size="15" />
+                                    plainpie:percentage_size="14" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -298,7 +316,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="△ 2"
-                                    android:textSize="12sp"
+                                    android:textSize="14sp"
                                     android:textColor="#FFF"
                                     />
                             </LinearLayout>
@@ -318,7 +336,7 @@
                                     plainpie:inner_pie_padding="20"
                                     plainpie:inner_text_visibility="true"
                                     plainpie:percentage="75"
-                                    plainpie:percentage_size="15" />
+                                    plainpie:percentage_size="14" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -332,7 +350,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="△ 2"
-                                    android:textSize="12sp"
+                                    android:textSize="14sp"
                                     android:textColor="#FFF"
                                     />
                             </LinearLayout>
@@ -352,7 +370,7 @@
                                     plainpie:inner_pie_padding="20"
                                     plainpie:inner_text_visibility="true"
                                     plainpie:percentage="75"
-                                    plainpie:percentage_size="15" />
+                                    plainpie:percentage_size="14" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -367,7 +385,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="△ 2"
-                                    android:textSize="12sp"
+                                    android:textSize="14sp"
                                     android:textColor="#FFF"
                                     />
                             </LinearLayout>

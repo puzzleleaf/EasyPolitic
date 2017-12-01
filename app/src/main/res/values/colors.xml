@@ -12,4 +12,6 @@
     
     <color name="colorDarkBlue">#445567</color>
     <color name="colorDarkGray">#E0E0E0</color>
+    <color name="colorPiePurle">#5F58F7</color>
+    <color name="colorPieRed">#F763AA</color>
 </resources>
