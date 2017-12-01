@@ -9,4 +9,7 @@
     <color name="colorStar">#ffbc3c</color>
     <color name="colorGraph">#699cde</color>
     <color name="colorNum">#fecc67</color>
+    
+    <color name="colorDarkBlue">#445567</color>
+    <color name="colorDarkGray">#E0E0E0</color>
 </resources>

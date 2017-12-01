@@ -156,7 +156,9 @@ public class DetailDataTab extends Fragment {
         view.findViewById(R.id.go_junsu_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), JunsuActivity.class));
+                Intent intent = new Intent(getContext(), JunsuActivity.class);
+                intent.putExtra("markerData", markerData);
+                startActivity(intent);
             }
         });
 

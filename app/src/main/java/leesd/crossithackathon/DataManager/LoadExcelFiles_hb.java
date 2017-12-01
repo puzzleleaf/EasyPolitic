@@ -19,6 +19,7 @@ public class LoadExcelFiles_hb extends Activity {
     Sheet sheet_2016_4 = null;
     Sheet sheet_2017_1 = null;
     Sheet sheet_2017_2 = null;
+    Sheet sheet_2017_3 = null;
 
     int nRowTotal_1 = 1;                  //전체 ROW 갯수
     int nColTotal_1 = 1;                  //전체 COLUMN 갯수
@@ -32,6 +33,8 @@ public class LoadExcelFiles_hb extends Activity {
     int nColTotal_5 = 0;                  //전체 COLUMN 갯수
     int nRowTotal_6 = 0;                  //전체 ROW 갯수
     int nColTotal_6 = 0;                  //전체 COLUMN 갯수
+    int nRowTotal_7 = 0;                  //전체 ROW 갯수
+    int nColTotal_7 = 0;                  //전체 COLUMN 갯수
 
     public LoadExcelFiles_hb(Context context, String fileName) {
 
@@ -46,6 +49,7 @@ public class LoadExcelFiles_hb extends Activity {
             sheet_2016_4 = workbook.getSheet(3);
             sheet_2017_1 = workbook.getSheet(4);
             sheet_2017_2 = workbook.getSheet(5);
+            sheet_2017_3 = workbook.getSheet(6);
 
             if(sheet_2016_1 != null){
 
@@ -77,6 +81,11 @@ public class LoadExcelFiles_hb extends Activity {
                 nRowTotal_6 = sheet_2017_2.getRows();
                 nColTotal_6 = sheet_2017_2.getColumns();
             }
+            if(sheet_2017_3 != null){
+
+                nRowTotal_7 = sheet_2017_3.getRows();
+                nColTotal_7 = sheet_2017_3.getColumns();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,7 +108,9 @@ public class LoadExcelFiles_hb extends Activity {
             return sheet_2016_4.getCell(colIndex, rowIndex).getContents();
         else if(sheet_info==5)
             return sheet_2017_1.getCell(colIndex, rowIndex).getContents();
-        else
+        else if(sheet_info==6)
             return sheet_2017_2.getCell(colIndex, rowIndex).getContents();
+        else
+            return sheet_2017_3.getCell(colIndex, rowIndex).getContents();
     }
 }

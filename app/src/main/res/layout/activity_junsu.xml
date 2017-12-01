@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:plainpie="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="민원준수율"
+                android:text="민원처리준수율"
                 android:textColor="#FFF"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -71,11 +71,13 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/junsu_term_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/junsu_icon1" />
 
             <TextView
+                android:id="@+id/junsu_title_term_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="분기별"
@@ -92,11 +94,13 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/junsu_year_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/junsu_icon2" />
 
             <TextView
+                android:id="@+id/junsu_title_year_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="년도별"
@@ -105,40 +109,400 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="40dp"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="120dp"
-        android:gravity="center"
-        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-        <ImageView
-            android:id="@+id/junsu_prev"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="4dp"
-            android:src="@drawable/ic_prev"
-            android:tint="#000" />
-        <TextView
-            android:id="@+id/junsu_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TERM"
-            android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <ImageView
-            android:id="@+id/junsu_next"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="4dp"
-            android:src="@drawable/ic_next"
-            android:tint="#000" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/junsu_framelayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/junsu_term_prev"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_prev"
+                    android:tint="#000" />
+                <TextView
+                    android:id="@+id/junsu_term_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TERM"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/junsu_term_next"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/ic_next"
+                    android:tint="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorDarkBlue"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorDarkGray"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="처리기간 준수율"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal">
+
+                        <az.plainpie.PieView
+                            android:id="@+id/junsu_pie_view1"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            plainpie:inner_pie_padding="30"
+                            plainpie:inner_text_visibility="true"
+                            plainpie:percentage="75"
+                            plainpie:percentage_size="30" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorDarkBlue"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorDarkGray"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="상세 처리 건수"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="4"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            >
+                            <TextView
+                                android:id="@+id/junsu_text_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="총 13,421건"
+                                android:textSize="18sp"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"
+                            android:orientation="horizontal"
+                            >
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                >
+                                <az.plainpie.PieView
+                                    android:id="@+id/junsu_pie_view2"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    plainpie:inner_text="13412건"
+                                    plainpie:inner_pie_padding="20"
+                                    plainpie:inner_text_visibility="true"
+                                    plainpie:percentage="75"
+                                    plainpie:percentage_size="15" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="5dp"
+                                    android:text="기간 내 처리"
+                                    android:textSize="15sp"
+                                    android:textColor="#FFF"
+                                    />
+                                <TextView
+                                    android:id="@+id/junsu_text_subdata1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="△ 2"
+                                    android:textSize="12sp"
+                                    android:textColor="#FFF"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                >
+                                <az.plainpie.PieView
+                                    android:id="@+id/junsu_pie_view3"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    plainpie:inner_text="9건"
+                                    plainpie:inner_pie_padding="20"
+                                    plainpie:inner_text_visibility="true"
+                                    plainpie:percentage="75"
+                                    plainpie:percentage_size="15" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="5dp"
+                                    android:text="기간 초과 처리"
+                                    android:textSize="15sp"
+                                    android:textColor="#FFF"/>
+                                <TextView
+                                    android:id="@+id/junsu_text_subdata2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="△ 2"
+                                    android:textSize="12sp"
+                                    android:textColor="#FFF"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                >
+                                <az.plainpie.PieView
+                                    android:id="@+id/junsu_pie_view4"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    plainpie:inner_text="0건"
+                                    plainpie:inner_pie_padding="20"
+                                    plainpie:inner_text_visibility="true"
+                                    plainpie:percentage="75"
+                                    plainpie:percentage_size="15" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="5dp"
+                                    android:text="기간 초과 미처리"
+                                    android:textSize="15sp"
+                                    android:textColor="#FFF"
+                                    />
+                                <TextView
+                                    android:id="@+id/junsu_text_subdata3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="△ 2"
+                                    android:textSize="12sp"
+                                    android:textColor="#FFF"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/junsu_framelayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/junsu_year_prev"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_prev"
+                    android:tint="#000" />
+                <TextView
+                    android:id="@+id/junsu_year_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TERM"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/junsu_year_next"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/ic_next"
+                    android:tint="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorDarkBlue"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorDarkGray"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="처리기간 준수율"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center_horizontal">
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorDarkBlue"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorDarkGray"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="상세 처리 건수"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="4"
+                        >
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>
