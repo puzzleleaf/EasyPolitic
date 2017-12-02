@@ -1,0 +1,71 @@
+<resources>
+    <string-array name="name">
+        <item>경찰청</item>
+        <item>관세청</item>
+        <item>교육부</item>
+        <item>국방부</item>
+        <item>국세청</item>
+        <item>기상청</item>
+        <item>법무부</item>
+        <item>법제처</item>
+        <item>병무청</item>
+        <item>산림청</item>
+        <item>외교부</item>
+        <item>조달청</item>
+        <item>통계청</item>
+        <item>통일부</item>
+        <item>특허청</item>
+        <item>환경부</item>
+        <item>대검찰청</item>
+        <item>문화재청</item>
+        <item>고용노동부</item>
+        <item>국가보훈처</item>
+        <item>국민안전처</item>
+        <item>국토교통부</item>
+        <item>금융위원회</item>
+        <item>기획재정부</item>
+        <item>농촌진흥청</item>
+        <item>방위사업청</item>
+        <item>보건복지부</item>
+        <item>여성가족부</item>
+        <item>인사혁신처</item>
+        <item>중소기업청</item>
+        <item>해양수산부</item>
+        <item>새만금개발청</item>
+        <item>공정거래위원회</item>
+        <item>국민권익위원회</item>
+        <item>농림축산식품부</item>
+        <item>문화체육관광부</item>
+        <item>미래창조과학부</item>
+        <item>방송통신위원회</item>
+        <item>산업통상자원부</item>
+        <item>식품의약품안전처</item>
+        <item>원자력안전위원회</item>
+        <item>행정중심복합도시건설청</item>
+        <item>강원도교육청</item>
+        <item>경기도교육청</item>
+        <item>경상남도교육청</item>
+        <item>경상북도교육청</item>
+        <item>전라남도교육청</item>
+        <item>전라북도교육청</item>
+        <item>충청남도교육청</item>
+        <item>충청북도교육청</item>
+        <item>광주광역시교육청</item>
+        <item>대구광역시교육청</item>
+        <item>대전광역시교육청</item>
+        <item>부산광역시교육청</item>
+        <item>서울특별시교육청</item>
+        <item>울산광역시교육청</item>
+        <item>인천광역시교육청</item>
+        <item>세종특별자치시교육청</item>
+        <item>제주특별자치도교육청</item>
+        <item>제주특별자치도교육청</item>
+    </string-array>
+
+    <string-array name="url">
+        <item>https://image.lawtimes.co.kr/images/99062.jpg</item>
+        <item>http://cfs16.tistory.com/image/4/tistory/2010/04/19/17/03/4bcc0e6319c50</item>
+        <item>http://biz.newdaily.co.kr/data/photos/201708/art_1504060450.png</item>
+    </string-array>
+
+</resources>

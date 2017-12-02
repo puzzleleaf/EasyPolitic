@@ -32,12 +32,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import leesd.crossithackathon.Cpi.CpiView;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
 import leesd.crossithackathon.adapter.MainAdapter;
+import leesd.crossithackathon.model.SlideObj;
 
 public class MainActivity  extends FragmentActivity implements OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -50,11 +52,14 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     private DrawerLayout drawer;
     private View drawerView;
 
+    @BindArray(R.array.name) String [] poName;
+    @BindArray(R.array.url) String [] poUrl;
+
     @BindView(R.id.main_recycler_view) RecyclerView mainRecyclerView;
 
     private LinearLayoutManager linearLayoutManager;
     private MainAdapter mainAdapter;
-    private List<String> res;
+    private List<SlideObj> res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -335,8 +340,6 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 //        mMap.addMarker(new MarkerOptions().position(temp44).title("제주특별자치도").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 10));
 
-        addMarker();
-
     }
     /**
      * Enables the My Location layer if the fine location permission has been granted.
@@ -404,89 +407,12 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void recyclerData() {
-        String [] data = {"경찰청"
-                ,"관세청"
-                ,"교육부"
-                ,"국방부"
-                ,"국세청"
-                ,"기상청"
-                ,"법무부"
-                ,"법제처"
-                ,"병무청"
-                ,"산림청"
-                ,"외교부"
-                ,"조달청"
-                ,"통계청"
-                ,"통일부"
-                ,"특허청"
-                ,"환경부"
-                ,"대검찰청"
-                ,"문화재청"
-                ,"고용노동부"
-                ,"국가보훈처"
-                ,"국민안전처"
-                ,"국토교통부"
-                ,"금융위원회"
-                ,"기획재정부"
-                ,"농촌진흥청"
-                ,"방위사업청"
-                ,"보건복지부"
-                ,"여성가족부"
-                ,"인사혁신처"
-                ,"중소기업청"
-                ,"해양수산부"
-                ,"새만금개발청"
-                ,"공정거래위원회"
-                ,"국민권익위원회"
-                ,"농림축산식품부"
-                ,"문화체육관광부"
-                ,"미래창조과학부"
-                ,"방송통신위원회"
-                ,"산업통상자원부"
-                ,"식품의약품안전처"
-                ,"원자력안전위원회"
-                ,"행정중심복합도시건설청"
-                ,"강원도교육청"
-                ,"경기도교육청"
-                ,"경상남도교육청"
-                ,"경상북도교육청"
-                ,"전라남도교육청"
-                ,"전라북도교육청"
-                ,"충청남도교육청"
-                ,"충청북도교육청"
-                ,"광주광역시교육청"
-                ,"대구광역시교육청"
-                ,"대전광역시교육청"
-                ,"부산광역시교육청"
-                ,"서울특별시교육청"
-                ,"울산광역시교육청"
-                ,"인천광역시교육청"
-                ,"세종특별자치시교육청"
-                ,"제주특별자치도교육청"
-                ,"제주특별자치도교육청"};
 
-        for(String d : data){
-            res.add(d);
+        for(int i=0; i<poName.length;i++){
+            SlideObj temp = new SlideObj(poName[i],poUrl[i%poUrl.length]);
+            res.add(temp);
         }
-    }
-
-    private void addMarker(){
-        //대만
-        mMap.addMarker(new MarkerOptions().position(new LatLng(25.032506, 121.567257)).title("臺北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(25.0162669,121.4576166)).title("新北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(24.8551722,120.951979)).title("桃園市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-
-        //태국
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7561478,100.4972599)).title("กรุงเทพมหานคร").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.8557611,100.4783304)).title("เทศบาลนครนนทบุรี").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7389991,100.5336676)).title("เขต ปทุมวัน").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-
-        //일본
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.709081, 139.731982)).title("東京").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.6984881,139.6904952)).title("新宿区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.666127, 139.697042)).title("渋谷区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-
-
 
     }
+
 }
