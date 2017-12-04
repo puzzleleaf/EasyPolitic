@@ -10,15 +10,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import az.plainpie.PieView;
 import az.plainpie.animation.PieAngleAnimation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Column;
+import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.ColumnChartView;
 import leesd.crossithackathon.DataManager.CivilComplaintRate;
 import leesd.crossithackathon.DataManager.CivilComplaintRateVO;
 import leesd.crossithackathon.R;
+
+/*
+ * Created by qlyh8 on 2017-11-30.
+ */
 
 //민원 준수율
 public class JunsuActivity  extends AppCompatActivity {
@@ -54,6 +68,8 @@ public class JunsuActivity  extends AppCompatActivity {
     @BindView(R.id.junsu_text_subdata2) TextView overdueProcessingText;     //기간초과처리 텍스트
     @BindView(R.id.junsu_text_subdata3) TextView overdueUnprocessingText;   //기간초과미처리 텍스트
 
+    @BindView(R.id.junsu_column_chart) ColumnChartView columnChart; //년도별 준수율 칼럼 그래프
+
     private int year = 2017;    //기준년도
     private int term = 3;       //기준분기
 
@@ -61,6 +77,13 @@ public class JunsuActivity  extends AppCompatActivity {
     private double junsuRatio;  //처리 준수율
     private int total, inPeriodProcessing, overdueProcessing, overdueUnprocessing; //총 접수, 기간내처리건수, 기간초과처리건수, 기간초과미처리건수
     private int prevTotal, prevInPeriodProcessing, prevOverdueProcessing, prevOverdueUnprocessing;  //이전 분기 데이터
+
+    public final static String[] fieldName = new String[4]; //년도별 준수율 그래프 칼럼 이름 (1-4분기)
+    public final static Double[] fieldNumbers = new Double[4];    //년도별 준수율 그래프 칼럼 데이터
+    //int numSubcolumns = 1;
+    //int numColumns = fieldName.length;  //년도별 준수율 그래프 칼럼 갯수
+    private ColumnChartData columnData;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -81,17 +104,24 @@ public class JunsuActivity  extends AppCompatActivity {
         markerAgency = getIntent().getStringExtra("markerData");
         agencyName.setText(markerAgency);
 
-        //화면 초기화
+        /* 화면 초기화 */
         frameLayout1.setVisibility(LinearLayout.VISIBLE);
         frameLayout2.setVisibility(LinearLayout.INVISIBLE);
+
         termImg.setImageResource(R.drawable.junsu_icon1_click);
         yearImg.setImageResource(R.drawable.junsu_icon2);
         titleTermText.setTextColor(Color.rgb(68, 104, 152));
         titleYearText.setTextColor(Color.rgb(0, 0, 0));
+
         prevJunsuDataInit(markerAgency, year, term);
         tabTermText.setText(year + "년 " + term + "분기");
         junsuRatio = junsuDataInit(markerAgency, year+"_"+term);
         setPieView(junsuRatio);
+
+        generateColumnData();
+        prepareDataAnimation();
+        columnChart.startDataAnimation(3000);
+        ////////////////////////////////////////////////////////////////////////
 
         //탭 별 페이지 버튼 이벤트
         tabTermPrev.setOnClickListener(new View.OnClickListener() {
@@ -214,9 +244,12 @@ public class JunsuActivity  extends AppCompatActivity {
     //년도별 탭 새로고침
     @SuppressLint("SetTextI18n")
     private void yearPageRefresh(){
+
         tabYearText.setText(year + "년 ");
-        //junsuRatio = junsuDataInit(markerAgency, year+"_"+term);
-        //setPieView(junsuRatio);
+
+        generateColumnData();
+        prepareDataAnimation();
+        columnChart.startDataAnimation(2500);
     }
 
     //데이터 가져오기
@@ -340,5 +373,78 @@ public class JunsuActivity  extends AppCompatActivity {
         PieAngleAnimation animation4 = new PieAngleAnimation(pieView4);
         animation4.setDuration(3700);
         pieView4.startAnimation(animation4);
+    }
+
+    //년도별 준수율 그래프 초기화
+    public void generateColumnData() {
+
+        int numSubcolumns = 1;
+        int numColumns = 4;
+
+        List<AxisValue> axisValues = new ArrayList<>();
+        List<Column> columns = new ArrayList<>();
+        List<SubcolumnValue> values;
+        HashMap<String, Double> hashMap = getYearJunsuRatio(markerAgency);
+
+        //칼럼에 들어갈 Field 데이터 세팅
+        for(int i = 0, j = 1 ; i < 4 ; i++, j++){
+            fieldName[i] = year + "년 " + j + "분기";
+            fieldNumbers[i] = hashMap.get(year+"_"+j);
+        }
+
+        for (int i = 0; i < numColumns; ++i) {
+
+            values = new ArrayList<>();
+            for (int j = 0; j < numSubcolumns; ++j) {
+                values.add(new SubcolumnValue(fieldNumbers[i].floatValue(), ChartUtils.pickColor()));
+            }
+
+            Column column = new Column(values);
+            column.setHasLabels(true);
+            column.setHasLabelsOnlyForSelected(true);
+            columns.add(column);
+
+            axisValues.add(new AxisValue(i).setLabel(fieldName[i]));
+        }
+
+        columnData = new ColumnChartData(columns);
+        columnData.setValueLabelBackgroundAuto(true);
+
+        columnData.setAxisXBottom(new Axis(axisValues));
+        columnData.setAxisYLeft(new Axis().setHasLines(true));
+
+        columnChart.setColumnChartData(columnData);
+        columnChart.setValueSelectionEnabled(true);
+    }
+
+    private void prepareDataAnimation() {
+
+        for (Column column : columnData.getColumns()) {
+            for (SubcolumnValue value : column.getValues()) {
+                value.setTarget(value.getValue());
+                //value.setTarget((float) Math.random() * 100);
+            }
+        }
+    }
+
+    //년도별 준수율 데이터 가져오기
+    private HashMap<String, Double> getYearJunsuRatio(String institutionName){
+
+        HashMap<String, Double> hashMap = new HashMap<>();
+        String yearSemester;
+        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
+
+        for(int i = 1 ; i <= 4 ; i++){
+            yearSemester = year + "_" + i;
+            if(year == 2017 && i == 4) {
+                hashMap.put(yearSemester, Double.valueOf(0));
+            }
+            else{
+                CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
+                hashMap.put(yearSemester, ccrv.getHandling_rate());
+            }
+        }
+
+        return hashMap;
     }
 }
