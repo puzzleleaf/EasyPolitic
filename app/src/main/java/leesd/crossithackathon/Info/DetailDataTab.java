@@ -92,14 +92,14 @@ public class DetailDataTab extends Fragment {
         linkButton = (TextView)view.findViewById(R.id.link);
 
         complaintYear = 2017;
-        complaintSemester = 2;
+        complaintSemester = 3;
         yearSemester = complaintYear + "_" + complaintSemester;
         complaintYearNext = (ImageView)view.findViewById(R.id.complaint_year_semester_next);
         complaintYearPrev = (ImageView)view.findViewById(R.id.complaint_year_semester_prev);
         complaintYearSemester = (TextView)view.findViewById(R.id.complaint_year_semester);
         complaintYearSemester.setText(yearSemester);
         introduce = (TextView)view.findViewById(R.id.introduce);
-        introduceInit();
+        //introduceInit();
 
 
 
@@ -322,7 +322,7 @@ public class DetailDataTab extends Fragment {
             }
         }
         else if(complaintYear==2017){
-            if(complaintSemester<2)
+            if(complaintSemester<3)
                 complaintSemester++;
         }
     }

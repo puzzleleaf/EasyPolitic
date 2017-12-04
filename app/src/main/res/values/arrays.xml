@@ -20,7 +20,6 @@
         <item>문화재청</item>
         <item>고용노동부</item>
         <item>국가보훈처</item>
-        <item>국민안전처</item>
         <item>국토교통부</item>
         <item>금융위원회</item>
         <item>기획재정부</item>
@@ -29,14 +28,15 @@
         <item>보건복지부</item>
         <item>여성가족부</item>
         <item>인사혁신처</item>
-        <item>중소기업청</item>
+        <item>중소벤처기업부</item>
         <item>해양수산부</item>
+        <item>행정안전부</item>
         <item>새만금개발청</item>
         <item>공정거래위원회</item>
         <item>국민권익위원회</item>
         <item>농림축산식품부</item>
         <item>문화체육관광부</item>
-        <item>미래창조과학부</item>
+        <item>과학기술정보통신부</item>
         <item>방송통신위원회</item>
         <item>산업통상자원부</item>
         <item>식품의약품안전처</item>
@@ -58,7 +58,6 @@
         <item>울산광역시교육청</item>
         <item>인천광역시교육청</item>
         <item>세종특별자치시교육청</item>
-        <item>제주특별자치도교육청</item>
         <item>제주특별자치도교육청</item>
     </string-array>
 

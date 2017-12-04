@@ -93,6 +93,39 @@ public class JunsuActivity  extends AppCompatActivity {
         junsuRatio = junsuDataInit(markerAgency, year+"_"+term);
         setPieView(junsuRatio);
 
+        //탭 별 페이지 버튼 이벤트
+        tabTermPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                termPrevCheck();
+                termPageRefresh();
+            }
+        });
+
+        tabTermNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                termNextCheck();
+                termPageRefresh();
+            }
+        });
+
+        tabYearPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                yearPrevCheck();
+                yearPageRefresh();
+            }
+        });
+
+        tabYearNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                yearNextCheck();
+                yearPageRefresh();
+            }
+        });
+
         //분기별 탭 클릭
         tabTerm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,22 +139,6 @@ public class JunsuActivity  extends AppCompatActivity {
                 frameLayout2.setVisibility(LinearLayout.INVISIBLE);
 
                 tabTermText.setText(year + "년 " + term + "분기");
-
-                tabTermPrev.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        termPrevCheck();
-                        termPageRefresh();
-                    }
-                });
-
-                tabTermNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        termNextCheck();
-                        termPageRefresh();
-                    }
-                });
             }
         });
 
@@ -140,22 +157,6 @@ public class JunsuActivity  extends AppCompatActivity {
                 frameLayout2.setVisibility(LinearLayout.VISIBLE);
 
                 tabYearText.setText(year + "년 ");
-
-                tabYearPrev.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        yearPrevCheck();
-                        yearPageRefresh();
-                    }
-                });
-
-                tabYearNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        yearNextCheck();
-                        yearPageRefresh();
-                    }
-                });
             }
         });
     }
@@ -224,6 +225,7 @@ public class JunsuActivity  extends AppCompatActivity {
 
         CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
         CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
+
 
         total = ccrv.getTotal_register();
         inPeriodProcessing = ccrv.getIn_date_handling();
