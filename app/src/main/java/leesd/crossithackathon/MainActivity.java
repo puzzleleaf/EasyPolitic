@@ -178,6 +178,10 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     }
 
 
+    //국민안전처: 2017년 7월 정부 조직 개편으로 행정자치부(현 행정안전부)에 흡수 · 통합되면서 폐지
+    //중소기업청 -> 중소벤처기업부
+    //행정자치부 -> 행정안전부
+    //미래창조과학부 -> 과학기술정보통신부
 
     private void markerInit(GoogleMap mMap){
 
@@ -201,7 +205,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         LatLng heritage = new LatLng(36.360307, 127.381533); //문화재청
         LatLng employment = new LatLng(36.504114, 127.267748); //고용노동부
         LatLng affairs = new LatLng(36.503216, 127.261261); //국가보훈처
-        LatLng safety = new LatLng(36.483754, 127.260743); //국민안전처
+        //LatLng safety = new LatLng(36.483754, 127.260743); //국민안전처 -> 폐지(행정안전부로 흡수)
         LatLng land = new LatLng(36.505293, 127.263210); //국토교통부
         LatLng financial = new LatLng(37.574881, 126.975202); //금융위원회
         LatLng strategyFinance = new LatLng(36.505986, 127.266591); //기획재정부
@@ -210,15 +214,15 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         LatLng health = new LatLng(36.502451, 127.262196); //보건복지부
         LatLng gender = new LatLng(37.574881, 126.975206); //여성가족부
         LatLng personnel = new LatLng(36.508346, 127.261185); //인사혁신처
-        LatLng smBusiness = new LatLng(36.360683, 127.384153); //중소기업청
+        LatLng smBusiness = new LatLng(36.360683, 127.384153); //중소기업청 -> 중소벤처기업부
         LatLng marine = new LatLng(36.362771, 127.291499); //해양수산부
-        LatLng administration = new LatLng(37.574866, 126.975052); //행정자치부
+        LatLng administration = new LatLng(37.574866, 126.975052); //행정자치부 -> 행정안전부
 //        LatLng temp = new LatLng();// 새만금개발청
         LatLng temp1 = new LatLng(36.504448, 127.268001);// 공정거래위원회
         LatLng temp2 = new LatLng(36.505708, 127.259834);// 국민권익위원회
         LatLng temp3 = new LatLng(36.504507, 127.265147);// 농림축산식품부
         LatLng temp4 = new LatLng(36.497736, 127.265729);// 문화체육관광부
-        LatLng temp5 = new LatLng(37.427014, 126.985063);// 미래창조과학부
+        LatLng temp5 = new LatLng(37.427014, 126.985063);// 미래창조과학부 -> 과학기술정보통신부
         LatLng temp6 = new LatLng(37.426830, 126.984753);// 방송통신위원회
         LatLng temp7 = new LatLng(36.499703, 127.260180);// 산업통상자원부
         LatLng temp8 = new LatLng(36.637992, 127.331872);// 식품의약품안전처
@@ -281,7 +285,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(heritage).title("문화재청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(employment).title("고용노동부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(affairs).title("국가보훈처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(safety).title("국민안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        //mMap.addMarker(new MarkerOptions().position(safety).title("국민안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(land).title("국토교통부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(financial).title("금융위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(strategyFinance).title("기획재정부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
@@ -290,15 +294,15 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(health).title("보건복지부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(gender).title("여성가족부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(personnel).title("인사혁신처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(smBusiness).title("중소기업청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(smBusiness).title("중소벤처기업부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(marine).title("해양수산부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(administration).title("행정자치부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(administration).title("행정안전부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp).title("새만금개발청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp1).title("공정거래위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp2).title("국민권익위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp3).title("농림축산식품부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp4).title("문화체육관광부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(temp5).title("미래창조과학부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(temp5).title("과학기술정보통신부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp6).title("방송통신위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp7).title("산업통상자원부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp8).title("식품의약품안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
