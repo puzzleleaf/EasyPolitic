@@ -133,7 +133,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="invisible"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -405,7 +405,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical"
-            android:visibility="invisible"
+            android:visibility="visible"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -476,7 +476,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical|center_horizontal"
-                        android:layout_margin="10dp"
+                        android:layout_margin="7dp"
                         >
 
                         <lecho.lib.hellocharts.view.ColumnChartView
@@ -516,9 +516,51 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="4"
+                        android:layout_margin="7dp"
                         >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 총합"
+                                android:textColor="#33B5E5"
+                                android:layout_margin="5dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 기간내처리"
+                                android:textColor="#AA66CC"
+                                android:layout_margin="5dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 기간초과처리"
+                                android:textColor="#99CC00"
+                                android:layout_margin="5dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="- 기간초과미처리"
+                                android:textColor="#FFBB33"
+                                android:layout_margin="5dp"
+                                />
+                        </LinearLayout>
+
+                        <lecho.lib.hellocharts.view.LineChartView
+                            android:id="@+id/junsu_line_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        </lecho.lib.hellocharts.view.LineChartView>
 
                     </LinearLayout>
                 </LinearLayout>

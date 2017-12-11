@@ -23,9 +23,14 @@ import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Column;
 import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
+import lecho.lib.hellocharts.view.LineChartView;
 import leesd.crossithackathon.DataManager.CivilComplaintRate;
 import leesd.crossithackathon.DataManager.CivilComplaintRateVO;
 import leesd.crossithackathon.R;
@@ -69,6 +74,7 @@ public class JunsuActivity  extends AppCompatActivity {
     @BindView(R.id.junsu_text_subdata3) TextView overdueUnprocessingText;   //기간초과미처리 텍스트
 
     @BindView(R.id.junsu_column_chart) ColumnChartView columnChart; //년도별 준수율 칼럼 그래프
+    @BindView(R.id.junsu_line_chart) LineChartView lineChart; //년도별 준수율 선 그래프
 
     private int year = 2017;    //기준년도
     private int term = 3;       //기준분기
@@ -78,12 +84,15 @@ public class JunsuActivity  extends AppCompatActivity {
     private int total, inPeriodProcessing, overdueProcessing, overdueUnprocessing; //총 접수, 기간내처리건수, 기간초과처리건수, 기간초과미처리건수
     private int prevTotal, prevInPeriodProcessing, prevOverdueProcessing, prevOverdueUnprocessing;  //이전 분기 데이터
 
+    private ColumnChartData columnData;
     public final static String[] fieldName = new String[4]; //년도별 준수율 그래프 칼럼 이름 (1-4분기)
     public final static Double[] fieldNumbers = new Double[4];    //년도별 준수율 그래프 칼럼 데이터
-    //int numSubcolumns = 1;
-    //int numColumns = fieldName.length;  //년도별 준수율 그래프 칼럼 갯수
-    private ColumnChartData columnData;
+    private int duration = 2000;
 
+    private LineChartData lineData;
+    private int numberOfLines = 4;
+    private int numberOfPoints = 4;
+    private float[][] detailFieldNumbers = new float[numberOfLines][numberOfPoints]; //년도별 준수율 상세처리건수 데이터
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -118,9 +127,16 @@ public class JunsuActivity  extends AppCompatActivity {
         junsuRatio = junsuDataInit(markerAgency, year+"_"+term);
         setPieView(junsuRatio);
 
+        /* 칼럼 그래프 */
         generateColumnData();
         prepareDataAnimation();
-        columnChart.startDataAnimation(3000);
+        columnChart.startDataAnimation(duration);
+
+        /* 라인 그래프 */
+        generateValues();
+        generateData();
+        linePrepareDataAnimation();
+        lineChart.startDataAnimation(duration);
         ////////////////////////////////////////////////////////////////////////
 
         //탭 별 페이지 버튼 이벤트
@@ -249,7 +265,12 @@ public class JunsuActivity  extends AppCompatActivity {
 
         generateColumnData();
         prepareDataAnimation();
-        columnChart.startDataAnimation(2500);
+        columnChart.startDataAnimation(duration);
+
+        generateValues();
+        generateData();
+        linePrepareDataAnimation();
+        lineChart.startDataAnimation(duration);
     }
 
     //데이터 가져오기
@@ -388,7 +409,7 @@ public class JunsuActivity  extends AppCompatActivity {
 
         //칼럼에 들어갈 Field 데이터 세팅
         for(int i = 0, j = 1 ; i < 4 ; i++, j++){
-            fieldName[i] = year + "년 " + j + "분기";
+            fieldName[i] = j + "분기";
             fieldNumbers[i] = hashMap.get(year+"_"+j);
         }
 
@@ -396,7 +417,8 @@ public class JunsuActivity  extends AppCompatActivity {
 
             values = new ArrayList<>();
             for (int j = 0; j < numSubcolumns; ++j) {
-                values.add(new SubcolumnValue(fieldNumbers[i].floatValue(), ChartUtils.pickColor()));
+                //values.add(new SubcolumnValue(fieldNumbers[i].floatValue(), ChartUtils.pickColor()));
+                values.add(new SubcolumnValue((float) Math.random() * 100, ChartUtils.nextColor()));
             }
 
             Column column = new Column(values);
@@ -419,9 +441,10 @@ public class JunsuActivity  extends AppCompatActivity {
 
     private void prepareDataAnimation() {
 
+        int i = 0;
         for (Column column : columnData.getColumns()) {
             for (SubcolumnValue value : column.getValues()) {
-                value.setTarget(value.getValue());
+                value.setTarget(fieldNumbers[i++].floatValue());
                 //value.setTarget((float) Math.random() * 100);
             }
         }
@@ -437,7 +460,7 @@ public class JunsuActivity  extends AppCompatActivity {
         for(int i = 1 ; i <= 4 ; i++){
             yearSemester = year + "_" + i;
             if(year == 2017 && i == 4) {
-                hashMap.put(yearSemester, Double.valueOf(0));
+                hashMap.put(yearSemester, 0d);
             }
             else{
                 CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
@@ -446,5 +469,126 @@ public class JunsuActivity  extends AppCompatActivity {
         }
 
         return hashMap;
+    }
+
+    //년도별 상세처리건수 데이터 가져오기
+    private HashMap<String, Integer> getYearJunsuDetail(String institutionName){
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        String yearSemester;
+        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
+
+        for(int i = 1 ; i <= 4 ; i++){
+            yearSemester = year + "_" + i;
+            if(year == 2017 && i == 4) {
+                hashMap.put(yearSemester+"_TOTAL", 0);
+                hashMap.put(yearSemester+"_IN_SUCCESS", 0);
+                hashMap.put(yearSemester+"_OUT_SUCCESS", 0);
+                hashMap.put(yearSemester+"_OUT_FAIL", 0);
+            }
+            else{
+                CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
+                hashMap.put(yearSemester+"_TOTAL", ccrv.getTotal_register());
+                hashMap.put(yearSemester+"_IN_SUCCESS", ccrv.getIn_date_handling());
+                hashMap.put(yearSemester+"_OUT_SUCCESS", ccrv.getOut_date_handling());
+                hashMap.put(yearSemester+"_OUT_FAIL", ccrv.getOut_date_failure());
+            }
+        }
+
+        return hashMap;
+    }
+
+    //년도별 상세처리건수 데이터 초기화
+    private void generateValues() {
+
+        HashMap<String, Integer> hashMap = getYearJunsuDetail(markerAgency);
+
+        for (int i = 0; i < numberOfLines; ++i) {
+            switch (i){
+                case 0:
+                    for (int j = 0; j < numberOfPoints; ++j) {
+                        int k = j+1;
+                        detailFieldNumbers[i][j] = hashMap.get(year+"_"+k+"_TOTAL");
+                    }
+                    break;
+                case 1:
+                    for (int j = 0; j < numberOfPoints; ++j) {
+                        int k = j+1;
+                        detailFieldNumbers[i][j] = hashMap.get(year+"_"+k+"_IN_SUCCESS");
+                    }
+                    break;
+                case 2:
+                    for (int j = 0; j < numberOfPoints; ++j) {
+                        int k = j+1;
+                        detailFieldNumbers[i][j] = hashMap.get(year+"_"+k+"_OUT_SUCCESS");
+                    }
+                    break;
+                case 3:
+                    for (int j = 0; j < numberOfPoints; ++j) {
+                        int k = j+1;
+                        detailFieldNumbers[i][j] = hashMap.get(year+"_"+k+"_OUT_FAIL");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    //년도별 상세처리건수 그래프
+    private void generateData() {
+
+        List<Line> lines = new ArrayList<>();
+        List<AxisValue> axisValues = new ArrayList<>();
+
+        for (int i = 0; i < numberOfLines; ++i) {
+
+            List<PointValue> values = new ArrayList<>();
+
+            for (int j = 0; j < numberOfPoints; ++j) {
+                //values.add(new PointValue(j, detailFieldNumbers[i][j]));
+                values.add(new PointValue(j,(float) Math.random() * 100000));
+                axisValues.add(new AxisValue(i).setLabel(fieldName[i]));
+            }
+
+            Line line = new Line(values);
+            line.setColor(ChartUtils.COLORS[i]);
+            line.setShape(ValueShape.CIRCLE);
+            line.setCubic(false);
+            line.setFilled(false);
+            line.setHasLabels(true);
+            line.setHasLabelsOnlyForSelected(true);
+            line.setHasLines(true);
+            line.setHasPoints(true);
+            line.setPointColor(ChartUtils.COLORS[i]);
+            //line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
+
+            lines.add(line);
+        }
+
+        lineData = new LineChartData(lines);
+
+
+        Axis axisY = new Axis().setHasLines(true).setMaxLabelChars(6);
+
+        lineData.setAxisXBottom(new Axis(axisValues));
+        lineData.setAxisYLeft(axisY);
+
+        lineData.setBaseValue(Float.NEGATIVE_INFINITY);
+        lineChart.setLineChartData(lineData);
+        lineChart.setValueSelectionEnabled(true);
+    }
+
+    private void linePrepareDataAnimation() {
+
+        int i = 0 , j = 0;
+        for (Line line : lineData.getLines()) {
+            for (PointValue value : line.getValues()) {
+                // Here I modify target only for Y values but it is OK to modify X targets as well.
+                value.setTarget(value.getX(), detailFieldNumbers[i][j++]);
+            }
+            i++;
+            j=0;
+        }
     }
 }
