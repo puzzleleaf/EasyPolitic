@@ -172,7 +172,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
         <View
@@ -343,12 +342,25 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/go_junsu_btn"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="민원준수율 현황"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/go_junsu_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="민원준수율 현황"
+                    />
+                <Button
+                    android:id="@+id/go_service_eval_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="민원서비스평가"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
 

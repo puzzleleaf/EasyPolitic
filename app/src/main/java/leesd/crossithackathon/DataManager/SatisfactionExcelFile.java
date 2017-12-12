@@ -160,19 +160,19 @@ public class SatisfactionExcelFile extends Activity {
 
         switch (value){
             case "매우우수":
-                text = "S-grade";
+                text = "S 등급";
                 break;
             case "우수":
-                text = "A-grade";
+                text = "A 등급";
                 break;
             case "보통":
-                text = "B-grade";
+                text = "B 등급";
                 break;
             case "미흡":
-                text = "C-grade";
+                text = "C 등급";
                 break;
             case "매우미흡":
-                text = "D-grade";
+                text = "D 등급";
                 break;
             case "NULL":
                 text = "-";

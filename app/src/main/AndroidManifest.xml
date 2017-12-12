@@ -27,6 +27,7 @@
         <activity android:name=".Grievance.GrievanceView"/>
         <activity android:name=".Cpi.CpiView"/>
         <activity android:name=".junsu.JunsuActivity"/>
+        <activity android:name=".serviceEval.ServiceEvalActivity"/>
     </application>
 
 </manifest>

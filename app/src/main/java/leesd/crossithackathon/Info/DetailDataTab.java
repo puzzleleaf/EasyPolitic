@@ -32,6 +32,7 @@ import leesd.crossithackathon.R;
 import leesd.crossithackathon.SurveyActivity;
 import leesd.crossithackathon.data.MapList;
 import leesd.crossithackathon.junsu.JunsuActivity;
+import leesd.crossithackathon.serviceEval.ServiceEvalActivity;
 
 /**
  * Created by user on 2017-11-19.
@@ -157,6 +158,16 @@ public class DetailDataTab extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), JunsuActivity.class);
+                intent.putExtra("markerData", markerData);
+                startActivity(intent);
+            }
+        });
+
+        //임시 민원서비스평가 버튼
+        view.findViewById(R.id.go_service_eval_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ServiceEvalActivity.class);
                 intent.putExtra("markerData", markerData);
                 startActivity(intent);
             }
