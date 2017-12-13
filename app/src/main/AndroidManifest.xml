@@ -28,6 +28,7 @@
         <activity android:name=".Cpi.CpiView"/>
         <activity android:name=".junsu.JunsuActivity"/>
         <activity android:name=".serviceEval.ServiceEvalActivity"/>
+        <activity android:name=".serviceEval.ServiceEvalInfoActivity"/>
     </application>
 
 </manifest>

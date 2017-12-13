@@ -1,5 +1,6 @@
 package leesd.crossithackathon.DataManager;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 
@@ -14,6 +15,7 @@ import java.util.HashMap;
      SF_2015      (2015년도 평가등급)
      SF_2014      (2014년도 평가등급) 으로 구성 */
 
+@SuppressLint("Registered")
 public class SatisfactionExcelFile extends Activity {
 
     LoadExcelFiles load = null;
@@ -86,7 +88,7 @@ public class SatisfactionExcelFile extends Activity {
     //특정 년도에 해당 기관과 같은 유형, 같은 등급을 지닌 기관 가져오기
     public HashMap<Integer, String> selectSameGrade (HashMap target, int targetYear){
 
-        HashMap<Integer, String> hashMap = new HashMap<>();
+        @SuppressLint("UseSparseArrays") HashMap<Integer, String> hashMap = new HashMap<>();
 
         int targetId = Integer.parseInt((String) target.get("SF_ID"));      //해당 기관 ID
         String yearColumnName = "SF_" + targetYear;                         //년도 칼럼 이름
@@ -120,6 +122,69 @@ public class SatisfactionExcelFile extends Activity {
                 }
             }
         }
+        return hashMap;
+    }
+
+    //특정 년도에 각 등급에 대한 기관 수, 기관명 가져오기
+    public HashMap<String, Object> countGrade(HashMap target, int targetYear){
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+
+        String yearColumnName = "SF_" + targetYear;                         //년도 칼럼 이름
+        int yearColumnIndex = -1;                                           //년도 칼럼 번호
+        int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0;     //같은 등급을 지닌 기관 수
+
+        //비교할 년도 칼럼 번호 구하기
+        switch (targetYear){
+            case 2016:
+                yearColumnIndex = year1ColumnIndex;
+                break;
+            case 2015:
+                yearColumnIndex = year2ColumnIndex;
+                break;
+            case 2014:
+                yearColumnIndex = year3ColumnIndex;
+                break;
+            default:
+                break;
+        }
+
+        for(int rowIndex = 0 ; rowIndex < nRowTotal ; rowIndex++){
+            //해당 기관의 등급이 "NULL"이 아니고, 기관유형이 같을 경우
+            if((!(target.get(yearColumnName).equals("NULL"))
+                    && target.get("SF_TYPE").equals(load.getCell(typeColumnIndex, rowIndex)))){
+                switch (load.getCell(yearColumnIndex, rowIndex)){
+                    case "매우우수":
+                        count1++;
+                        hashMap.put("SF_GRADE_1_"+count1, load.getCell(agencyColumnIndex, rowIndex));
+                        break;
+                    case "우수":
+                        count2++;
+                        hashMap.put("SF_GRADE_2_"+count2, load.getCell(agencyColumnIndex, rowIndex));
+                        break;
+                    case "보통":
+                        count3++;
+                        hashMap.put("SF_GRADE_3_"+count3, load.getCell(agencyColumnIndex, rowIndex));
+                        break;
+                    case "미흡":
+                        count4++;
+                        hashMap.put("SF_GRADE_4_"+count4, load.getCell(agencyColumnIndex, rowIndex));
+                        break;
+                    case "매우미흡":
+                        count5++;
+                        hashMap.put("SF_GRADE_5_"+count5, load.getCell(agencyColumnIndex, rowIndex));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        hashMap.put("SF_GRADE_1", count1);
+        hashMap.put("SF_GRADE_2", count2);
+        hashMap.put("SF_GRADE_3", count3);
+        hashMap.put("SF_GRADE_4", count4);
+        hashMap.put("SF_GRADE_5", count5);
+
         return hashMap;
     }
 
