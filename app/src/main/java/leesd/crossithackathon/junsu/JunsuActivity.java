@@ -31,8 +31,7 @@ import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.LineChartView;
-import leesd.crossithackathon.DataManager.CivilComplaintRate;
-import leesd.crossithackathon.DataManager.CivilComplaintRateVO;
+import leesd.crossithackathon.DataManager.JunsuExcelFile;
 import leesd.crossithackathon.R;
 
 /*
@@ -277,19 +276,18 @@ public class JunsuActivity  extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public double junsuDataInit(String institutionName, String yearSemester){
 
-        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
-        CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
+        JunsuExcelFile junsuExcelFile = new JunsuExcelFile(getBaseContext(), yearSemester);
+        HashMap<String, String> hashMap = junsuExcelFile.selectByAgency(institutionName);
 
-
-        total = ccrv.getTotal_register();
-        inPeriodProcessing = ccrv.getIn_date_handling();
-        overdueProcessing = ccrv.getOut_date_handling();
-        overdueUnprocessing = ccrv.getOut_date_failure();
+        total = Integer.parseInt(hashMap.get("JS_TOTAL"));
+        inPeriodProcessing = Integer.parseInt(hashMap.get("JS_IN_SUCCESS"));
+        overdueProcessing = Integer.parseInt(hashMap.get("JS_OUT_SUCCESS"));
+        overdueUnprocessing = Integer.parseInt(hashMap.get("JS_OUT_FAIL"));
 
         totalText.setText("총 "+ NumberFormat.getNumberInstance(Locale.getDefault()).format(total) + " 건");
         calculatePrevNThisData();
 
-        return ccrv.getHandling_rate();
+        return Double.parseDouble(hashMap.get("JS_RATIO"));
     }
 
     //이전 분기 데이터 가져오기
@@ -307,13 +305,13 @@ public class JunsuActivity  extends AppCompatActivity {
                 thisTerm--;
         }
 
-        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
-        CivilComplaintRateVO ccrv = ccr.extractCellData(thisYear+"_"+thisTerm, institutionName);
+        JunsuExcelFile junsuExcelFile = new JunsuExcelFile(getBaseContext(), thisYear+"_"+thisTerm);
+        HashMap<String, String> hashMap = junsuExcelFile.selectByAgency(institutionName);
 
-        prevTotal = ccrv.getTotal_register();
-        prevInPeriodProcessing = ccrv.getIn_date_handling();
-        prevOverdueProcessing = ccrv.getOut_date_handling();
-        prevOverdueUnprocessing = ccrv.getOut_date_failure();
+        prevTotal = Integer.parseInt(hashMap.get("JS_TOTAL"));
+        prevInPeriodProcessing = Integer.parseInt(hashMap.get("JS_IN_SUCCESS"));
+        prevOverdueProcessing  = Integer.parseInt(hashMap.get("JS_OUT_SUCCESS"));
+        prevOverdueUnprocessing = Integer.parseInt(hashMap.get("JS_OUT_FAIL"));
     }
 
     //이전 분기와 비교
@@ -455,7 +453,6 @@ public class JunsuActivity  extends AppCompatActivity {
 
         HashMap<String, Double> hashMap = new HashMap<>();
         String yearSemester;
-        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
 
         for(int i = 1 ; i <= 4 ; i++){
             yearSemester = year + "_" + i;
@@ -463,8 +460,9 @@ public class JunsuActivity  extends AppCompatActivity {
                 hashMap.put(yearSemester, 0d);
             }
             else{
-                CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
-                hashMap.put(yearSemester, ccrv.getHandling_rate());
+                JunsuExcelFile junsuExcelFile = new JunsuExcelFile(getBaseContext(), yearSemester);
+                HashMap<String, String> HMap = junsuExcelFile.selectByAgency(institutionName);
+                hashMap.put(yearSemester, Double.parseDouble(HMap.get("JS_RATIO")));
             }
         }
 
@@ -476,7 +474,6 @@ public class JunsuActivity  extends AppCompatActivity {
 
         HashMap<String, Integer> hashMap = new HashMap<>();
         String yearSemester;
-        CivilComplaintRate ccr = new CivilComplaintRate(getBaseContext());
 
         for(int i = 1 ; i <= 4 ; i++){
             yearSemester = year + "_" + i;
@@ -487,11 +484,13 @@ public class JunsuActivity  extends AppCompatActivity {
                 hashMap.put(yearSemester+"_OUT_FAIL", 0);
             }
             else{
-                CivilComplaintRateVO ccrv = ccr.extractCellData(yearSemester, institutionName);
-                hashMap.put(yearSemester+"_TOTAL", ccrv.getTotal_register());
-                hashMap.put(yearSemester+"_IN_SUCCESS", ccrv.getIn_date_handling());
-                hashMap.put(yearSemester+"_OUT_SUCCESS", ccrv.getOut_date_handling());
-                hashMap.put(yearSemester+"_OUT_FAIL", ccrv.getOut_date_failure());
+                JunsuExcelFile junsuExcelFile = new JunsuExcelFile(getBaseContext(), yearSemester);
+                HashMap<String, String> HMap = junsuExcelFile.selectByAgency(institutionName);
+
+                hashMap.put(yearSemester+"_TOTAL", Integer.parseInt(HMap.get("JS_TOTAL")));
+                hashMap.put(yearSemester+"_IN_SUCCESS", Integer.parseInt(HMap.get("JS_IN_SUCCESS")));
+                hashMap.put(yearSemester+"_OUT_SUCCESS",Integer.parseInt(HMap.get("JS_OUT_SUCCESS")));
+                hashMap.put(yearSemester+"_OUT_FAIL",Integer.parseInt(HMap.get("JS_OUT_FAIL")));
             }
         }
 

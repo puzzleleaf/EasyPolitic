@@ -46,6 +46,34 @@ public class LoadExcelFiles extends Activity {
         }
     }
 
+    public LoadExcelFiles(Context context, String fileName, int sheetNum) {
+
+        try {
+            //파일 가져오기
+            InputStream inputStream = context.getResources().getAssets().open(fileName);
+            workbook = Workbook.getWorkbook(inputStream);
+
+            //특정 시트 가져오기
+            sheet = workbook.getSheet(sheetNum);
+
+            if(sheet != null){
+
+                nRowTotal = sheet.getRows();
+                nColTotal = sheet.getColumns();
+            }
+            else{
+                //checkString = checkString + "Fail to load the sheet";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(workbook != null) {
+                //workbook.close();
+            }
+        }
+    }
+
     //셀 정보 가져오기
     public String getCell(int colIndex, int rowIndex){
         return sheet.getCell(colIndex, rowIndex).getContents();
