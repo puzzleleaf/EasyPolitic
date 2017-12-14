@@ -44,6 +44,7 @@
         android:id="@+id/tab_layout_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBlue"
         app:tabBackground="@drawable/tab_selector"
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp"/>

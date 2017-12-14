@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -40,7 +43,7 @@ import leesd.crossithackathon.serviceEval.ServiceEvalActivity;
 
 public class DetailDataTab extends Fragment {
     //별
-    private RatingBar ratingBarFir;
+    /*private RatingBar ratingBarFir;
     private RatingBar ratingBarSec;
     private RatingBar ratingBarThr;
 
@@ -69,15 +72,59 @@ public class DetailDataTab extends Fragment {
     //설문지
     private TextView survey;
 
-    private View view_public;
+    private View view_public;*/
 
+    String markerData;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_detail_data, container, false);
-        view_public = view;
-        survey = (TextView)view.findViewById(R.id.survey);
+        //view_public = view;
+
+       markerData = getActivity().getIntent().getStringExtra("markerData");
+
+        //민원준수율
+        view.findViewById(R.id.go_junsu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), JunsuActivity.class);
+                intent.putExtra("markerData", markerData);
+                startActivity(intent);
+            }
+        });
+
+        //민원서비스평가
+        view.findViewById(R.id.go_service_eval_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ServiceEvalActivity.class);
+                intent.putExtra("markerData", markerData);
+                startActivity(intent);
+            }
+        });
+
+        //민원창구
+        view.findViewById(R.id.link).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                String uri = getString(MapList.urlList.get(markerData));
+                Uri u = Uri.parse(uri);
+                intent.setData(u);
+                startActivity(intent);
+            }
+        });
+
+        //설문지
+        view.findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+    /*    survey = (TextView)view.findViewById(R.id.survey);
 
         survey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,12 +219,12 @@ public class DetailDataTab extends Fragment {
                 startActivity(intent);
             }
         });
-
+*/
 
         return view;
     }
 
-
+/*
     private void introduceInit() {
         if(markerData.equals("국방부")){
             introduce.setText("\n" +
@@ -336,5 +383,5 @@ public class DetailDataTab extends Fragment {
             if(complaintSemester<3)
                 complaintSemester++;
         }
-    }
+    }*/
 }
