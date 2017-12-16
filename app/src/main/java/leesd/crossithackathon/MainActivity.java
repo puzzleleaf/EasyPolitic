@@ -49,6 +49,7 @@ import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import leesd.crossithackathon.Cpi.CpiView;
+import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
 import leesd.crossithackathon.adapter.MainAdapter;
@@ -469,7 +470,7 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
 
     private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        FirebaseAuth.getInstance().signInWithCredential(credential)
+        FbObject.firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -491,5 +492,6 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(this,"로그인에 실패했습니다.",Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

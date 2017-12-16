@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile 'com.google.firebase:firebase-database:11.0.2'
     compile 'com.google.firebase:firebase-auth:11.0.2'
     compile 'com.google.android.gms:play-services-auth:11.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -45,6 +46,7 @@ dependencies {
     compile 'com.yarolegovich:lovely-dialog:1.0.7'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'
