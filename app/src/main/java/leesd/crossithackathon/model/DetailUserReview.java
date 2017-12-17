@@ -9,6 +9,34 @@ public class DetailUserReview {
     public String userReview;
     public float userStarRating;
     public String userReviewTime;
+    public String key;
+    public String userKey;
+
+    public DetailUserReview(String userName, String userReview, float userStarRating, String userReviewTime, String key, String userKey) {
+        this.userName = userName;
+        this.userReview = userReview;
+        this.userStarRating = userStarRating;
+        this.userReviewTime = userReviewTime;
+        this.key = key;
+        this.userKey = userKey;
+    }
+
+    public String getKey() {
+
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
+    }
 
     public DetailUserReview() {
     }
@@ -18,13 +46,6 @@ public class DetailUserReview {
     }
 
     public void setUserReviewTime(String userReviewTime) {
-        this.userReviewTime = userReviewTime;
-    }
-
-    public DetailUserReview(String userName, String userReview, float userStarRating, String userReviewTime) {
-        this.userName = userName;
-        this.userReview = userReview;
-        this.userStarRating = userStarRating;
         this.userReviewTime = userReviewTime;
     }
 

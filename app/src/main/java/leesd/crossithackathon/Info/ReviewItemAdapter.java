@@ -9,13 +9,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.R;
 import leesd.crossithackathon.model.DetailUserReview;
 
@@ -25,14 +28,20 @@ import leesd.crossithackathon.model.DetailUserReview;
 
 public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.ViewHolder> {
 
+    interface OnReviewItemRemoveListener {
+        public void removeItem(DetailUserReview item);
+    }
+
     private Context context;
     private LayoutInflater mInflater;
     private List<DetailUserReview> res;
+    private OnReviewItemRemoveListener onReviewItemRemoveListener;
 
-    public ReviewItemAdapter(Context context, List<DetailUserReview> res){
+    public ReviewItemAdapter(Context context, List<DetailUserReview> res, OnReviewItemRemoveListener onReviewItemRemoveListener){
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.res = res;
+        this.onReviewItemRemoveListener = onReviewItemRemoveListener;
     }
 
     @Override
@@ -57,7 +66,7 @@ public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         ratingBarInit(holder.ratingBar);
         if(res.size() == 0) {
             holder.name.setText("관리자");
@@ -71,6 +80,24 @@ public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.Vi
             holder.ratingBar.setRating(res.get(position).getUserStarRating());
         }
 
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(res.size()!=0 && res.get(position).getUserKey() == FbObject.firebaseAuth.getCurrentUser().getUid()) {
+                    Toast.makeText(context, "길게 누르면 삭제 됩니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        holder.item.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(res.size()!=0) {
+                    onReviewItemRemoveListener.removeItem(res.get(position));
+                }
+                return false;
+            }
+        });
     }
 
     private void ratingBarInit(RatingBar ratingBar) {
@@ -85,6 +112,7 @@ public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.Vi
         @BindView(R.id.review_name) TextView name;
         @BindView(R.id.review_date) TextView date;
         @BindView(R.id.review_contents) TextView contents;
+        @BindView(R.id.review_item) LinearLayout item;
         private ViewHolder(View view){
             super(view);
             ButterKnife.bind(this,view);

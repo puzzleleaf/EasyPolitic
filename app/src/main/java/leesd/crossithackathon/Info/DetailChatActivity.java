@@ -3,10 +3,8 @@ package leesd.crossithackathon.Info;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DecorContentParent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,7 +36,7 @@ import leesd.crossithackathon.model.DetailUserReview;
  * Created by cmtyx on 2017-12-17.
  */
 
-public class DetailChatActivity extends AppCompatActivity {
+public class DetailChatActivity extends AppCompatActivity implements ReviewItemAdapter.OnReviewItemRemoveListener {
     @BindView(R.id.view_pager_review) ViewPager reviewPager;
     @BindView(R.id.tab_layout_detail_review) TabLayout tabLayout;
     @BindView(R.id.tab_layout_detail_review_recycler_view) RecyclerView recyclerView;
@@ -65,46 +63,42 @@ public class DetailChatActivity extends AppCompatActivity {
 
     private void reviewSubmit(String review, float rating) {
         String time = new SimpleDateFormat("yy/MM/dd").format(Calendar.getInstance().getTime());
+        String key = FbObject.database.getReference().child("Review").child(markerData).push().getKey();
         final DetailUserReview detailUserReview = new DetailUserReview(
                 FbObject.firebaseAuth.getCurrentUser().getDisplayName(),
-                review,rating,time);
+                review,rating,time,key,FbObject.firebaseAuth.getCurrentUser().getUid());
 
         FbObject.database.getReference()
                 .child("Review")
                 .child(markerData)
-                .child(FbObject.firebaseAuth.getCurrentUser().getUid())
+                .child(key)
                 .setValue(detailUserReview).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                FbObject.database.getReference().runTransaction(new Transaction.Handler() {
-                    @Override
-                    public Transaction.Result doTransaction(MutableData mutableData) {
-                        ReviewTotalRating reviewTotalRating = mutableData.child("Rating").child(markerData).getValue(ReviewTotalRating.class);
-                        if(reviewTotalRating == null) {
-                            Log.d("qwe","null1");
-                            reviewTotalRating = new ReviewTotalRating(detailUserReview.getUserStarRating(),1);
-                            FbObject.database.getReference().child("Rating").child(markerData).setValue(reviewTotalRating);
-                        } else {
-                            Log.d("qwe","notNull1");
-                            DetailUserReview detailTemp = mutableData.child("Review").child(markerData).child(FbObject.firebaseAuth.getCurrentUser().getUid()).getValue(DetailUserReview.class);
-                            if(detailTemp == null) {
-                                reviewTotalRating.setRating(reviewTotalRating.getRating() + detailUserReview.getUserStarRating());
-                                reviewTotalRating.setTotal(reviewTotalRating.getTotal() + 1);
-                            } else {
-                                reviewTotalRating.setTotal(reviewTotalRating.getTotal());
-                                reviewTotalRating.setRating(reviewTotalRating.getRating() + detailUserReview.getUserStarRating() - detailTemp.getUserStarRating());
-                            }
-                        }
-                        mutableData.child("Rating").child(markerData).setValue(reviewTotalRating);
-                        return Transaction.success(mutableData);
-                    }
+               dataTransaction(detailUserReview.getUserStarRating());
+            }
+        });
+    }
 
-                    @Override
-                    public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                        Log.d("qwe",databaseError.getDetails());
-                        Toast.makeText(getApplicationContext(),"평가가 제출되었습니다.",Toast.LENGTH_SHORT).show();
-                    }
-                });
+    private void dataTransaction(final float rating) {
+        FbObject.database.getReference().child("Rating").child(markerData).runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                ReviewTotalRating reviewTotalRating = mutableData.getValue(ReviewTotalRating.class);
+                if(reviewTotalRating == null) {
+                    Log.d("qwe","null1");
+                    reviewTotalRating = new ReviewTotalRating(rating,1);
+                } else {
+                    reviewTotalRating.setRating(reviewTotalRating.getRating() + rating);
+                    reviewTotalRating.setTotal(reviewTotalRating.getTotal() + 1);
+                }
+                mutableData.setValue(reviewTotalRating);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                Toast.makeText(getApplicationContext(),"평가가 제출되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -133,7 +127,7 @@ public class DetailChatActivity extends AppCompatActivity {
     private void reviewRecyclerInit() {
         res = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        reviewItemAdapter = new ReviewItemAdapter(this,res);
+        reviewItemAdapter = new ReviewItemAdapter(this,res,this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(reviewItemAdapter);
         getReviewData();
@@ -190,5 +184,25 @@ public class DetailChatActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void removeItem(final DetailUserReview item) {
+        if(item.getUserKey() == FbObject.firebaseAuth.getCurrentUser().getUid()) {
+            FbObject.database.getReference().child("Review").child(markerData).child(item.getKey()).removeValue();
+            FbObject.database.getReference().child("Rating").child(markerData).runTransaction(new Transaction.Handler() {
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData) {
+                    ReviewTotalRating reviewTotalRating = mutableData.getValue(ReviewTotalRating.class);
+                    reviewTotalRating.setRating(reviewTotalRating.getRating() - item.getUserStarRating());
+                    reviewTotalRating.setTotal(reviewTotalRating.getTotal() - 1);
+                    mutableData.setValue(reviewTotalRating);
+                    return Transaction.success(mutableData);
+                }
 
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                    Toast.makeText(getApplicationContext(), "삭제가 완료 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 }
