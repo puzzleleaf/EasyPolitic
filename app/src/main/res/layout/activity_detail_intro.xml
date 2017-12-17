@@ -106,17 +106,22 @@
                 android:background="#FFF"
                 android:layout_margin="20dp"/>
 
-            <TextView
-                android:id="@+id/detail_intro_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="수입되는 물품에 관세를 부과ㆍ징수하여 국가재정 수입을 확보하고, 수출입물품의 통관 등이 적법하게 이루어지도록 함으로써 대외무역 질서를 확립"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:gravity="center"
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp" />
+                android:layout_marginRight="30dp">
+                <TextView
+                    android:id="@+id/detail_intro_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수입되는 물품에 관세를 부과ㆍ징수하여 국가재정 수입을 확보하고, 수출입물품의 통관 등이 적법하게 이루어지도록 함으로써 대외무역 질서를 확립"
+                    android:textColor="#FFF"
+                    android:textSize="16sp"
+                    android:gravity="center" />
+            </ScrollView>
+
         </LinearLayout>
 
         <LinearLayout
