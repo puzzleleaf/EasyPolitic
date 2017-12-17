@@ -32,14 +32,20 @@ import leesd.crossithackathon.model.SlideObj;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
+    public interface OnAdpaterClickListener {
+        public void onClick(String markerData);
+    }
+
     private Context context;
     private LayoutInflater mInflater;
     private List<SlideObj> res;
+    private OnAdpaterClickListener onAdpaterClickListener;
 
-    public MainAdapter(Context context, List<SlideObj> res){
+    public MainAdapter(Context context, List<SlideObj> res, OnAdpaterClickListener onAdpaterClickListener){
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.res = res;
+        this.onAdpaterClickListener = onAdpaterClickListener;
     }
 
     @Override
@@ -71,7 +77,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.name.setText(res.get(position).getName());
         Glide.with(context).load(res.get(position).getImg()).into(holder.image);
         ratingBarInit(holder.ratingBar);
-        holder.ratingBar.setRating((new Random().nextInt()*10)%5+1);
+        holder.ratingBar.setRating(res.get(position).getRating());
+        final String markerData = res.get(position).getName();
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onAdpaterClickListener.onClick(markerData);
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

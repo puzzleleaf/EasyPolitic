@@ -8,10 +8,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,8 +43,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindArray;
@@ -52,10 +59,11 @@ import leesd.crossithackathon.Cpi.CpiView;
 import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
+import leesd.crossithackathon.Info.ReviewTotalRating;
 import leesd.crossithackathon.adapter.MainAdapter;
 import leesd.crossithackathon.model.SlideObj;
 
-public class MainActivity  extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+public class MainActivity  extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, MainAdapter.OnAdpaterClickListener {
 
 
     //Login
@@ -66,11 +74,12 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
-    private ImageView drawerMenu;
+    //private ImageView drawerMenu;
 
-    private DrawerLayout drawer;
-    private View drawerView;
+    //private DrawerLayout drawer;
+    //private View drawerView;
 
+    private HashMap<String, String> recyclerMap;
     @BindArray(R.array.name) String [] poName;
     @BindArray(R.array.url) String [] poUrl;
 
@@ -87,83 +96,80 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
         ButterKnife.bind(MainActivity.this);
         loginInit();
         recyclerInit();
-        drawerInit();
+        //drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     public void recyclerInit() {
+        recyclerMap = new HashMap<>();
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         res = new ArrayList<>();
-        recyclerData();
+        recyclerDataInit();
 
-        mainAdapter = new MainAdapter(this,res);
+        mainAdapter = new MainAdapter(this,res,this);
         mainRecyclerView.setAdapter(mainAdapter);
         mainRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
     private void drawerInit(){
-        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
-        drawerView = (View)findViewById(R.id.drawer_view);
-
-        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
-        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
-        drawerMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.openDrawer(drawerView);
-            }
-        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
-        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CpiView.class);
-                startActivity(intent);
-            }
-        });
-
-
+//        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
+//        drawerView = (View)findViewById(R.id.drawer_view);
+//
+//        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+//        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+//            @Override
+//            public void onDrawerSlide(View drawerView, float slideOffset) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerStateChanged(int newState) {
+//
+//            }
+//        });
+//        drawerMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawer.openDrawer(drawerView);
+//            }
+//        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
+//        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), CpiView.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
@@ -186,7 +192,7 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
                 intent.putExtra("markerData",marker.getTitle());
                 startActivity(intent);
 
-                drawerMenu.setVisibility(View.INVISIBLE);
+                //drawerMenu.setVisibility(View.INVISIBLE);
 
                 return false;
             }
@@ -427,13 +433,40 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
     @Override
     protected void onResume() {
         super.onResume();
-        drawerMenu.setVisibility(View.VISIBLE);
+
+
+        //drawerMenu.setVisibility(View.VISIBLE);
     }
 
-    private void recyclerData() {
+    private void recyclerDataInit() {
         for(int i=0; i<poName.length;i++){
-            SlideObj temp = new SlideObj(poName[i],poUrl[i%poUrl.length]);
-            res.add(temp);
+            recyclerMap.put(poName[i],poUrl[i%poUrl.length]);
+        }
+        recyclerDataLoad();
+    }
+
+    private void recyclerDataLoad() {
+        if(FbObject.firebaseAuth.getCurrentUser() != null) {
+            Log.d("qwe","Call");
+            FbObject.database.getReference().child("Rating").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    res.clear();
+                    Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                    while(iterator.hasNext()){
+                        DataSnapshot dataTemp = iterator.next();
+                        ReviewTotalRating temp = dataTemp.getValue(ReviewTotalRating.class);
+                        SlideObj mainTemp = new SlideObj(dataTemp.getKey(), recyclerMap.get(dataTemp.getKey()),temp.getRating()/temp.getTotal(),temp.getTotal());
+                        res.add(mainTemp);
+                    }
+                    mainAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
@@ -494,5 +527,12 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(this,"로그인에 실패했습니다.",Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    @Override
+    public void onClick(String markerData) {
+        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+        intent.putExtra("markerData",markerData);
+        startActivity(intent);
     }
 }

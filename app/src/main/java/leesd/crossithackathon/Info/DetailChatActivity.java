@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class DetailChatActivity extends AppCompatActivity {
     @BindView(R.id.tab_layout_detail_review) TabLayout tabLayout;
     @BindView(R.id.tab_layout_detail_review_recycler_view) RecyclerView recyclerView;
     @BindView(R.id.tab_layout_detail_review_submit) TextView submit;
+    @BindView(R.id.detail_review_back) ImageView back;
     private ReviewItemAdapter reviewItemAdapter;
     private LinearLayoutManager linearLayoutManager;
     private TabAdapter_Detail_Review pagerAdapterReview;
@@ -140,6 +142,12 @@ public class DetailChatActivity extends AppCompatActivity {
     private void reviewTabInit() {
         userReviewContents = "";
         userReviewRating = 0;
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         markerData = getIntent().getStringExtra("markerData");
 
         submit.setOnClickListener(new View.OnClickListener() {

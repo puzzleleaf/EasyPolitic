@@ -17,15 +17,15 @@
             android:src="@drawable/ic_prev"
             android:tint="#ffffff"/>
 
-        <ImageView
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:src="@drawable/survey"
+            android:layout_weight="1"
             android:gravity="center"
+            android:text="설문지 작성"
             android:textColor="#ffffff"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 

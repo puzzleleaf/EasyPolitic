@@ -1,18 +1,28 @@
 package leesd.crossithackathon.Info;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
 import leesd.crossithackathon.DataManager.DetailsExcelFile;
+import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.R;
 
 /*
@@ -24,6 +34,9 @@ public class DetailIntroTab extends Fragment{
 
     private TextView agencyText, addressText, phoneText, infoText;
     private View goHomepage, goChat;
+    private RatingBar ratingBar;
+    private TextView ratingText;
+    private TextView ratingTotal;
 
     String markerData;
     HashMap<String, String> hashMap;
@@ -39,6 +52,12 @@ public class DetailIntroTab extends Fragment{
         infoText = (TextView)view.findViewById(R.id.detail_intro_info);
         goHomepage = view.findViewById(R.id.detail_intro_homepage);
         goChat = view.findViewById(R.id.detail_intro_chat);
+        ratingBar = (RatingBar)view.findViewById(R.id.intro_rating);
+        ratingText = (TextView)view.findViewById(R.id.intro_rating_text);
+        ratingTotal = (TextView)view.findViewById(R.id.intro_rating_total);
+
+        ratingBarInit(ratingBar);
+
 
         markerData = getActivity().getIntent().getStringExtra("markerData");
         hashMap = getAgencyDetail(markerData);
@@ -68,8 +87,39 @@ public class DetailIntroTab extends Fragment{
                 }
             }
         });
+        ratingLoad();
 
         return view;
+    }
+
+    private void ratingLoad(){
+        FbObject.database.getReference().child("Rating").child(markerData).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ReviewTotalRating reviewTotalRating = dataSnapshot.getValue(ReviewTotalRating.class);
+                if(reviewTotalRating == null) {
+                    ratingBar.setRating(0);
+                    ratingText.setText(String.format("%.2f",0.0));
+                    ratingTotal.setText("0명");
+                } else {
+                    ratingBar.setRating(reviewTotalRating.getRating()/reviewTotalRating.getTotal());
+                    ratingText.setText(String.format("%.2f", ratingBar.getRating()));
+                    ratingTotal.setText(String.valueOf(reviewTotalRating.getTotal())+"명");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void ratingBarInit(RatingBar ratingBar) {
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(getContext(), R.color.colorStar), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
     }
 
     //엑셀에서 기관 세부 정보 가져오기
