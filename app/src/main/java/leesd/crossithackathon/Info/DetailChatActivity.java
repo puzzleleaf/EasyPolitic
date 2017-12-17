@@ -185,14 +185,15 @@ public class DetailChatActivity extends AppCompatActivity implements ReviewItemA
     }
 
     @Override
-    public void removeItem(final DetailUserReview item) {
-        if(item.getUserKey() == FbObject.firebaseAuth.getCurrentUser().getUid()) {
+    public void removeItem(DetailUserReview item) {
+        if(item.getUserKey().equals(FbObject.firebaseAuth.getCurrentUser().getUid())) {
+            final float rating = item.getUserStarRating();
             FbObject.database.getReference().child("Review").child(markerData).child(item.getKey()).removeValue();
             FbObject.database.getReference().child("Rating").child(markerData).runTransaction(new Transaction.Handler() {
                 @Override
                 public Transaction.Result doTransaction(MutableData mutableData) {
                     ReviewTotalRating reviewTotalRating = mutableData.getValue(ReviewTotalRating.class);
-                    reviewTotalRating.setRating(reviewTotalRating.getRating() - item.getUserStarRating());
+                    reviewTotalRating.setRating(reviewTotalRating.getRating() - rating);
                     reviewTotalRating.setTotal(reviewTotalRating.getTotal() - 1);
                     mutableData.setValue(reviewTotalRating);
                     return Transaction.success(mutableData);

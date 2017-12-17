@@ -83,7 +83,7 @@ public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.Vi
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(res.size()!=0 && res.get(position).getUserKey() == FbObject.firebaseAuth.getCurrentUser().getUid()) {
+                if(res.size()!=0 && res.get(position).getUserKey().equals(FbObject.firebaseAuth.getCurrentUser().getUid())) {
                     Toast.makeText(context, "길게 누르면 삭제 됩니다.", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -466,7 +466,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
 //        mMap.addMarker(new MarkerOptions().position(temp42).title("인천광역시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp43).title("세종특별자치시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp44).title("제주특별자치도").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 6));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.388606, 127.914706), 7));
 
     }
     /**
