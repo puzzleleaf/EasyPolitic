@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -126,16 +127,24 @@ public class DetailIntroTab extends Fragment{
     public HashMap<String, String> getAgencyDetail(String agency){
 
         DetailsExcelFile detailsExcelFile = new DetailsExcelFile(getContext());
-        HashMap<String, String> HMap = detailsExcelFile.selectByAgency(agency);
-
-        if(HMap.get("DT_ADDR").equals(""))
-            HMap.put("DT_ADDR", "No address");
-        if(HMap.get("DT_PHONE").equals(""))
-            HMap.put("DT_PHONE", "No number");
-        if(HMap.get("DT_INFO").equals(""))
-            HMap.put("DT_INFO", "No information");
-        if(HMap.get("DT_URL").equals(""))
-            HMap.put("DT_URL", "no url");
+        HashMap<String, String> HMap = null;
+        try{
+            HMap = detailsExcelFile.selectByAgency(agency);
+            if(HMap.get("DT_ADDR").equals(""))
+                HMap.put("DT_ADDR", "No address");
+            if(HMap.get("DT_PHONE").equals(""))
+                HMap.put("DT_PHONE", "No number");
+            if(HMap.get("DT_INFO").equals(""))
+                HMap.put("DT_INFO", "No information");
+            if(HMap.get("DT_URL").equals(""))
+                HMap.put("DT_URL", "no url");
+        } catch (Exception e) {
+            Toast.makeText(getContext(),"데이터를 불러오는데 실패했습니다.",Toast.LENGTH_SHORT).show();
+        }finally {
+            if(HMap == null) {
+                HMap = new HashMap<>();
+            }
+        }
 
         return HMap;
     }
