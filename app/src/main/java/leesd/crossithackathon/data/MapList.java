@@ -34,7 +34,6 @@ public class MapList {
         mapList.put("문화재청", R.string.문화재청);
         mapList.put("고용노동부", R.string.고용노동부);
         mapList.put("국가보훈처", R.string.국가보훈처);
-        mapList.put("국민안전처", R.string.국민안전처);
         mapList.put("국토교통부", R.string.국토교통부);
         mapList.put("금융위원회", R.string.금융위원회);
         mapList.put("기획재정부", R.string.기획재정부);
@@ -46,7 +45,6 @@ public class MapList {
         mapList.put("중소벤처기업부", R.string.중소벤처기업부);
         mapList.put("해양수산부", R.string.해양수산부);
         mapList.put("행정안전부", R.string.행정안전부);
-        mapList.put("새만금개발청", R.string.새만금개발청);
         mapList.put("공정거래위원회", R.string.공정거래위원회);
         mapList.put("국민권익위원회", R.string.국민권익위원회);
         mapList.put("농림축산식품부", R.string.농림축산식품부);
@@ -113,7 +111,6 @@ public class MapList {
         urlList.put("문화재청", R.string.문화재청URL);
         urlList.put("고용노동부", R.string.고용노동부URL);
         urlList.put("국가보훈처", R.string.국가보훈처URL);
-        urlList.put("국민안전처", R.string.국민안전처URL);
         urlList.put("국토교통부", R.string.국토교통부URL);
         urlList.put("금융위원회", R.string.금융위원회URL);
         urlList.put("기획재정부", R.string.기획재정부URL);
@@ -125,7 +122,6 @@ public class MapList {
         urlList.put("중소벤처기업부", R.string.중소벤처기업부URL);
         urlList.put("해양수산부", R.string.해양수산부URL);
         urlList.put("행정안전부", R.string.행정안전부URL);
-        urlList.put("새만금개발청", R.string.새만금개발청URL);
         urlList.put("공정거래위원회", R.string.공정거래위원회URL);
         urlList.put("국민권익위원회", R.string.국민권익위원회URL);
         urlList.put("농림축산식품부", R.string.농림축산식품부URL);

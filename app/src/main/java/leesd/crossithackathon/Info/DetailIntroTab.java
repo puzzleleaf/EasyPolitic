@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,7 @@ public class DetailIntroTab extends Fragment{
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_detail_intro, container, false);
 
         agencyText = (TextView) view.findViewById(R.id.detail_intro_agency);
@@ -48,6 +47,15 @@ public class DetailIntroTab extends Fragment{
         addressText.setText(hashMap.get("DT_ADDR"));
         phoneText.setText(hashMap.get("DT_PHONE"));
         infoText.setText(hashMap.get("DT_INFO"));
+
+        goChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext() ,DetailChatActivity.class);
+                intent.putExtra("markerData",markerData);
+                startActivity(intent);
+            }
+        });
 
         goHomepage.setOnClickListener(new View.OnClickListener() {
             @Override

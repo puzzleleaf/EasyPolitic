@@ -362,7 +362,7 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
 //        mMap.addMarker(new MarkerOptions().position(temp42).title("인천광역시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp43).title("세종특별자치시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp44).title("제주특별자치도").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 6));
 
     }
     /**
@@ -463,7 +463,8 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
                 Toast.makeText(getApplicationContext(), account.getDisplayName() +"님 환영합니다",Toast.LENGTH_LONG).show();
                 firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
     }
@@ -482,7 +483,7 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
                         if (task.isSuccessful()) {
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "네트워크 에러가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
