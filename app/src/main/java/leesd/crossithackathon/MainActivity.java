@@ -3,6 +3,7 @@ package leesd.crossithackathon;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -11,13 +12,21 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +72,7 @@ import leesd.crossithackathon.Info.ReviewTotalRating;
 import leesd.crossithackathon.adapter.MainAdapter;
 import leesd.crossithackathon.model.SlideObj;
 
-public class MainActivity  extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, MainAdapter.OnAdpaterClickListener {
+public class MainActivity  extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, MainAdapter.OnAdpaterClickListener {
 
 
     //Login
@@ -85,6 +94,12 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
 
     @BindView(R.id.main_recycler_view) RecyclerView mainRecyclerView;
 
+    Toolbar mToolbar;
+    ImageView mToolbar_title;
+    ArrayAdapter mAdapter;
+    ListView mListView;
+    TextView mEmptyView;
+
     private LinearLayoutManager linearLayoutManager;
     private MainAdapter mainAdapter;
     private List<SlideObj> res;
@@ -93,6 +108,30 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar_title = (ImageView)mToolbar.findViewById(R.id.toolbar_title);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mListView = (ListView) findViewById(R.id.search_list);
+        mEmptyView = (TextView) findViewById(R.id.emptyView);
+
+        mAdapter = new ArrayAdapter(MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.name));
+        mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra("markerData",adapterView.getItemAtPosition(i).toString());
+                startActivity(intent);
+            }
+        });
+        mListView.setEmptyView(mEmptyView);
+
         ButterKnife.bind(MainActivity.this);
         loginInit();
         recyclerInit();
@@ -100,6 +139,65 @@ public class MainActivity  extends FragmentActivity implements GoogleApiClient.O
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+
+        MenuItem mSearch = menu.findItem(R.id.action_search);
+
+        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        mSearchView.setQueryHint("Search");
+
+        mSearch.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                findViewById(R.id.relative).setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String[] instName = getResources().getStringArray(R.array.name);
+                for(int i = 0 ; i < instName.length ; i++)
+                    if(instName[i] == query) {
+                        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                        intent.putExtra("markerData", query);
+                        startActivity(intent);
+                        break;
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "해당 기관이 없습니다.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText.equals(""))
+                    findViewById(R.id.relative).setVisibility(View.GONE);
+                else
+                    findViewById(R.id.relative).setVisibility(View.VISIBLE);
+                mAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (findViewById(R.id.relative).getVisibility() == View.VISIBLE) {
+            findViewById(R.id.relative).setVisibility(View.GONE);
+        }
+        else
+            super.onBackPressed();
     }
 
     public void recyclerInit() {
