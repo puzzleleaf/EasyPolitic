@@ -99,7 +99,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
     ArrayAdapter mAdapter;
     ListView mListView;
     TextView mEmptyView;
-
+    boolean h;
     private LinearLayoutManager linearLayoutManager;
     private MainAdapter mainAdapter;
     private List<SlideObj> res;
@@ -133,7 +133,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         mListView.setEmptyView(mEmptyView);
 
         ButterKnife.bind(MainActivity.this);
-        loginInit();
+        //loginInit();
         recyclerInit();
         //drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -150,16 +150,8 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         SearchView mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
 
-        mSearch.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                findViewById(R.id.relative).setVisibility(View.VISIBLE);
-                return false;
-            }
-        });
-
-
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 String[] instName = getResources().getStringArray(R.array.name);
@@ -186,6 +178,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
                 mAdapter.getFilter().filter(newText);
                 return true;
             }
+
         });
 
         return super.onCreateOptionsMenu(menu);
@@ -199,6 +192,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         else
             super.onBackPressed();
     }
+
 
     public void recyclerInit() {
         recyclerMap = new HashMap<>();
