@@ -18,16 +18,15 @@
             android:src="@drawable/ic_prev"
             android:tint="#ffffff"/>
 
-        <ImageView
-            android:id="@+id/textView3"
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:src="@drawable/detail"
+            android:layout_weight="1"
             android:gravity="center"
+            android:text="기관 상세 정보"
             android:textColor="#ffffff"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -44,6 +43,7 @@
         android:id="@+id/tab_layout_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBlue"
         app:tabBackground="@drawable/tab_selector"
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp"/>

@@ -9,6 +9,175 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#ffffff"/>
+
+    <LinearLayout
+        android:id="@+id/go_junsu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F4AF91"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="#ffffff"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/detail_icon_1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="민원 처리기간 준수율"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:background="#ffffff"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_web"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/go_service_eval_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#EE6F7D"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center|right"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="#ffffff"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/detail_icon_2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="민원 서비스 평가"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_web"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/link"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#BD6983"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="#ffffff"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_web"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="민원 창구 이동"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:background="#ffffff"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_web"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/survey"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#6E597C"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center|right"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="#ffffff"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/detail_icon_4"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설문지 작성"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_web"/>
+    </LinearLayout>
+
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -172,7 +341,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
         <View
@@ -343,6 +511,25 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/go_junsu_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="민원준수율 현황"
+                    />
+                <Button
+                    android:id="@+id/go_service_eval_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="민원서비스평가"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
 
@@ -395,13 +582,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/survey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="설문하러가기"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="설문하러가기"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -409,23 +597,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="#ffffff"/>
-
-
-            <Button
-                android:id="@+id/detail_junsu_btn"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="민원준수율 현황"
-                android:textAlignment="center"
-                />
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="#ffffff" />
         </LinearLayout>
     </LinearLayout>
-
+-->
 
 
 </LinearLayout>

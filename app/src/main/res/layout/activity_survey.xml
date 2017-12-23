@@ -2,7 +2,6 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#445567"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
@@ -14,22 +13,45 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/detail_back"
+            android:id="@+id/survey_back"
             android:src="@drawable/ic_prev"
             android:tint="#ffffff"/>
 
-        <ImageView
-            android:id="@+id/textView3"
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:src="@drawable/survey"
+            android:layout_weight="1"
             android:gravity="center"
+            android:text="설문지 작성"
             android:textColor="#ffffff"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/service_not_ready" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서비스 준비 중입니다"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp" />
+    </LinearLayout>
+
+    <!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -843,5 +865,5 @@
         </LinearLayout>
 
     </ScrollView>
-
+    -->
 </LinearLayout>

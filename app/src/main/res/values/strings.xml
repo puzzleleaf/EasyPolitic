@@ -20,24 +20,22 @@
     <string name="문화재청">https://cafeptthumb-phinf.pstatic.net/MjAxNzA0MTJfODQg/MDAxNDkxOTg3NzU4NzE3.yZbxrOhabkTYEfG2tCIZMrtyTgsMRM8tYyqi8aUJj3Qg.O1SNiqdOQ4Mu0ly5B_1yx-W7lZO3mFyOAR8_YwwpsfIg.JPEG.bysun2/1.jpg?type=w740</string>
     <string name="고용노동부">http://nas.ccushisoft.com/wordpress/wp-content/cache/thumbnails/2017/04/usrsharetomcatwebappsBlogPostingServerdownload20170428163738578NBBBR20170428163740141APIVS.png-720x340-c.jpg</string>
     <string name="국가보훈처">http://postfiles10.naver.net/20160521_89/passtheway_1463790490683lkP3x_JPEG/5E6BB28D2A80656692066C5298C33368F48A2A2E3B702FA82F685Epimgpsh_fullsize_distr.jpg?type=w3</string>
-    <string name="국민안전처">http://postfiles8.naver.net/20160701_183/gmcityhall_14673492522824jT7Y_JPEG/2.jpg?type=w966</string>
     <string name="국토교통부">http://cfile22.uf.tistory.com/image/26245250581AC0D102DC50</string>
     <string name="금융위원회">http://file2.nocutnews.co.kr/newsroom/image/2017/01/12/20170112181855919197.jpg</string>
     <string name="기획재정부">http://www.sisunnews.co.kr/news/photo/201607/39711_58863_854.jpg</string>
-    <string name="농촌진흥청"></string>
-    <string name="방위사업청"></string>
-    <string name="보건복지부"></string>
+    <string name="농촌진흥청">http://www.srtimes.kr/news/photo/201710/15144_14616_344.jpg</string>
+    <string name="방위사업청">http://pds.skyedaily.com/news_data/1483534382RGPiDZ7PVIElGYD9iEnfCDk4iW.jpg</string>
+    <string name="보건복지부">http://img.imnews.imbc.com/news/2016/society/article/__icsFiles/afieldfile/2016/07/15/govern_health10_600.jpg</string>
     <string name="여성가족부"></string>
     <string name="인사혁신처"></string>
-    <string name="중소기업청"></string>
+    <string name="중소벤처기업부"></string>
     <string name="해양수산부"></string>
-    <string name="행정자치부"></string>
-    <string name="새만금개발청"></string>
+    <string name="행정안전부"></string>
     <string name="공정거래위원회"></string>
     <string name="국민권익위원회"></string>
     <string name="농림축산식품부"></string>
     <string name="문화체육관광부"></string>
-    <string name="미래창조과학부"></string>
+    <string name="과학기술정보통신부"></string>
     <string name="방송통신위원회"></string>
     <string name="산업통상자원부"></string>
     <string name="식품의약품안전처"></string>
@@ -101,7 +99,6 @@
     <string name="문화재청URL">https://www.e-minwon.go.kr/webs/main.jsp</string>
     <string name="고용노동부URL">http://minwon.moel.go.kr/minwon2008/lc_minwon/lc_form_apply.jsp</string>
     <string name="국가보훈처URL">http://www.mpva.go.kr/people/people100.asp</string>
-    <string name="국민안전처URL">http://www.mois.go.kr/frt/a03/civilComplaintHome.do</string>
     <string name="국토교통부URL">http://eminwon.molit.go.kr/main.do</string>
     <string name="금융위원회URL">http://www.fcsc.kr/D/fu_d_04.jsp</string>
     <string name="기획재정부URL">http://www.mosf.go.kr/cv/cvMain.do;jsessionid=GQ55MQJyC5xcwaELdnUuvJP4.node30?menuNo=8000000</string>
@@ -110,15 +107,14 @@
     <string name="보건복지부URL">https://www.mohw.go.kr/front_new/mw/smw0101mn.jsp?PAR_MENU_ID=01&amp;MENU_ID=0102</string>
     <string name="여성가족부URL">http://www.mogef.go.kr/oc/cap/oc_cap_f005.do?mid=ifrm11</string>
     <string name="인사혁신처URL">http://www.mpm.go.kr/mpm/minwon/minwonHome/</string>
-    <string name="중소기업청URL">http://www.mss.go.kr/site/smba/submain/submain02.do</string>
+    <string name="중소벤처기업부URL">http://www.mss.go.kr/site/smba/submain/submain02.do</string>
     <string name="해양수산부URL">http://www.mof.go.kr/bridge/frameView.do?menuKey=701</string>
-    <string name="행정자치부URL">http://www.mois.go.kr/frt/a03/civilComplaintHome.do</string>
-    <string name="새만금개발청URL">http://www.saemangeum.go.kr/sda/sub/customer/SMG10001.do</string>
+    <string name="행정안전부URL">http://www.mois.go.kr/frt/a03/civilComplaintHome.do</string>
     <string name="공정거래위원회URL">http://www.ftc.go.kr/minwon/counsel/counselIntro.jsp</string>
     <string name="국민권익위원회URL">http://www.acrc.go.kr/acrc/board.do?command=searchDetail&amp;menuId=0501</string>
     <string name="농림축산식품부URL">http://www.mafra.go.kr/list.jsp?group_id=1&amp;menu_id=1&amp;link_menu_id=7&amp;division=H&amp;board_kind=&amp;board_skin_id=&amp;parent_code=&amp;depth=0&amp;tab_yn=</string>
     <string name="문화체육관광부URL">http://www.mcst.go.kr/usr/minwon/index.jsp</string>
-    <string name="미래창조과학부URL">http://www.msit.go.kr/web/msipContents/contents.do?mId=Njc=</string>
+    <string name="과학기술정보통신부URL">http://www.msit.go.kr/web/msipContents/contents.do?mId=Njc=</string>
     <string name="방송통신위원회URL">http://www.kcc.go.kr/user.do?page=A09020000</string>
     <string name="산업통상자원부URL">http://www.motie.go.kr/motie/pn/ee/civil/civil.jsp</string>
     <string name="식품의약품안전처URL">https://ezdrug.mfds.go.kr/</string>

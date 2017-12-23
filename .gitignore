@@ -1,4 +1,5 @@
 # Built application files
+*.apk
 *.ap_
 
 # Files for the ART/Dalvik VM
@@ -39,6 +40,7 @@ captures/
 .idea/gradle.xml
 .idea/dictionaries
 .idea/libraries
+.idaa/misc.xml
 
 # Keystore files
 *.jks

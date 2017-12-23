@@ -19,4 +19,9 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="reviewStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">@color/colorBlue</item>
+        <item name="colorControlNormal">#9e9e9e</item>
+    </style>
+
 </resources>

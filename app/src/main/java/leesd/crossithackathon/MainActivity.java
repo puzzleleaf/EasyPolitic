@@ -3,142 +3,265 @@ package leesd.crossithackathon;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
+
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
-import az.plainpie.PieView;
-import az.plainpie.animation.PieAngleAnimation;
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import leesd.crossithackathon.Cpi.CpiView;
+import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
+import leesd.crossithackathon.Info.ReviewTotalRating;
+import leesd.crossithackathon.adapter.MainAdapter;
+import leesd.crossithackathon.model.SlideObj;
 
-public class MainActivity  extends FragmentActivity implements OnMapReadyCallback ,
-        GoogleMap.OnMyLocationButtonClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback {
-/**
-     * Request code for location permission request.
-     *
-     * @see #onRequestPermissionsResult(int, String[], int[])
-     */
+public class MainActivity  extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback ,GoogleMap.OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, MainAdapter.OnAdpaterClickListener {
+
+
+    //Login
+    private static final int RC_SIGN_IN = 9001;
+    private GoogleApiClient mGoogleApiClient;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    /**
-     * Flag indicating whether a requested permission has been denied after returning in
-     * {@link #onRequestPermissionsResult(int, String[], int[])}.
-     */
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
-    private ImageView drawerMenu;
+    //private ImageView drawerMenu;
 
-    private DrawerLayout drawer;
-    private View drawerView;
+    //private DrawerLayout drawer;
+    //private View drawerView;
 
-    private LinearLayout asia;
+    private HashMap<String, String> recyclerMap;
+    @BindArray(R.array.name) String [] poName;
+    @BindArray(R.array.url) String [] poUrl;
+
+    @BindView(R.id.main_recycler_view) RecyclerView mainRecyclerView;
+
+    Toolbar mToolbar;
+    ImageView mToolbar_title;
+    ArrayAdapter mAdapter;
+    ListView mListView;
+    TextView mEmptyView;
+    boolean h;
+    private LinearLayoutManager linearLayoutManager;
+    private MainAdapter mainAdapter;
+    private List<SlideObj> res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        drawerInit();
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar_title = (ImageView)mToolbar.findViewById(R.id.toolbar_title);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mListView = (ListView) findViewById(R.id.search_list);
+        mEmptyView = (TextView) findViewById(R.id.emptyView);
+
+        mAdapter = new ArrayAdapter(MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.name));
+        mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra("markerData",adapterView.getItemAtPosition(i).toString());
+                startActivity(intent);
+            }
+        });
+        mListView.setEmptyView(mEmptyView);
+
+        ButterKnife.bind(MainActivity.this);
+        //loginInit();
+        recyclerInit();
+        //drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        nationalInit();
-
     }
 
-    private void nationalInit() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
 
+        MenuItem mSearch = menu.findItem(R.id.action_search);
+
+        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        mSearchView.setQueryHint("Search");
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String[] instName = getResources().getStringArray(R.array.name);
+                for(int i = 0 ; i < instName.length ; i++)
+                    if(instName[i] == query) {
+                        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                        intent.putExtra("markerData", query);
+                        startActivity(intent);
+                        break;
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "해당 기관이 없습니다.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText.equals(""))
+                    findViewById(R.id.relative).setVisibility(View.GONE);
+                else
+                    findViewById(R.id.relative).setVisibility(View.VISIBLE);
+                mAdapter.getFilter().filter(newText);
+                return true;
+            }
+
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (findViewById(R.id.relative).getVisibility() == View.VISIBLE) {
+            findViewById(R.id.relative).setVisibility(View.GONE);
+        }
+        else
+            super.onBackPressed();
+    }
+
+
+    public void recyclerInit() {
+        recyclerMap = new HashMap<>();
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        res = new ArrayList<>();
+        recyclerDataInit();
+
+        mainAdapter = new MainAdapter(this,res,this);
+        mainRecyclerView.setAdapter(mainAdapter);
+        mainRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
     private void drawerInit(){
-        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
-        drawerView = (View)findViewById(R.id.drawer_view);
-
-        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
-        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
-        drawerMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.openDrawer(drawerView);
-            }
-        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
-        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CpiView.class);
-                startActivity(intent);
-            }
-        });
-
-
+//        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
+//        drawerView = (View)findViewById(R.id.drawer_view);
+//
+//        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+//        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+//            @Override
+//            public void onDrawerSlide(View drawerView, float slideOffset) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerStateChanged(int newState) {
+//
+//            }
+//        });
+//        drawerMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawer.openDrawer(drawerView);
+//            }
+//        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
+//        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), CpiView.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
@@ -161,7 +284,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
                 intent.putExtra("markerData",marker.getTitle());
                 startActivity(intent);
 
-                drawerMenu.setVisibility(View.INVISIBLE);
+                //drawerMenu.setVisibility(View.INVISIBLE);
 
                 return false;
             }
@@ -173,6 +296,10 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     }
 
 
+    //국민안전처: 2017년 7월 정부 조직 개편으로 행정자치부(현 행정안전부)에 흡수 · 통합되면서 폐지
+    //중소기업청 -> 중소벤처기업부
+    //행정자치부 -> 행정안전부
+    //미래창조과학부 -> 과학기술정보통신부
 
     private void markerInit(GoogleMap mMap){
 
@@ -196,7 +323,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         LatLng heritage = new LatLng(36.360307, 127.381533); //문화재청
         LatLng employment = new LatLng(36.504114, 127.267748); //고용노동부
         LatLng affairs = new LatLng(36.503216, 127.261261); //국가보훈처
-        LatLng safety = new LatLng(36.483754, 127.260743); //국민안전처
+        //LatLng safety = new LatLng(36.483754, 127.260743); //국민안전처 -> 폐지(행정안전부로 흡수)
         LatLng land = new LatLng(36.505293, 127.263210); //국토교통부
         LatLng financial = new LatLng(37.574881, 126.975202); //금융위원회
         LatLng strategyFinance = new LatLng(36.505986, 127.266591); //기획재정부
@@ -205,15 +332,15 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         LatLng health = new LatLng(36.502451, 127.262196); //보건복지부
         LatLng gender = new LatLng(37.574881, 126.975206); //여성가족부
         LatLng personnel = new LatLng(36.508346, 127.261185); //인사혁신처
-        LatLng smBusiness = new LatLng(36.360683, 127.384153); //중소기업청
+        LatLng smBusiness = new LatLng(36.360683, 127.384153); //중소기업청 -> 중소벤처기업부
         LatLng marine = new LatLng(36.362771, 127.291499); //해양수산부
-        LatLng administration = new LatLng(37.574866, 126.975052); //행정자치부
+        LatLng administration = new LatLng(37.574866, 126.975052); //행정자치부 -> 행정안전부
 //        LatLng temp = new LatLng();// 새만금개발청
         LatLng temp1 = new LatLng(36.504448, 127.268001);// 공정거래위원회
         LatLng temp2 = new LatLng(36.505708, 127.259834);// 국민권익위원회
         LatLng temp3 = new LatLng(36.504507, 127.265147);// 농림축산식품부
         LatLng temp4 = new LatLng(36.497736, 127.265729);// 문화체육관광부
-        LatLng temp5 = new LatLng(37.427014, 126.985063);// 미래창조과학부
+        LatLng temp5 = new LatLng(37.427014, 126.985063);// 미래창조과학부 -> 과학기술정보통신부
         LatLng temp6 = new LatLng(37.426830, 126.984753);// 방송통신위원회
         LatLng temp7 = new LatLng(36.499703, 127.260180);// 산업통상자원부
         LatLng temp8 = new LatLng(36.637992, 127.331872);// 식품의약품안전처
@@ -276,7 +403,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(heritage).title("문화재청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(employment).title("고용노동부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(affairs).title("국가보훈처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(safety).title("국민안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        //mMap.addMarker(new MarkerOptions().position(safety).title("국민안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(land).title("국토교통부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(financial).title("금융위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(strategyFinance).title("기획재정부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
@@ -285,15 +412,15 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(health).title("보건복지부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(gender).title("여성가족부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(personnel).title("인사혁신처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(smBusiness).title("중소기업청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(smBusiness).title("중소벤처기업부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(marine).title("해양수산부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(administration).title("행정자치부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(administration).title("행정안전부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp).title("새만금개발청").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp1).title("공정거래위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp2).title("국민권익위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp3).title("농림축산식품부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp4).title("문화체육관광부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(temp5).title("미래창조과학부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+        mMap.addMarker(new MarkerOptions().position(temp5).title("과학기술정보통신부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp6).title("방송통신위원회").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp7).title("산업통상자원부").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
         mMap.addMarker(new MarkerOptions().position(temp8).title("식품의약품안전처").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
@@ -333,9 +460,7 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
 //        mMap.addMarker(new MarkerOptions().position(temp42).title("인천광역시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp43).title("세종특별자치시").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
 //        mMap.addMarker(new MarkerOptions().position(temp44).title("제주특별자치도").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(police, 10));
-
-        addMarker();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.388606, 127.914706), 7));
 
     }
     /**
@@ -400,26 +525,106 @@ public class MainActivity  extends FragmentActivity implements OnMapReadyCallbac
     @Override
     protected void onResume() {
         super.onResume();
-        drawerMenu.setVisibility(View.VISIBLE);
+
+
+        //drawerMenu.setVisibility(View.VISIBLE);
     }
 
-    private void addMarker(){
-        //대만
-        mMap.addMarker(new MarkerOptions().position(new LatLng(25.032506, 121.567257)).title("臺北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(25.0162669,121.4576166)).title("新北市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(24.8551722,120.951979)).title("桃園市").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+    private void recyclerDataInit() {
+        for(int i=0; i<poName.length;i++){
+            recyclerMap.put(poName[i],poUrl[i%poUrl.length]);
+        }
+        recyclerDataLoad();
+    }
 
-        //태국
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7561478,100.4972599)).title("กรุงเทพมหานคร").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.8557611,100.4783304)).title("เทศบาลนครนนทบุรี").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.7389991,100.5336676)).title("เขต ปทุมวัน").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+    private void recyclerDataLoad() {
+        if(FbObject.firebaseAuth.getCurrentUser() != null) {
+            Log.d("qwe","Call");
+            FbObject.database.getReference().child("Rating").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    res.clear();
+                    Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                    while(iterator.hasNext()){
+                        DataSnapshot dataTemp = iterator.next();
+                        ReviewTotalRating temp = dataTemp.getValue(ReviewTotalRating.class);
+                        SlideObj mainTemp = new SlideObj(dataTemp.getKey(), recyclerMap.get(dataTemp.getKey()),temp.getRating()/temp.getTotal(),temp.getTotal());
+                        res.add(mainTemp);
+                    }
+                    mainAdapter.notifyDataSetChanged();
+                }
 
-        //일본
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.709081, 139.731982)).title("東京").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.6984881,139.6904952)).title("新宿区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(35.666127, 139.697042)).title("渋谷区").snippet("Hackathon").icon( BitmapDescriptorFactory.fromResource(R.drawable.markersmall)));
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
+                }
+            });
+        }
+    }
 
+    //Login
+    private void loginInit() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this,this)//onConnectionFailed Listener
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                GoogleSignInAccount account = result.getSignInAccount();
+                Toast.makeText(getApplicationContext(), account.getDisplayName() +"님 환영합니다",Toast.LENGTH_LONG).show();
+                firebaseAuthWithGoogle(account);
+            } else {
+                Toast.makeText(getApplicationContext(), "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        FbObject.firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        task.addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                            }
+                        });
+                        if (task.isSuccessful()) {
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(this,"로그인에 실패했습니다.",Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onClick(String markerData) {
+        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+        intent.putExtra("markerData",markerData);
+        startActivity(intent);
     }
 }

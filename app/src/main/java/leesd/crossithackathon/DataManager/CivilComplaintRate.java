@@ -60,6 +60,11 @@ public class CivilComplaintRate extends Activity {
                 totalRow= load.nRowTotal_6;
                 sheet_info=6;
                 break;
+            case "2017_3":
+                totalCol= load.nColTotal_7;
+                totalRow= load.nRowTotal_7;
+                sheet_info=7;
+                break;
             default:
                 break;
         }

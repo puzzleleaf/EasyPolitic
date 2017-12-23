@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="leesd.crossithackathon">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -17,6 +18,7 @@
             android:value="AIzaSyDm9nCuOvIdXg3YVeqvNuMydzF6j87UiQE"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Info.DetailActivity" android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity android:name=".Info.DetailChatActivity" />
         <activity android:name=".SplashActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -26,6 +28,9 @@
         <activity android:name=".SurveyActivity"/>
         <activity android:name=".Grievance.GrievanceView"/>
         <activity android:name=".Cpi.CpiView"/>
+        <activity android:name=".junsu.JunsuActivity"/>
+        <activity android:name=".serviceEval.ServiceEvalActivity"/>
+        <activity android:name=".serviceEval.ServiceEvalInfoActivity"/>
     </application>
 
 </manifest>

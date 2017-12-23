@@ -1,0 +1,125 @@
+<resources>
+    <string-array name="name">
+        <item>경찰청</item>
+        <item>관세청</item>
+        <item>교육부</item>
+        <item>국방부</item>
+        <item>국세청</item>
+        <item>기상청</item>
+        <item>법무부</item>
+        <item>법제처</item>
+        <item>병무청</item>
+        <item>산림청</item>
+        <item>외교부</item>
+        <item>조달청</item>
+        <item>통계청</item>
+        <item>통일부</item>
+        <item>특허청</item>
+        <item>환경부</item>
+        <item>대검찰청</item>
+        <item>문화재청</item>
+        <item>고용노동부</item>
+        <item>국가보훈처</item>
+        <item>국토교통부</item>
+        <item>금융위원회</item>
+        <item>기획재정부</item>
+        <item>농촌진흥청</item>
+        <item>방위사업청</item>
+        <item>보건복지부</item>
+        <item>여성가족부</item>
+        <item>인사혁신처</item>
+        <item>중소벤처기업부</item>
+        <item>해양수산부</item>
+        <item>행정안전부</item>
+        <item>공정거래위원회</item>
+        <item>국민권익위원회</item>
+        <item>농림축산식품부</item>
+        <item>문화체육관광부</item>
+        <item>과학기술정보통신부</item>
+        <item>방송통신위원회</item>
+        <item>산업통상자원부</item>
+        <item>식품의약품안전처</item>
+        <item>원자력안전위원회</item>
+        <item>행정중심복합도시건설청</item>
+        <item>강원도교육청</item>
+        <item>경기도교육청</item>
+        <item>경상남도교육청</item>
+        <item>경상북도교육청</item>
+        <item>전라남도교육청</item>
+        <item>전라북도교육청</item>
+        <item>충청남도교육청</item>
+        <item>충청북도교육청</item>
+        <item>광주광역시교육청</item>
+        <item>대구광역시교육청</item>
+        <item>대전광역시교육청</item>
+        <item>부산광역시교육청</item>
+        <item>서울특별시교육청</item>
+        <item>울산광역시교육청</item>
+        <item>인천광역시교육청</item>
+        <item>세종특별자치시교육청</item>
+        <item>제주특별자치도교육청</item>
+    </string-array>
+
+    <string-array name="url">
+        <item>https://image.lawtimes.co.kr/images/99062.jpg</item>
+        <item>http://cfs16.tistory.com/image/4/tistory/2010/04/19/17/03/4bcc0e6319c50</item>
+        <item>http://biz.newdaily.co.kr/data/photos/201708/art_1504060450.png</item>
+        <item>http://news.kbs.co.kr/data/news/2017/04/03/3456977_R0o.png</item>
+        <item>http://www.bokuennews.com/data/photos/201112/pp_56731_1.jpg</item>
+        <item>http://factoll.com/news_file/1474535761.jpg</item>
+        <item>https://i0.wp.com/cistoday.com/wp-content/uploads/2017/09/%EA%B3%A0%EB%A0%A4%EC%9D%B8-4%EC%84%B8%EB%8C%80-%EB%8F%99%ED%8F%AC-%EA%B4%80%EB%A0%A8-%ED%95%9C%EC%8B%9C%EC%A0%81-%EA%B5%AC%EC%A0%9C%EC%A1%B0%EC%B9%98-%EC%8B%9C%ED%96%89%EC%97%90-%EB%8C%80%ED%95%9C-%EB%B2%95%EB%AC%B4%EB%B6%80-%EA%B2%B0%EC%A0%95.jpg</item>
+        <item>https://image.lawtimes.co.kr/images/789.jpg</item>
+        <item>http://factoll.com/news_file/1435655707.jpg</item>  <!-- 병무청 -->
+        <item>http://www.forest.go.kr/newkfsweb/cmm/fms/getImage.do?atchFileId=FILE_000000000706839&amp;fileSn=0</item> <!-- 산림청 -->
+        <item>https://gdb.voanews.com/9C7EDD25-14FA-4F9F-855E-5BD510119FD6_cx0_cy7_cw0_w1023_r1_s.jpg</item> <!-- 외교부 -->
+        <item>http://www.idailynews.co.kr/data/photos/gtr/201701/20170102135411_4501261435319765.png</item> <!-- 조달청 -->
+        <item>http://cfile237.uf.daum.net/image/187C94154B1E5FA8DB0B77</item>  <!-- 통계청 -->
+        <item>http://d.kbs.co.kr/data/news/2017/05/01/3473589_6pb.png</item>  <!-- 통일부 -->
+        <item>http://mblogthumb4.phinf.naver.net/20160426_91/hashthewood_1461652631018vlFFQ_JPEG/002.jpg?type=w800</item>  <!-- 특허청 -->
+        <item>http://image.chosun.com/sitedata/image/201601/19/2016011902704_0.jpg</item>  <!-- 환경부 -->
+        <item>http://menu.mt.co.kr/thel/thumb/2016/07/06/2016070609504458058_1.jpg</item>  <!-- 대검찰청 -->
+        <item>http://www.cha.go.kr/unisearch/images/register/1667706.jpg</item>  <!-- 문화재청 -->
+        <item>http://cfile231.uf.daum.net/image/235F7048554BE0E5239EA3</item>  <!-- 고용노동부 -->
+        <item>http://ojsfile.ohmynews.com/down/images/1/sundaisik_328183_1[552963].jpg</item>  <!-- 국가보훈처 -->
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ministry_of_Land%2C_Infrastructure%2C_and_Transport%28South_Korea%29.JPG/270px-Ministry_of_Land%2C_Infrastructure%2C_and_Transport%28South_Korea%29.JPG</item>  <!-- 국토교통부 -->
+        <item>http://heraldk.com/wp-content/uploads/2017/05/20170510000184_0.jpg</item> <!-- 금융위원회 -->
+        <item>http://www.mosf.go.kr/upload//_upload/bbs/61/attach/20150302101122194.JPG</item> <!-- 기획재정부 -->
+        <item>http://www.newsdaily.kr/news/photo/201610/83721_68552_5432.jpg</item> <!-- 농촌진흥청 -->
+        <item>http://pds.skyedaily.com/news_data/1483534382RGPiDZ7PVIElGYD9iEnfCDk4iW.jpg</item> <!-- 방위사업청 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUgqjQ8Kw3S4vuQ7xJY5iI4F-I0DwFW2bNF4ABcyGDjWfqHlKL</item> <!-- 보건복지부 -->
+        <item>http://www.newswatch.kr/news/photo/201608/6925_8251_5958.jpg</item> <!-- 여성가족부 -->
+        <item>http://www.wolyo.co.kr/news/photo/201701/42365_30776_1314.jpg</item> <!-- 인사혁신처 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPIwLxuUOHZd0e45EuypX0B7DFIXuKKbQdd6KbAh4nwQbUO-is9w</item> <!-- 중소벤처기업부 -->
+        <item>http://www.mof.go.kr/images/contents/page7/mi_img01.gif</item> <!-- 해양수산부 -->
+        <item>http://www.mois.go.kr/images/com/img_logo_desc.jpg</item> <!-- 행정안전부 -->
+        <item>https://cdn.gamemeca.com/data_center/279/27/20170206144219.jpg</item> <!-- 공정거래위원회 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7guaPRd5hIGaUptuk-ll4FGDdlW8UsUV84z6IS2CJnBxEY0y5</item> <!-- 국민권익위원회 -->
+        <item>http://www.pedien.com/news/photo/201607/27954_22824_5004.png</item> <!-- 농림축산식품부 -->
+        <item>https://cdn.gamemeca.com/data_center/022/18/20160817145042.jpg</item> <!-- 문화체육관광부 -->
+        <item>http://image.dongascience.com/Photo/2017/08/15025109759286.JPG</item> <!-- 과학기술정보통신부 -->
+        <item>https://1.bp.blogspot.com/-O1UnpbjocZ0/V30aPVqEF9I/AAAAAAAAFD8/p7vD28hx9i8kf6cecH90cfGf1X9HyU-eQCLcB/s1600/%25EB%25B0%25A9%25EC%2586%25A1%25ED%2586%25B5%25EC%258B%25A0%25EC%259C%2584%25EC%259B%2590%25ED%259A%258C%2B%25EB%25A1%259C%25EA%25B3%25A0.png</item> <!-- 방송통신위원회 -->
+        <item>http://www.intronews.net/news/photo/201704/76243_104218_2934.jpg</item> <!-- 산업통상자원부 -->
+        <item>http://www.choacom.com/wp-content/uploads/2016/06/%EC%8B%9D%EC%95%BD%EC%B2%98-3-400x225.png</item> <!-- 식품의약품안전처 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShIkTZhlpDSA_MpgryqXnCUWmCuTElUluMVoD37jnOB2E-S4HU</item> <!-- 원자력안전위원회 -->
+        <item>http://www.dtoday.co.kr/news/photo/201704/248242_164000_3717.jpg</item> <!-- 행정중심복합도시건설청 -->
+        <item>http://www.m-i.kr/news/photo/201701/282823_156681_1050.jpg</item><!-- 강원도교육청 -->
+        <item>http://www.gooddailynews.co.kr/news/photo/201702/105091_91194_345.jpg</item><!-- 경기도교육청 -->
+        <item>http://www.hopekorea.net/n_news/peg/1508/thumb/9872c58e4db65993173c866eea8946eb_fEZsc2wCu5jpDf43NaoKVj1IHzali3B.png</item> <!-- 경상남도교육청 -->
+        <item>http://www.imaeil.com/news_img/2016/eco/20161020_155539000.jpg</item> <!-- 경상북도교육청 -->
+        <item>http://www.focusi.co.kr/news/photo/201209/3230_4253_3647.jpg</item> <!-- 전라남도교육청 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3XeWRt4FEtLfAr5WhyMFn1LdIjivLGxpQ-1RiwIFxZpY9PXfQ9w</item> <!-- 전라북도교육청 -->
+        <item>http://www.readingnews.kr/news/photo/201410/2477_2286_1720.jpg</item> <!-- 충청남도교육청 -->
+        <item>http://www.iworldtoday.com/news/photo/201601/184063_58205_226.jpg</item> <!--충청북도교육청-->
+        <item>http://www.igj.co.kr/news/photo/201607/43153_95048_5320.jpg</item> <!--광주광역시교육청 -->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfK507YK5RgawKk2Vv17W4PjiWQjcr1itbUhBNtd7CMEJN-RHrw</item> <!--대구광역시교육청 -->
+        <item>http://www.ccpress.kr/news/photo/201710/3254_3146_225.jpg</item> <!--대전광역시교육청-->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFvrKBCBTNKdU4yzcU8uo8DD0P7SZzrfKaiyeCnwH1pvP-Ai0dA</item> <!--부산광역시교육청-->
+        <item>http://www.pangpangnews.net/data/photos/gtr/201705/20170508083548_3449517137719162.png</item> <!--서울특별시교육청-->
+        <item>http://news.use.go.kr/upfile/board/010/20150417-%3F%3F%3F%3F%3F%3F8.JPG</item> <!--울산광역시교육청-->
+        <item>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4fSd2JJHdiLNplE5z2ddmMyvLm6Oet4fTVwcHQ_uzRBVOsi_h</item> <!--인천광역시교육청-->
+        <item>http://mblogthumb2.phinf.naver.net/20150213_81/sejong_story_1423803013386jr391_JPEG/1.jpg?type=w2</item> <!--세종특별자치시교육청-->
+        <item>http://www.jejusidae.com/news/photo/201502/800_1144_4951.jpg</item> <!--제주특별자치도교육청-->
+
+    </string-array>
+
+</resources>
