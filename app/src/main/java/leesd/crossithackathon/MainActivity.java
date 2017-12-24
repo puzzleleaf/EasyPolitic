@@ -133,17 +133,10 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         });
         mListView.setEmptyView(mEmptyView);
 
-        findViewById(R.id.drawer_menu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CivilProposalShow.class);
-                startActivity(intent);
-            }
-        });
         ButterKnife.bind(MainActivity.this);
-        //loginInit();
+        loginInit();
         recyclerInit();
-        //drawerInit();
+        drawerInit();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -215,62 +208,62 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         mainRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
-//    private void drawerInit(){
-//        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
-//        drawerView = (View)findViewById(R.id.drawer_view);
-//
-//        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
-//        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-//            @Override
-//            public void onDrawerSlide(View drawerView, float slideOffset) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerOpened(View drawerView) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerClosed(View drawerView) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerStateChanged(int newState) {
-//
-//            }
-//        });
-//        drawerMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                drawer.openDrawer(drawerView);
-//            }
-//        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
-//        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        findViewById(R.id.proposal).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), CpiView.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
+    private void drawerInit(){
+        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
+        drawerView = (View)findViewById(R.id.drawer_view);
+
+        drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+        drawerMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(drawerView);
+            }
+        }); //고충민원 버튼 클릭 시, 하위메뉴들이 보인다.
+        findViewById(R.id.complaintState).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GrievanceView.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.proposal).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CivilProposalShow.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.cpiState).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CpiView.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 
     @Override
@@ -535,7 +528,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         super.onResume();
 
 
-//        drawerMenu.setVisibility(View.VISIBLE);
+        drawerMenu.setVisibility(View.VISIBLE);
     }
 
     private void recyclerDataInit() {

@@ -51,7 +51,6 @@ public class ProposalListAdapter extends BaseAdapter {
         TextView titleText = (TextView)convertView.findViewById(R.id.title);
         TextView instituteText = (TextView)convertView.findViewById(R.id.institute);
         TextView reportDateText = (TextView)convertView.findViewById(R.id.report_date);
-        TextView situationText = (TextView)convertView.findViewById(R.id.situation);
 
         ProposalItem proposalItem = itemList.get(position);
 
@@ -59,21 +58,24 @@ public class ProposalListAdapter extends BaseAdapter {
         titleText.setText(proposalItem.getTitle());
         instituteText.setText(proposalItem.getInstitute());
         reportDateText.setText(proposalItem.getReportDate());
-        situationText.setText(proposalItem.getSituation());
 
 
 
         return convertView;
     }
 
-    public void addItem(String number, String title, String institute, String reportDate, String situation){
+    public void addItem(String number, String title, String institute, String reportDate, String petiNo, String anaCode, String pageNo, String reg_date1, String reg_date2){
         ProposalItem item = new ProposalItem();
 
         item.setNumber(number);
         item.setTitle(title);
         item.setInstitute(institute);
         item.setReportDate(reportDate);
-        item.setSituation(situation);
+        item.setPetiNo(petiNo);
+        item.setAnaCode(anaCode);
+        item.setPageNo(pageNo);
+        item.setReg_date1(reg_date1);
+        item.setReg_date2(reg_date2);
 
         itemList.add(item);
     }

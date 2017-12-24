@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.HashMap;
  * Created by hbLee on 2017-11-29.
  */
 
-public class CivilProposal extends AsyncTask {
+public class CivilProposal {
 
     private final String showListURL;
     private final String showDetailURL;
@@ -28,11 +29,6 @@ public class CivilProposal extends AsyncTask {
         showListURL = "https://www.epeople.go.kr/jsp/user/pp/UPpProposOpenList.paid";
         showDetailURL = "https://www.epeople.go.kr/jsp/user/pp/UPpProposNiceRead.paid";
 
-    }
-
-    @Override
-    protected Object doInBackground(Object[] objects) {
-        return null;
     }
 
     public HashMap<String,ArrayList<String>> getList(String year, int pageNo){ //리스트 목록 따오는 메소드

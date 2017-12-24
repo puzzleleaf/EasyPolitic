@@ -32,6 +32,7 @@
         <activity android:name=".serviceEval.ServiceEvalActivity"/>
         <activity android:name=".serviceEval.ServiceEvalInfoActivity"/>
         <activity android:name=".Proposal.CivilProposalShow"/>
+        <activity android:name=".Proposal.DetailView"/>
     </application>
 
 </manifest>
