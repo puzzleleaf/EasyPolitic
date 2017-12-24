@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/survey"
+        android:id="@+id/proposal"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:orientation="horizontal">

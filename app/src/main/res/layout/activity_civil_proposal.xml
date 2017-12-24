@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSplash"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:tint="#ffffff"
+            android:layout_marginRight="4dp"
+            android:id="@+id/search_year_prev"
+            android:src="@drawable/ic_prev"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:id="@+id/search_year"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:text="Year"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/search_year_next"
+            android:layout_marginLeft="4dp"
+            android:tint="#ffffff"
+            android:src="@drawable/ic_next"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/proposal_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+</LinearLayout>

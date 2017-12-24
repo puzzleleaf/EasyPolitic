@@ -19,6 +19,7 @@
             android:background="@color/colorSplash"
             android:orientation="horizontal">
 
+
             <android.support.design.widget.AppBarLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -30,6 +31,13 @@
                         android:background="@color/colorSplash"
                         android:minHeight="?attr/actionBarSize"
                         app:theme="@style/ThemeOverlay.AppCompat.Dark">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:tint="#ffffff"
+                            android:id="@+id/drawer_menu"
+                            android:src="@drawable/menu"/>
+
                         <ImageView
                             android:id="@+id/toolbar_title"
                             android:layout_width="120dp"

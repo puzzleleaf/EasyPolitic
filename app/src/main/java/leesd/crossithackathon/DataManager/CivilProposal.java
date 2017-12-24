@@ -1,5 +1,7 @@
 package leesd.crossithackathon.DataManager;
 
+import android.os.AsyncTask;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,7 +18,7 @@ import java.util.HashMap;
  * Created by hbLee on 2017-11-29.
  */
 
-public class CivilProposal {
+public class CivilProposal extends AsyncTask {
 
     private final String showListURL;
     private final String showDetailURL;
@@ -26,6 +28,11 @@ public class CivilProposal {
         showListURL = "https://www.epeople.go.kr/jsp/user/pp/UPpProposOpenList.paid";
         showDetailURL = "https://www.epeople.go.kr/jsp/user/pp/UPpProposNiceRead.paid";
 
+    }
+
+    @Override
+    protected Object doInBackground(Object[] objects) {
+        return null;
     }
 
     public HashMap<String,ArrayList<String>> getList(String year, int pageNo){ //리스트 목록 따오는 메소드
@@ -238,6 +245,7 @@ public class CivilProposal {
 
     public int pageCounting(String year){ //페이지 수 가져오는 메소드 (년도가 입력되면 그 기간 내에 필요한 페이지수를 구하는 함수 이다.)
 
+
         int numOfPaging=0;
 
         HashMap<String,ArrayList<String>> keyword1 = new HashMap<String,ArrayList<String>>();//reg
@@ -253,6 +261,7 @@ public class CivilProposal {
         SimpleDateFormat sdf = new SimpleDateFormat();SimpleDateFormat sdf2 = new SimpleDateFormat();
         sdf.applyPattern("yyyy-MM-dd");sdf2.applyPattern("yyyyMMdd");
         Calendar cal = Calendar.getInstance();
+
 
         reg_2017.add("2017-01-01");reg_2017.add(sdf.format(cal.getTime()));
         keyword1.put("2017",reg_2017);

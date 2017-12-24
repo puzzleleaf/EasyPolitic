@@ -69,6 +69,7 @@ import leesd.crossithackathon.Fb.FbObject;
 import leesd.crossithackathon.Grievance.GrievanceView;
 import leesd.crossithackathon.Info.DetailActivity;
 import leesd.crossithackathon.Info.ReviewTotalRating;
+import leesd.crossithackathon.Proposal.CivilProposalShow;
 import leesd.crossithackathon.adapter.MainAdapter;
 import leesd.crossithackathon.model.SlideObj;
 
@@ -83,10 +84,10 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
-    //private ImageView drawerMenu;
+    private ImageView drawerMenu;
 
-    //private DrawerLayout drawer;
-    //private View drawerView;
+    private DrawerLayout drawer;
+    private View drawerView;
 
     private HashMap<String, String> recyclerMap;
     @BindArray(R.array.name) String [] poName;
@@ -132,6 +133,13 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         });
         mListView.setEmptyView(mEmptyView);
 
+        findViewById(R.id.drawer_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CivilProposalShow.class);
+                startActivity(intent);
+            }
+        });
         ButterKnife.bind(MainActivity.this);
         //loginInit();
         recyclerInit();
@@ -207,7 +215,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         mainRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private void drawerInit(){
+//    private void drawerInit(){
 //        drawerMenu = (ImageView)findViewById(R.id.drawer_menu);
 //        drawerView = (View)findViewById(R.id.drawer_view);
 //
@@ -247,7 +255,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
 //            }
 //        });
 //
-//        findViewById(R.id.survey).setOnClickListener(new View.OnClickListener() {
+//        findViewById(R.id.proposal).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(getApplicationContext(),SurveyActivity.class);
@@ -262,7 +270,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
 //                startActivity(intent);
 //            }
 //        });
-    }
+//    }
 
 
     @Override
@@ -284,7 +292,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
                 intent.putExtra("markerData",marker.getTitle());
                 startActivity(intent);
 
-                //drawerMenu.setVisibility(View.INVISIBLE);
+                drawerMenu.setVisibility(View.INVISIBLE);
 
                 return false;
             }
@@ -527,7 +535,7 @@ public class MainActivity  extends AppCompatActivity implements GoogleApiClient.
         super.onResume();
 
 
-        //drawerMenu.setVisibility(View.VISIBLE);
+//        drawerMenu.setVisibility(View.VISIBLE);
     }
 
     private void recyclerDataInit() {
